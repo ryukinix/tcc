@@ -1,7 +1,7 @@
 #+STARTUP: showall align
 #+OPTIONS: todo:nil tasks:("IN-PROGRESS" "DONE") tags:nil
 #+AUTHOR: Manoel Vilela
-#+TITLE: Trabalho de Conclusão de Curso @@latex:\\@@ Natural Language Search
+#+TITLE: TCC - Engenharia da Computação @@latex:\\@@ Natural Language Search
 #+EXCLUDE_TAGS: TOC_3
 #+LANGUAGE: bt-br
 #+LATEX_HEADER: \usepackage[]{babel}
@@ -24,11 +24,14 @@ busca usando técnicas de processamento de linguagem natural.
 :CUSTOM_ID: toc-org
 :END:
 - [[#introdução][Introdução]]
+- [[#neoway-search][Neoway Search]]
 
 * Introdução
 
 Cogito ergo sum. Principal trabalho em vista: cite:thoughspot
 
+* Neoway Search
+#+INCLUDE: NEOWAY-SEARCH.org :lines "10-" :minlevel 2
 
 bibliographystyle:ieeetr
 bibliography:bibliography.bib

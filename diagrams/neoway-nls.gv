@@ -1,0 +1,7 @@
+strict graph {
+    a [label="Neoway Search API"];
+    b [label="Neoway Natural Language Search API"]
+    c [label="Neoway SIMM"]
+    a -- b;
+    b -- c;
+}
