@@ -1,2 +1,11 @@
 *.pdf
 *.bbl
+/documento.aux
+/documento.blg
+/documento.glo
+/documento.idx
+/documento.ist
+/documento.lof
+/documento.log
+/documento.lot
+/documento.toc
