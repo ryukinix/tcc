@@ -2,7 +2,7 @@
 ## Customizações do abnTeX2 (http://abnTeX2.googlecode.com)           ##
 ## para a Universidade Estadual do Ceara - UECE                       ##
 ##                                                                    ##
-## This work may be distributed and/or modified under the             ## 
+## This work may be distributed and/or modified under the             ##
 ## conditions of the LaTeX Project Public License, either version 1.3 ##
 ## of this license or (at your option) any later version.             ##
 ## The latest version of this license is in                           ##
@@ -23,8 +23,8 @@
 
 filename=documento
 
-all: compile
-	
+all: compile clean
+
 compile:
 	@echo "*********************************************************"
 	@echo "*                                                       *"
@@ -40,9 +40,11 @@ compile:
 	pdflatex $(filename).tex
 	@echo "Processo finalizado com sucesso!"
 
-	
+
 clean:
 	@echo -n "Limpando arquivos auxiliares...\n"
-	@rm -f *.out *.aux *.alg *.acr *.dvi *.gls *.log *.bbl *.blg *.ntn *.not *.lof *.lot *.toc *.loa *.lsg *.nlo *.nls *.ilg *.ind *.ist *.glg *.glo *.xdy *.acn *.idx *.loq *~
-	@rm -f $(filename).pdf
+	@rm -v -f *.out *.aux *.alg *.acr *.dvi *.gls \
+	       *.log *.bbl *.blg *.ntn *.not *.lof \
+           *.lot *.toc *.loa *.lsg *.nlo *.nls \
+           *.ilg *.ind *.ist *.glg *.glo *.xdy *.acn *.idx *.loq *~
 	@echo "Processo finalizado com sucesso!"
