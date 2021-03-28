@@ -1,8 +1,56 @@
-* sáb 27 mar 2021 18:23:33: Apêndice vs Anexo
+* Notas
 
-https://www.puc-rio.br/ensinopesq/ccpg/normas/apendices_e_anexos.html#:~:text=Ap%C3%AAndices%20s%C3%A3o%20textos%20elaborados%20pelo,mapas%2C%20leis%2C%20estatutos%20etc.
+** sáb 27 mar 2021 18:23:33: Apêndice vs Anexo
 
-Apêndices são textos elaborados pelo autor a fim de complementar sua
-argumentação. Anexos são os documentos não elaborados pelo autor, que
-servem de fundamentação, comprovação ou ilustração, como mapas, leis,
-estatutos etc.
+ https://www.puc-rio.br/ensinopesq/ccpg/normas/apendices_e_anexos.html#:~:text=Ap%C3%AAndices%20s%C3%A3o%20textos%20elaborados%20pelo,mapas%2C%20leis%2C%20estatutos%20etc.
+
+ Apêndices são textos elaborados pelo autor a fim de complementar sua
+ argumentação. Anexos são os documentos não elaborados pelo autor, que
+ servem de fundamentação, comprovação ou ilustração, como mapas, leis,
+ estatutos etc.
+
+* Referências
+
+
+** PhD. Jarbas
+
+- (2016) ELM based signature for texture classification: https://www.sciencedirect.com/science/article/abs/pii/S0031320315003453
+- (2018) Randomized neural network based signature for dynamic texture
+  classification: https://www.sciencedirect.com/science/article/abs/pii/S0957417419303914
+- (2019) Randomized neural network based descriptors for shape
+  classification: https://www.sciencedirect.com/science/article/abs/pii/S0925231218306842
+- (2020) Fusion of complex networks and randomized neural networks for
+texture analysis https://www.sciencedirect.com/science/article/abs/pii/S0031320319304893
+
+*** Conclusion of Fusion of CN + RNN => Texture Analysis (2020)
+
+This paper presents an innovative approach of texture feature
+extraction based on the fusion of complex network and random- ized
+neural network. In the proposed method, a new approach to model the
+image as a CN that uses only one parameter is pre- sented. We also
+proposed a new way of characterizing the CN based on the idea of using
+the output weights of a random- ized neural network trained with
+topological properties of the CN.  The obtained classification results
+on four databases outperformed other methods of the literature. Also,
+the proposed approach has an excellent trade-off between performance
+and size of the feature vectors. This demonstrates that the proposed
+approach is highly discriminative using the three feature vectors
+considered. In this way, this paper shows that the fusion of complex
+network and randomized neural network is
+a research field with great potential as a feasible texture analysis
+methodology
+
+
+
+** PhD. Verri
+
+- Network Unfolding Map by Edge Dynamics Modeling: https://arxiv.org/abs/1603.01182
+- Random Walk in Feature-Sample Networks for Semi-supervised
+  Classification: https://ieeexplore.ieee.org/document/7839592
+
+** Pesquisa complementar
+
+- Superpixel segmentation: A benchmark:
+  https://www.sciencedirect.com/science/article/pii/S0923596517300735
+- Semi-supervised Medical Image Segmentation through Dual-task
+  Consistency: https://arxiv.org/abs/2009.04448
