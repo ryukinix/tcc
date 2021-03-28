@@ -54,3 +54,4 @@ methodology
   https://www.sciencedirect.com/science/article/pii/S0923596517300735
 - Semi-supervised Medical Image Segmentation through Dual-task
   Consistency: https://arxiv.org/abs/2009.04448
+- Mask R-CNN: https://arxiv.org/abs/1703.06870
