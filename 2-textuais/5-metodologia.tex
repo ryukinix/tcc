@@ -5,16 +5,16 @@ Este trabalho de conclusão de concurso será dividido em quatro fases:
 Pesquisa, Desenvolvimento, Testes e Monografia.
 
 Durante a pesquisa científica, os artigos referenciados serão explorados com
-maior atenção e será buscado entender os menores detalhes que implicam
+maior atenção e será buscado entender os detalhes que implicam
 na criação da técnica proposta. Em especial, dois artigos terão maior
 atenção inicialmente: \textit{Network Unfolding Map By Vertex-Edge
   Dynamics Modeling} \cite{VerriNetworkUnfoldingMap2018} e
 \textit{Image Segmentation Methods Based on Superpixel Techniques A
   Survey} \cite{SuperpixelSurvey2020}. O primeiro contém a definição
 da técnica LCU, uma dinâmica coletiva sobre redes complexas, o
-componente de aprendizagem principal do algoritmo, o segundo será
+componente de aprendizagem principal do algoritmo; o segundo será
 usado como uma pré-segmentação inicial antes de partir pra construção
-da rede complexa. Na figura \ref{fig:fluxograma-algoritmo} é demonstrado uma
+da rede complexa. Na figura \ref{fig:fluxograma-algoritmo} é demonstrada uma
 visão macro do algoritmo.
 
 \begin{figure}[!h]
@@ -32,12 +32,12 @@ visão macro do algoritmo.
 
 O desenvolvimento se concentrará na integração das técnicas
 mencionadas acima como uma nova técnica de segmentação de imagens
-semi-supervisionada, portanto, serão detalhadadas todas
+semi-supervisionada, portanto, serão detalhadadas todas as
 etapas necessárias pra construção e aplicação do novo algoritmo de
-segmentação. Por exemplo, construção da rede complexa assumirá
+segmentação. Por exemplo, a construção da rede complexa assumirá
 que cada superpixel será um vértice do grafo com seus vizinhos baseado
-na topologia da imagem, a etapa de extração de características será
-feito em cima de cada superpixel e a dinâmica coletiva considerará as
+na topologia da imagem, a etapa de extração de características
+ocorrerá em cada superpixel e a dinâmica coletiva considerará a
 anotação parcial da imagem. No fim do algoritmo, os segmentos da
 imagem serão subgrafos dessa rede complexa.
 
@@ -54,8 +54,8 @@ principais \textit{datasets} conhecidos para segmentação de imagens,
 como o \textit{The Berkeley Segmentation Dataset and Benchmark}
 \cite{MartinFTM01}.
 
-Na fase de monografia será consolidado todos os resultados em trabalho
-acadêmico nas normas da \gls{ABNT}.
+Na fase de monografia serão consolidados todos os resultados em um
+trabalho acadêmico nas normas da \gls{ABNT}.
 
 O cronograma das atividades de pesquisa é apresentado a seguir.
 
