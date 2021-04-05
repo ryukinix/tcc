@@ -20,15 +20,16 @@ disso, esse algoritmo tem complexidade computacional linear em relação
 à quantidade de classes, arestas e vértices.
 
 Para ilustrar uma possível ideia de segmentação de imagens, ao
-considerar um algoritmo que faça uma transformação do domínio de imagem para um
-grafo, é possível estabelecer uma relação na qual os vértices representam
-parte da imagem como um \textit{superpixel}
+considerar um algoritmo que faça uma transformação do domínio de
+imagem para um grafo, é possível estabelecer uma relação na qual os
+vértices representam parte da imagem como um \textit{superpixel}
 \cite{SuperpixelSurvey2020}, ou seja, um grupo de subpixels da
-imagem. Algoritmos de superpixel são não-supervisionados em geral,
-portanto possuem suas limitações quanto ao resultado esperado pelo
-usuário \textendash \hfill logo difícil de ser aceito em aplicações médicas
-nas quais a opinião do especialista é de alta relevância para o
-resultado final.
+imagem. Na Figura \ref{fig:segmentation-superpixel} é apresentado um
+exemplo de segmentação usando superpixels. Algoritmos de superpixel
+são não-supervisionados em geral, portanto possuem suas limitações
+quanto ao resultado esperado pelo usuário \textendash \hfill logo
+difícil de ser aceito em aplicações médicas nas quais a opinião do
+especialista é de alta relevância para o resultado final.
 
 \begin{figure}[!h]
         \captionsetup{width=9cm}
