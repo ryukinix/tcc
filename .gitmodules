@@ -1,0 +1,3 @@
+[submodule "egsis"]
+	path = egsis
+	url = git@github.com:ryukinix/egsis.git
