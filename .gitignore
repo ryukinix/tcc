@@ -16,3 +16,4 @@ documento.pdf
 *auto/*
 */auto/*
 research/
+**auto/*.el
