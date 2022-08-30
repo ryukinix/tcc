@@ -21,7 +21,7 @@ jobs:
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
         file: documento.pdf
-        asset_name: tcc_manoel_vilela_${{ github.ref }}.pdf
+        asset_name: tcc_manoel_vilela_${{ github.ref_name }}.pdf
         tag: ${{ github.ref }}
         overwrite: true
         body: "TCC Autogerado via CI/CD"

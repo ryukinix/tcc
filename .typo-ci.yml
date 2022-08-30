@@ -34,10 +34,11 @@ excluded_files:
   - "Gemfile.lock"
   - ".typo-ci.yml"
   - ".github/.typo-ci.yml"
+  - ".github/**/*"
 
 # Any words we should ignore?
 excluded_words:
   - typoci
 
 # Would you like filenames to also be spellchecked?
-spellcheck_filenames: true
+spellcheck_filenames: false
