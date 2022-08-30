@@ -21,19 +21,7 @@
 ##                                                                    ##
 ########################################################################
 
-texfiles = $(shell find . -iname '*.tex')
-BASE_SRC = $(shell find . -iwholename '.*2-textuais/*.tex')
-SRC ?= $(BASE_SRC) \
- ./3-pos-textuais/glossario.tex \
- ./1-pre-textuais/dedicatoria.tex \
- ./1-pre-textuais/errata.tex \
- ./1-pre-textuais/lista-de-simbolos.tex \
- ./1-pre-textuais/lista-de-abreviaturas-e-siglas.tex \
- ./1-pre-textuais/resumo.tex \
- ./1-pre-textuais/agradecimentos.tex \
- ./1-pre-textuais/epigrafe.tex \
-
-
+SRC = $(shell find . -iname '*.tex')
 FILENAME=documento
 
 all: compile clean
