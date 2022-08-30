@@ -21,7 +21,7 @@ desse material.
 
 
 ``` tex
-@booklet{booklet,
+@booklet{egsis2022,
   title        = {Segmentação Semi-Supervisionada de Imagens através
   de Dinâmicas Coletivas em Redes Complexas},
   author       = {Manoel Vilela Machado Neto},
