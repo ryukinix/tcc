@@ -1,0 +1,24 @@
+name: publish
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build:
+    name: Publish Draft PDF
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: xu-cheng/latex-action@v2
+    - name: Build
+      run: make build
+    - name: Upload binaries to release
+    - uses: actions/upload-artifact@v2
+      with:
+        name: draft_tcc
+        path: documento.pdf
