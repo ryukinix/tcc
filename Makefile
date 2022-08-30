@@ -33,11 +33,14 @@ compile:
 	@echo "*                                                       *"
 	@echo "*********************************************************"
 	@echo "Compilando..."
+	make clean
 	pdflatex $(filename).tex
 	bibtex $(filename)
 	makeglossaries $(filename)
 	makeindex $(filename)
 	pdflatex $(filename).tex
+	pdflatex $(filename).tex
+	make clean
 	@echo "Processo finalizado com sucesso!"
 
 
