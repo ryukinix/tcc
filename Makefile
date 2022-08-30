@@ -21,9 +21,9 @@
 ##                                                                    ##
 ########################################################################
 
-texfiles=$(shell find . -iname '*.tex')
-2_textuais=$(shell find . -iwholename '2-textuais/*.tex')
-textuais=$(2_textuais) \
+texfiles = $(shell find . -iname '*.tex')
+BASE_SRC = $(shell find . -iwholename '.*2-textuais/*.tex')
+SRC ?= $(BASE_SRC) \
  ./3-pos-textuais/glossario.tex \
  ./1-pre-textuais/dedicatoria.tex \
  ./1-pre-textuais/errata.tex \
@@ -34,33 +34,35 @@ textuais=$(2_textuais) \
  ./1-pre-textuais/epigrafe.tex \
 
 
-filename=documento
+FILENAME=documento
 
 all: compile clean
 
 compile:
 	@echo "*********************************************************"
 	@echo "*                                                       *"
-	@echo "* Package 'ueceTeX2' Release 1.0 -- 17 de Dezembro 2014 *"
+	@echo "* TRABALHO CONCLUSÃO DE CURSO (UFC)                     *"
 	@echo "*                                                       *"
 	@echo "*********************************************************"
 	@echo "Compilando..."
 	make clean
-	pdflatex $(filename).tex
-	bibtex $(filename)
-	makeglossaries $(filename)
-	makeindex $(filename)
-	pdflatex $(filename).tex
-	pdflatex $(filename).tex
+	pdflatex $(FILENAME).tex
+	bibtex $(FILENAME)
+	makeglossaries $(FILENAME)
+	makeindex $(FILENAME)
+	pdflatex $(FILENAME).tex
+	pdflatex $(FILENAME).tex
 	make clean
 	@echo "Processo finalizado com sucesso!"
 
 
 lint:
-	@chktex $(texfiles)
+	@chktex $(SRC)
 
 spell-check:
-	bash scripts/spell-check.sh $(textuais)
+	bash scripts/spell-check.sh $(SRC)
+
+check: lint spell-check
 
 clean:
 	@echo -n "Limpando arquivos auxiliares...\n"
