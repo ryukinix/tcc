@@ -178,7 +178,7 @@
 \autor{Manoel Vilela Machado Neto}
 \titulo{Segmentação Semi-Supervisionada de Imagens através de
 Dinâmicas Coletivas em Redes Complexas}
-\data{2021}
+\data{2022}
 \local{Sobral}
 
 % Exemplo: \dataaprovacao{01 de Janeiro de 2012}
@@ -188,7 +188,7 @@ Dinâmicas Coletivas em Redes Complexas}
 %%           Informação sobre o Orientador         %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\orientador{Prof. Dr. Jarbas Joaci de Mesquita Sá Junior}
+\orientador{Prof.\ Dr.\ Jarbas Joaci de Mesquita Sá Junior}
 \orientadories{Universidade Federal do Ceará (UFC)}
 \orientadorcentro{Centro de Ciências e Tecnologia (CCT)}
 \orientadorfeminino{nao} % Coloque 'sim' se for do sexo feminino
@@ -215,12 +215,12 @@ Dinâmicas Coletivas em Redes Complexas}
 % \membrodabancadoisies{Universidade Federal do Ceará - UFC}
 
 
-% \membrodabancadois{Prof. Dr. Xxxxxxx Xxxxxx Xxxxxxx}
-% \membrodabancadoiscentro{Faculdade de Filosofia Dom Aureliano Matos (FAFIDAM)}
-% \membrodabancadoisies{Universidade do Membro da Banca Dois (SIGLA)}
-% \membrodabancatres{Prof. Dr. Xxxxxxx Xxxxxx Xxxxxxx}
-% \membrodabancatrescentro{Centro de Ciências e Tecnologia (CCT)}
-% \membrodabancatresies{Universidade do Membro da Banca Três (SIGLA)}
+\membrodabancadois{Prof.\ Dr.\ Xxxxxxx Xxxxxx Xxxxxxx}
+\membrodabancadoiscentro{Centro de Ciências e Tecnologia (CCT)}
+\membrodabancadoisies{Universidade Federal do Ceará (UFC)}
+\membrodabancatres{Prof.\ Dr.\ Xxxxxxx Xxxxxx Xxxxxxx}
+\membrodabancatrescentro{Centro de Ciências e Tecnologia (CCT)}
+\membrodabancatresies{Universidade Federal do Ceará (UFC)}
 % \membrodabancaquatro{Prof. Dr. Xxxxxxx Xxxxxx Xxxxxxx}
 % \membrodabancaquatrocentro{Centro de Ciências e Tecnologia (CCT)}
 % \membrodabancaquatroies{Universidade do Membro da Banca Quatro (SIGLA)}
@@ -233,17 +233,17 @@ Dinâmicas Coletivas em Redes Complexas}
 %
 \begin{document}
 
-	% Elementos pré-textuais
-	\imprimircapa
-	\imprimirfolhaderosto{}
+% Elementos pré-textuais
+\imprimircapa
+% \imprimirfolhaderosto{}
 	%\imprimirfichacatalografica{1-pre-textuais/ficha-catalografica}
 	%\imprimirerrata{elementos-pre-textuais/errata}
-	%\imprimirfolhadeaprovacao
-	%\imprimirdedicatoria{1-pre-textuais/dedicatoria}
-	%\imprimiragradecimentos{1-pre-textuais/agradecimentos}
-	%\imprimirepigrafe{1-pre-textuais/epigrafe}
-	%\imprimirresumo{1-pre-textuais/resumo}
-	%\imprimirabstract{1-pre-textuais/abstract}
+	\imprimirfolhadeaprovacao
+	\imprimirdedicatoria{1-pre-textuais/dedicatoria}
+	\imprimiragradecimentos{1-pre-textuais/agradecimentos}
+	\imprimirepigrafe{1-pre-textuais/epigrafe}
+	\imprimirresumo{1-pre-textuais/resumo}
+	\imprimirabstract{1-pre-textuais/abstract}
     % Se você comentar esta linha o título da lista fica: LISTA DE ILUSTRAÇÕES
 	\renewcommand*\listfigurename{Lista de Figuras}
 	\imprimirlistadeilustracoes
@@ -261,13 +261,16 @@ Dinâmicas Coletivas em Redes Complexas}
 	\textual
 	\input{2-textuais/1-introducao}
 	\input{2-textuais/2-objetivos}
+	\input{2-textuais/2-fundamentacao-teorica}
 	\input{2-textuais/3-justificativas}
-	\input{2-textuais/4-revisao-bibliografica}
-	\input{2-textuais/5-metodologia}
+    \input{2-textuais/trabalhos-relacionados}
+	\input{2-textuais/3-metodologia}
+	\input{2-textuais/4-resultados}
+	\input{2-textuais/5-conclusao}
 
 	%Elementos pós-textuais
 	\bibliography{3-pos-textuais/referencias}
-%	\imprimirglossario
+    %\imprimirglossario
 	% \imprimirapendices
 	% 	% Adicione aqui os apendices do seu trabalho
 	% 	\input{3-pos-textuais/apendices/apendice-a}
@@ -281,3 +284,5 @@ Dinâmicas Coletivas em Redes Complexas}
 	% \imprimirindice
 
 \end{document}
+
+% chktex-file 1

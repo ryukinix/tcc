@@ -1,0 +1,9 @@
+set -eux
+
+list="$@"
+
+exit 1
+for arg in $list; do
+    echo $arg
+    aspell -d pt_BR --mode=tex list < $arg
+done
