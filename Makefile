@@ -21,6 +21,7 @@
 ##                                                                    ##
 ########################################################################
 
+texfiles=$(shell find . -iname '*.tex')
 filename=documento
 
 all: compile clean
@@ -37,9 +38,11 @@ compile:
 	makeglossaries $(filename)
 	makeindex $(filename)
 	pdflatex $(filename).tex
-	pdflatex $(filename).tex
 	@echo "Processo finalizado com sucesso!"
 
+
+lint:
+	@chktex $(texfiles)
 
 clean:
 	@echo -n "Limpando arquivos auxiliares...\n"
