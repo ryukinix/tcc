@@ -22,6 +22,18 @@
 ########################################################################
 
 texfiles=$(shell find . -iname '*.tex')
+2_textuais=$(shell find . -iwholename '2-textuais/*.tex')
+textuais=$(2_textuais) \
+ ./3-pos-textuais/glossario.tex \
+ ./1-pre-textuais/dedicatoria.tex \
+ ./1-pre-textuais/errata.tex \
+ ./1-pre-textuais/lista-de-simbolos.tex \
+ ./1-pre-textuais/lista-de-abreviaturas-e-siglas.tex \
+ ./1-pre-textuais/resumo.tex \
+ ./1-pre-textuais/agradecimentos.tex \
+ ./1-pre-textuais/epigrafe.tex \
+
+
 filename=documento
 
 all: compile clean
@@ -46,6 +58,9 @@ compile:
 
 lint:
 	@chktex $(texfiles)
+
+spell-check:
+	bash scripts/spell-check.sh $(textuais)
 
 clean:
 	@echo -n "Limpando arquivos auxiliares...\n"
