@@ -58,9 +58,9 @@ inferência por indução ao aplicar a função estimada.
 Em contraponto, existem algoritmos que não estimam tal função e apenas
 realizam a inferência direta entre os dados rotulados disponíveis e os
 não rotulados. Isso é chamado de transdução e um algoritmo bem
-conhecido com essa característica é o classificador K-NN. Na figura ~\ref{fig:induction-vs-transduction} a
-seguir, é ilustrado as diferenças entre transdução e indução no
-processo de aprendizagem:
+conhecido com essa característica é o classificador K-NN.\@ Na
+figura~\ref{fig:induction-vs-transduction} a seguir, é ilustrado as
+diferenças entre transdução e indução no processo de aprendizagem:
 
 
 \begin{figure}[h!]
@@ -74,7 +74,7 @@ processo de aprendizagem:
 \end{figure}
 
 
-No texto \cite{vapnik2006semi}, o criador do famoso algoritmo SVM,
+No texto~\cite{vapnik2006semi}, o criador do famoso algoritmo SVM,
 estabelece uma profunda formalização dos problemas de aprendizado
 semi-supervisionado e inferência transdutiva. No final do texto, ele declara
 algumas reflexões sobre a solução de problemas em aprendizagem de máquina:
@@ -96,7 +96,7 @@ os valores em dados pontos. (Tente executar transdução, não
 indução)}. Esse embasamento, é um dos pontos centrais que reforça a motivação deste trabalho.
 
 
-\section{Aprendizado ativo}\label{sec:teorica-aprendizado-ativo}
+\section{Aprendizado Ativo}\label{sec:teorica-aprendizado-ativo}
 
 Aprendizado ativo é uma abordagem especializada de aprendizado de
 máquina onde o algoritmo pode interagir com o ambiente para obter
@@ -121,10 +121,11 @@ mínimo de consultas de rotulagem possível.
 
 \section{Superpixel}\label{sec:teorica-superpixel}
 
-Superpixels é um algoritmo de clusterização em processamento de imagens que ganhou
-popularidade nos últimos anos na comunidade de visão computacional. Em
-vez de processar uma imagem pixel por pixel, agrupa-se pixels
-vizinhos semelhantes em uma entidade maior, conhecida como superpixel.
+Superpixels é um algoritmo de clusterização em processamento de
+imagens que ganhou popularidade nos últimos anos na comunidade de
+visão computacional~\cite{SuperpixelSurvey2020}. Em vez de processar
+uma imagem pixel por pixel, agrupa-se pixels vizinhos semelhantes em
+uma entidade maior, conhecida como superpixel.
 
 O conceito de superpixels foi introduzido para superar as limitações
 do processamento pixel a pixel, que não leva em consideração a
@@ -140,6 +141,13 @@ rastreamento de objetos, reconhecimento de objetos, entre outros.
 Em resumo, os superpixels são uma técnica eficaz para simplificar a
 representação de uma imagem e aumentar a eficiência do processamento
 de imagens, mantendo a informação visual importante.
+
+Atualmente, já é possível encontrar muitas técnicas baseado em
+superpixels com diferentes características, complexidade
+computacionais, eficiência e método. No
+artigo~\cite{SuperPixelBenchmark2017}, é realizado um benchmark com 15
+algoritmos superpixels categorizados em três grupos: basedo em grafos,
+baseado em otimização de gradiente e baseado em análise de textura.
 
 \subsection{SLIC}\label{sec:teorica-superpixel-slic}
 
@@ -194,13 +202,16 @@ Uma execução do SLIC é possível de ser visualizada a seguir:
 
 \section{Geração de Redes Complexas}\label{sec:teorica-redes-complexas}
 
-Existem variados algoritmos para geração de redes complexas (grafos
-hiperconectados). Redes complexas podem ser usadas como um domínio de
-dados para realizar tarefas como segmentação de imagens, identificação
-de comunidades e também extração de características.
+Redes complexas são grafos de alta complexidade. Existem variados
+algoritmos para geração de redes complexas
+\cite{ComplexNetworksSurvey2007}. Redes complexas podem ser usadas
+como um domínio de dados para realizar tarefas como classificação de
+imagens~\cite{ComplexNetworksImageClassification2015}, segmentação de
+imagens, identificação de comunidades e também extração de
+características~\cite{JarbasComplexNetworks2020}.
 
 Neste trabalho, o uso de redes complexas é realizado de uma maneira
-acoplada ao algoritmo de clusterização inicial (superpixel). Nesse
+acoplada ao algoritmo de clusterização inicial da imagem (superpixel). Nesse
 cenário, cada superpixel gerado na imagem é um vértice e as arestas
 são gerados baseado na vizinhança.
 
@@ -212,10 +223,10 @@ parametrizado de superpixel em relação a um \textit{treshrold} e
 selecionar as k-nn similares como arestas válidas.
 
 Essa etapa de geração da rede complexa é crucial para a execução da
-dinâmica coletiva explorada na seção \ref{sec:teorica-lcu}. Um dos pontos
-centrais desse trabalho. Na figura~\ref{fig:complex-networks}
-, um exemplo conectado com a ilustração~\ref{fig:slic}
-anterior ao executar o algoritmo SLIC.
+dinâmica coletiva explorada na seção~\ref{sec:teorica-lcu}. Um dos
+pontos centrais desse trabalho. Na figura~\ref{fig:complex-networks},
+um exemplo de geração de rede complexa é apresentado conectado com a
+ilustração~\ref{fig:slic}, ao executar o algoritmo SLIC.
 
 \begin{figure}[t]
         \captionsetup{width=12cm}
@@ -226,16 +237,16 @@ anterior ao executar o algoritmo SLIC.
 		\UFCfig{}{\fbox{\includegraphics[width=12cm]{figuras/complex-networks}}}{\Fonte{(MANOEL
             VILELA, 2023)}}
 \end{figure}
-\FloatBarrier
+\FloatBarrier{}
 
 \section{Matriz de co-ocorrências}\label{sec:teorica-matriz-co-ocorrencia}
 
 O método de extração de características da matriz de co-ocorrências é
 uma técnica utilizada em processamento de imagem e visão computacional
-para extrair características texturais de uma imagem.
+para extrair características texturais de uma imagem~\cite{matrizcoocorrencia2017}.
 
 Formalmente, uma matriz de co-ocorrência C é definida sobre uma imagem
-I, para um deslocamento dado d = (dx, dy), como:
+I, para um deslocamento $\Delta x, \Delta y$, como:
 
 \begin{equation}
 C_{\Delta x, \Delta y}(i,j)=\sum_{x=1}^n\sum_{y=1}^m\begin{cases} 1, & \text{if }I(x,
@@ -245,9 +256,9 @@ C_{\Delta x, \Delta y}(i,j)=\sum_{x=1}^n\sum_{y=1}^m\begin{cases} 1, & \text{if 
                                                                     \text{caso contrário}\end{cases}
 \end{equation}
 
-Onde $\#$ denota o número de ocorrências do evento. Em outras palavras,
-$C_{\Delta x, \Delta y}(i,j)$ é o número de vezes que o par de pixels com intensidades i
-e j ocorre em dois pixels separados por distância d na imagem I.
+$C_{\Delta x, \Delta y}(i,j)$ é o número de vezes que o par de pixels com
+intensidades i e j ocorre em dois pixels separados pelas distâncias
+(horizontal e vertical) na imagem I.
 
 A matriz de co-ocorrência é tipicamente normalizada dividindo cada
 elemento pelo número total de pares de pixels na imagem, resultando em
@@ -261,8 +272,10 @@ textura, segmentação de imagem, entre outros.
 
 \section{Métricas de Similaridade}\label{sec:teorica-metricas-de-similaridade}
 
+A ser escrito: distância euclidiana, distância manhattan, distância
+jaccard (?), métrica de similaridade exponencial $\exp(\dfrac{-d}{s})$
 
-\section{Métricas de avaliação}
+\section{Métricas de Avaliação}
 
 Existem três métricas que são comumente utilizadas em segmentação
 semântica de imagens:
@@ -273,17 +286,19 @@ semântica de imagens:
 \item Pixel Accuracy
 \end{enumerate}
 
-IoU, que significa \textit{Intersection over Union}, é uma métrica comumente
-usada para medir a precisão de um objeto de segmentação em tarefas de
-visão computacional, como detecção de objetos e segmentação semântica.
+IoU~\cite{rezatofighi2019generalized}, que significa
+\textit{Intersection over Union}, é uma métrica popularmente usada
+para medir a precisão de um objeto de segmentação em tarefas de visão
+computacional, como detecção de objetos e segmentação semântica.
 
 A métrica IoU calcula a proporção da área de interseção entre a região
 estimada e a região real (ground truth) pela área da união dessas duas
 regiões. A fórmula para calcular o IoU é:
 
-\begin{gather}
-  IoU = \dfrac{A \cap B}{A \cup B}
-\end{gather}
+\begin{equation}
+  IoU = \dfrac{\left| A \cap B \right|}{\left| A \cup B \right|}
+\end{equation}
+
 
 Nessa equação, A e B são matrizes de rótulos da imagem onde serão
 comparados, por exemplo o A sendo os rótulos estimados e B os reais. O
@@ -298,24 +313,32 @@ considerando a classe negativa qualquer uma que não seja a classe alvo.
 
 \section{LCU}\label{sec:teorica-lcu}
 
-O algoritmo \gls{LCU} foi desenvolvido por um brasileiro
-\cite{VerriNetworkUnfoldingMap2018}, é uma dinâmica coletiva baseado
-em propagação de rótulos numa rede complexa. Essa dinâmica coletiva é
-modelada como um sistema dinâmico com geração de partículas de
-rotulação nas suas fontes (os vértices rotulados).
+O algoritmo \gls{LCU} foi desenvolvido por um
+brasileiro~\cite{VerriNetworkUnfoldingMap2018}, é uma dinâmica
+coletiva baseado em propagação de rótulos numa rede complexa. Essa
+dinâmica coletiva é modelada como um sistema dinâmico com geração de
+partículas de rotulação nas suas fontes (os vértices rotulados).
 
-Este algoritmo possuem critérios de sobrevivência das particulas
+Esse algoritmo possuem critérios de sobrevivência das particulas
 inspirado em comportamentos da natureza e sociedade. Por exemplo, o
-parâmetro $ \lambda $ do algoritmo denota um fator entre 0 e 1 de
+hiperparâmetro $ \lambda $ do algoritmo denota um fator entre 0 e 1 de
 competitividade entre as partículas, tornando a sobrevivência delas
-mais difícil ao percorrer o grafo.
+mais difícil ao percorrer o grafo. Embora as partículas nasçam nos
+vértices, a competição por dominação acontece nas arestas. No final, o
+vértice será marcado com o novo rótulo baseado no tipo de partícula
+que mais conseguiu dominar arestas desse vértice.
 
 Nesse caso particular, a implementação proposta é ligeiramente
 diferente da proposta originalmente, pois a rede complexa no cenário
 que o autor propõe as arestas não possuem peso. A modificação é
-realizada para incluir a similaridade entre dois superpixel para criar
-um fator de aumento da probabilidade das partículas visitarem os nós
-mais promissores.
+realizada para incluir a similaridade de imagem entre dois
+superpixels, dessa maneira é criado um fator de aumento da
+probabilidade das partículas visitarem os nós mais promissores. Como
+discutido na seção
+~\ref{sec:teorica-aprendizado-semi-supervisionado}, esse cenário de
+aprendizado é semi-supervisionado transdutivo: poucos rótulos estão
+disponíveis e nenhuma função de inferência é estimada. A inferência
+acontece diretamente entre os pontos rótulados e os não-rotulados.
 
 
 \begin{figure}[!h]
@@ -327,7 +350,7 @@ mais promissores.
 		\UFCfig{}{\fbox{\includegraphics[width=12cm]{figuras/lcu-partial}}}{\Fonte{(MANOEL
             VILELA, 2023)}}
 \end{figure}
-\FloatBarrier
+\FloatBarrier{}
 
 \begin{figure}[!h]
         \captionsetup{width=12cm}
@@ -338,12 +361,12 @@ mais promissores.
 		\UFCfig{}{\fbox{\includegraphics[width=12cm]{figuras/lcu-done}}}{\Fonte{(MANOEL
             VILELA, 2023)}}
 \end{figure}
-\FloatBarrier
+\FloatBarrier{}
 
 Nas figuras~\ref{fig:lcu-partially-annotated} e~\ref{fig:lcu-done} é
 possível ver a execução do algoritmo numa rede complexa densa
-aleatório, no final da execução os rótulos são propagados
-semanticamente baseado na disputa territorial dos vértices.
+aleatória, no final da execução os rótulos são propagados
+semanticamente baseado na disputa entre as partículas.
 
 
 \section{EGSIS}\label{sec:teorica-egsis}
