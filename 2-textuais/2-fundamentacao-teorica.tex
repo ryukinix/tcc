@@ -248,17 +248,17 @@ para extrair características texturais de uma imagem~\cite{matrizcoocorrencia20
 Formalmente, uma matriz de co-ocorrência C é definida sobre uma imagem
 I, para um deslocamento $\Delta x, \Delta y$, como:
 
-\begin{equation}
-C_{\Delta x, \Delta y}(i,j)=\sum_{x=1}^n\sum_{y=1}^m\begin{cases} 1, & \text{if }I(x,
+\begin{equation}\label{eq:comatrix}
+C_{\Delta x, \Delta y}(i,j) = \sum_{x=1}^n\sum_{y=1}^m\begin{cases} 1, & \text{if }I(x,
                                                        y)=i\text{ e
                                                        }I(x+\Delta x, y+\Delta
                                                        y)=j \\ 0, &
                                                                     \text{caso contrário}\end{cases}
 \end{equation}
 
-$C_{\Delta x, \Delta y}(i,j)$ é o número de vezes que o par de pixels com
-intensidades i e j ocorre em dois pixels separados pelas distâncias
-(horizontal e vertical) na imagem I.
+Na equação~\ref{eq:comatrix} $C_{\Delta x, \Delta y}(i,j)$ é o número de vezes
+que o par de pixels com intensidades i e j ocorre em dois pixels
+separados pelas distâncias (horizontal e vertical) na imagem I.
 
 A matriz de co-ocorrência é tipicamente normalizada dividindo cada
 elemento pelo número total de pares de pixels na imagem, resultando em
