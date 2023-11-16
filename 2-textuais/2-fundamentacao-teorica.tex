@@ -32,12 +32,13 @@ de máquina.
 Formalmente, pode-se definir o aprendizado semi-supervisionado da seguinte maneira:
 
 \begin{quote}
-Dado um conjunto de dados de treinamento $ X = \{x_1, x_2, \ldots, x_n\} $
-onde apenas um subconjunto  $ Y = \{y_1, y_2, \ldots , y_m\} $ tal que $ (m < n) $ tem rótulos
-correspondentes, o objetivo do aprendizado semi-supervisionado é usar
-tanto o conjunto de dados rotulado quanto o não rotulado para aprender
-a função $ f: X \rightarrow Y $ que pode prever o rótulo $ y $ para um novo
-exemplo $ x $.
+  Dado um conjunto de dados de treinamento
+  $ \mathbf{X} = \{\vec{x_1}, \vec{x_2}, \ldots, \vec{x_n}\} $, tal que $ \vec{x_n} \in \mathbb{R}^d $,
+  onde apenas um subconjunto  $ \vec{Y} = \{y_1, y_2, \ldots , y_m\} $ em que $ (m < n) $ tem rótulos
+  correspondentes, o objetivo do aprendizado semi-supervisionado é usar
+  tanto o conjunto de dados rotulado quanto o não rotulado para aprender
+  a função $ f: \mathbf{X} \rightarrow \vec{Y} $ que pode prever o rótulo $ y $ para um novo
+  exemplo $ \vec{x} $.
 \end{quote}
 
 O aprendizado semi-supervisionado é baseado na suposição de que os
