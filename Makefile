@@ -43,6 +43,8 @@ compile:
 	make clean
 	@echo "Processo finalizado com sucesso!"
 
+open:
+	xdg-open $(FILENAME).pdf
 
 lint:
 	@chktex $(SRC)
