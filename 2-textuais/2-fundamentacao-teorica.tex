@@ -1,4 +1,4 @@
-\chapter{Fundamentação Teórica}\label{cap:fundamentacao-teorica}
+\chapter{FUNDAMENTAÇÃO TEÓRICA}\label{cap:fundamentacao-teorica}
 
 Em desenvolvimento. Fundamentação Teórica para os principais pontos da
 na pesquisa:
@@ -14,7 +14,7 @@ na pesquisa:
 
 
 
-\section{Aprendizado Semi-supervisionado vs. Transdução}\label{sec:teorica-aprendizado-semi-supervisionado}
+\section{Aprendizado semi-supervisionado vs.\ transdução}\label{sec:teorica-aprendizado-semi-supervisionado}
 
 Existem três principais categorias de aprendizado de máquina:
 aprendizado supervisionado, aprendizado não-supervisionado e
@@ -96,7 +96,7 @@ os valores em dados pontos. (Tente executar transdução, não
 indução)}. Esse embasamento, é um dos pontos centrais que reforça a motivação deste trabalho.
 
 
-\section{Aprendizado Ativo}\label{sec:teorica-aprendizado-ativo}
+\section{Aprendizado ativo}\label{sec:teorica-aprendizado-ativo}
 
 Aprendizado ativo é uma abordagem especializada de aprendizado de
 máquina onde o algoritmo pode interagir com o ambiente para obter
@@ -200,7 +200,7 @@ Uma execução do SLIC é possível de ser visualizada a seguir:
 
 \end{enumerate}
 
-\section{Geração de Redes Complexas}\label{sec:teorica-redes-complexas}
+\section{Geração de redes complexas}\label{sec:teorica-redes-complexas}
 
 Redes complexas são grafos de alta complexidade. Existem variados
 algoritmos para geração de redes complexas
@@ -270,12 +270,12 @@ características podem ser usadas para tarefas como classificação de
 textura, segmentação de imagem, entre outros.
 
 
-\section{Métricas de Similaridade}\label{sec:teorica-metricas-de-similaridade}
+\section{Métricas de similaridade}\label{sec:teorica-metricas-de-similaridade}
 
 A ser escrito: distância euclidiana, distância manhattan, distância
 jaccard (?), métrica de similaridade exponencial $\exp(\dfrac{-d}{s})$
 
-\section{Métricas de Avaliação}
+\section{Métricas de avaliação}
 
 Existem três métricas que são comumente utilizadas em segmentação
 semântica de imagens:
@@ -301,11 +301,11 @@ regiões. A fórmula para calcular o IoU é:
 
 
 Nessa equação, A e B são matrizes de rótulos da imagem onde serão
-comparados, por exemplo o A sendo os rótulos estimados e B os reais. O
-valor de IoU varia de 0 a 1, onde 1 indica uma correspondência
-perfeita entre as caixas delimitadoras previstas e reais, e 0 indica
-que não há sobreposição. Em geral, um IoU maior indica uma melhor
-precisão do modelo de segmentação.
+comparados, por exemplo a matriz A sendo os rótulos estimados e a
+matriz B os reais. O valor de IoU varia de 0 a 1, onde 1 indica uma
+correspondência perfeita entre as regiões delimitadoras previstas e
+reais, e 0 indica que não há sobreposição. Em geral, um IoU maior
+indica uma melhor precisão do modelo de segmentação.
 
 A métrica mIoU é uma versão para segmentação multi-classe realizando
 uma média dos IoU calculando individualmente pra cada classe,
