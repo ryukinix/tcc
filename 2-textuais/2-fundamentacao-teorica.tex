@@ -1,18 +1,43 @@
 \chapter{FUNDAMENTAÇÃO TEÓRICA}\label{cap:fundamentacao-teorica}
 
-Em desenvolvimento. Fundamentação Teórica para os principais pontos da
-na pesquisa:
 
-\begin{itemize}
-\item Superpixel
-\item Geração de Redes Complexas
-\item Matriz de Co-ocorrência
-\item \gls{LCU}
-\item Aprendizado Semi-supervisionado
-\item Processamento de imagem
-\end{itemize}
+Detalhar o overview da fundamentação teórica com a motivação principal
+de todas as explicações
 
 
+\section{Segmentação interativa de imagens}\label{sec:segmentacao-interativa}
+
+A segmentação interativa de imagens é um processo de divisão de uma
+imagem digital em várias partes ou regiões, geralmente para tornar a
+imagem mais fácil de analisar e processar~\cite{ramadan2020survey}. Este processo é `interativo'
+porque envolve a entrada do usuário para ajudar a orientar ou refinar
+o processo de segmentação.
+
+\begin{figure}[h!]
+        \captionsetup{width=9cm}
+		\Caption{\label{fig:interactive-segmentation}
+          O usuário marca anotações do fundo e do objeto a ser
+          segmentado, então a segmentação interativa é realizada.
+        }
+		\centering
+		\UFCfig{}{\fbox{\includegraphics[width=9cm]{figuras/interactive-segmentation-2008}}}{\Fonte{\cite{duchenne2008segmentation}}}
+\end{figure}
+\FloatBarrier
+
+De acordo com a figura~\ref{fig:interactive-segmentation}, na
+segmentação interativa de imagens, o usuário pode selecionar regiões
+de interesse, definir marcadores ou fazer anotações na imagem. Essas
+entradas do usuário são então usadas para informar o algoritmo de
+segmentação sobre como dividir a imagem. Por exemplo, o usuário pode
+desenhar uma linha ao redor de um objeto de interesse, e o algoritmo
+de segmentação irá então tentar dividir a imagem de tal forma que o
+objeto de interesse seja isolado em sua própria região.
+
+Este tipo de segmentação de imagem é útil em uma variedade de
+aplicações, incluindo processamento de imagens médicas, visão
+computacional, reconhecimento de padrões e muitos outros campos onde é
+útil poder dividir uma imagem em regiões distintas com base em
+critérios definidos pelo usuário.
 
 \section{Aprendizado semi-supervisionado vs.\ transdução}\label{sec:teorica-aprendizado-semi-supervisionado}
 
@@ -78,14 +103,14 @@ diferenças entre transdução e indução no processo de aprendizagem:
 No texto~\cite{vapnik2006semi}, o criador do famoso algoritmo SVM,
 estabelece uma profunda formalização dos problemas de aprendizado
 semi-supervisionado e inferência transdutiva. No final do texto, ele declara
-algumas reflexões sobre a solução de problemas em aprendizagem de máquina:
+algumas reflexões sobre a solução de problemas em aprendizagem de
+máquina. Em uma delas, ele diz que ao resolver um problema, não tente
+resolve o problema geral como um passo intermediário, tente obter a
+resposta que você precisa, mas não a mais geral. Por fim, um Vapnik
+deixa uma sugestão relevante:
 
 
 \begin{displayquote}
-
-  Solving a problem of interest, do not solve a more general (and therefore worse-
-  posed) problem as an intermediate step. Try to get the answer that you really need
-  but not a more general one.
 
   Do not estimate a function if you need to estimate values at given
   points. (Try to perform transduction, not induction.)
@@ -94,31 +119,12 @@ algumas reflexões sobre a solução de problemas em aprendizagem de máquina:
 
 Em tradução-livre: \blockquote{Não estime uma função se você precisa estimar
 os valores em dados pontos. (Tente executar transdução, não
-indução)}. Esse embasamento, é um dos pontos centrais que reforça a motivação deste trabalho.
+indução)}. Essa sugestão é uma evidência que reforça a motivação
+deste trabalho. Ao desenvolver um algoritmo transdutivo pra
+segmentação de imagens de maneira assistida, não é estimado uma função
+geral como um passo intermediário, mas a segmentação é realizada
+diretamente baseado nas rotulações iniciais que o usuário forneceu.
 
-
-\section{Aprendizado ativo}\label{sec:teorica-aprendizado-ativo}
-
-Aprendizado ativo é uma abordagem especializada de aprendizado de
-máquina onde o algoritmo pode interagir com o ambiente para obter
-melhores informações ou dados de treinamento. Em vez de passivamente
-receber todos os dados de treinamento e aprender a partir deles, o
-algoritmo de aprendizado ativo tem a capacidade de escolher os dados
-dos quais deseja aprender.
-
-Isso é especialmente útil quando os dados de treinamento são caros
-para obter ou rotular. O algoritmo pode escolher os exemplos mais
-informativos para aprender, economizando recursos.
-
-Formalmente, o aprendizado ativo é um tipo de aprendizado
-semi-supervisionado, onde o algoritmo tem acesso a um conjunto de
-dados rotulados e não rotulados. O algoritmo seleciona ativamente
-exemplos do conjunto de dados não rotulados para serem rotulados e
-adicionados ao conjunto de treinamento.
-
-O objetivo do aprendizado ativo é minimizar o erro de generalização,
-ou seja, o erro que o modelo fará em novos dados não vistos, com o
-mínimo de consultas de rotulagem possível.
 
 \section{Superpixel}\label{sec:teorica-superpixel}
 
@@ -194,8 +200,8 @@ Uma execução do SLIC é possível de ser visualizada a seguir:
           Execução do algoritmo SLIC na fotografia de um gato.
         }
 		\centering
-		\UFCfig{}{\fbox{\includegraphics[width=12cm]{figuras/slic}}}{\Fonte{(MANOEL
-            VILELA, 2023)}}
+		\UFCfig{}{\fbox{\includegraphics[width=12cm]{figuras/slic}}}{\Fonte{(Elaborado
+            pelo autor)}}
 \end{figure}
 
 
@@ -235,12 +241,14 @@ ilustração~\ref{fig:slic}, ao executar o algoritmo SLIC.\@
           Geração de rede complexa baseado nos superpixels.
         }
 		\centering
-		\UFCfig{}{\fbox{\includegraphics[width=12cm]{figuras/complex-networks}}}{\Fonte{(MANOEL
-            VILELA, 2023)}}
+		\UFCfig{}{\fbox{\includegraphics[width=12cm]{figuras/complex-networks}}}{\Fonte{Elaborado
+          pelo autor}}
 \end{figure}
 \FloatBarrier{}
 
-\section{Matriz de co-ocorrências}\label{sec:teorica-matriz-co-ocorrencia}
+\section{Extração de características}\label{sec:extracao-caracteristicas}
+
+\subsection{Matriz de co-ocorrências}\label{sec:teorica-matriz-co-ocorrencia}
 
 O método de extração de características da matriz de co-ocorrências é
 uma técnica utilizada em processamento de imagem e visão computacional
@@ -250,11 +258,10 @@ Formalmente, uma matriz de co-ocorrência C é definida sobre uma imagem
 I, para um deslocamento $\Delta x, \Delta y$, como:
 
 \begin{equation}\label{eq:comatrix}
-C_{\Delta x, \Delta y}(i,j) = \sum_{x=1}^n\sum_{y=1}^m\begin{cases} 1, & \text{if }I(x,
-                                                       y)=i\text{ e
-                                                       }I(x+\Delta x, y+\Delta
-                                                       y)=j \\ 0, &
-                                                                    \text{caso contrário}\end{cases}
+  C_{\Delta x, \Delta y}(i,j) = \sum_{x=1}^n\sum_{y=1}^m
+  \begin{cases} 1, & \text{if }I(x,y)=i\text{ e }I(x+\Delta x, y+\Delta y)=j
+               \\ 0, & \text{caso contrário}
+  \end{cases}
 \end{equation}
 
 Na equação~\ref{eq:comatrix} $C_{\Delta x, \Delta y}(i,j)$ é o número de vezes
@@ -270,47 +277,14 @@ extraídas, como contraste, correlação, energia e homogeneidade. Estas
 características podem ser usadas para tarefas como classificação de
 textura, segmentação de imagem, entre outros.
 
+\subsection{Filtros de gabor}\label{sec:filtros-gabor}
+
+Escrever sobre métodos de extração de característica via filtros de gabor.
 
 \section{Métricas de similaridade}\label{sec:teorica-metricas-de-similaridade}
 
 A ser escrito: distância euclidiana, distância manhattan, distância
 jaccard (?), métrica de similaridade exponencial $\exp(\dfrac{-d}{s})$
-
-\section{Métricas de avaliação}
-
-Existem três métricas que são comumente utilizadas em segmentação
-semântica de imagens:
-
-\begin{enumerate}
-\item IoU
-\item Dice Score (F1)
-\item Pixel Accuracy
-\end{enumerate}
-
-IoU~\cite{rezatofighi2019generalized}, que significa
-\textit{Intersection over Union}, é uma métrica popularmente usada
-para medir a precisão de um objeto de segmentação em tarefas de visão
-computacional, como detecção de objetos e segmentação semântica.
-
-A métrica IoU calcula a proporção da área de interseção entre a região
-estimada e a região real (ground truth) pela área da união dessas duas
-regiões. A fórmula para calcular o IoU é:
-
-\begin{equation}
-  IoU = \dfrac{\left| A \cap B \right|}{\left| A \cup B \right|}
-\end{equation}
-
-
-Nessa equação, A e B são matrizes de rótulos da imagem onde serão
-comparados, por exemplo a matriz A sendo os rótulos estimados e a
-matriz B os reais. O valor de IoU varia de 0 a 1, onde 1 indica uma
-correspondência perfeita entre as regiões delimitadoras previstas e
-reais, e 0 indica que não há sobreposição. Em geral, um IoU maior
-indica uma melhor precisão do modelo de segmentação.
-
-A métrica mIoU é uma versão para segmentação multi-classe realizando
-uma média dos IoU calculando individualmente pra cada classe,
-considerando a classe negativa qualquer uma que não seja a classe alvo.
 
 \section{LCU}\label{sec:teorica-lcu}
 
