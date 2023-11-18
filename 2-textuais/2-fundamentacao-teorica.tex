@@ -304,20 +304,22 @@ partículas de rotulação nas suas fontes (os vértices rotulados).
 
 Esse algoritmo possuem critérios de sobrevivência das particulas
 inspirado em comportamentos da natureza e sociedade. Por exemplo, o
-hiperparâmetro $ \lambda $ do algoritmo denota um fator entre 0 e 1 de
-competitividade entre as partículas, tornando a sobrevivência delas
-mais difícil ao percorrer o grafo. Embora as partículas nasçam nos
+hiperparâmetro $ \lambda $ do algoritmo denota um fator de competição entre
+0 e 1 sobre o dificuldade que as partículas terão ao trafegar nos
+vértices, tornando a sobrevivência delas mais difícil ao percorrer o
+grafo. Para esse parâmetro, 0 significa um passeio aleatório no grafo,
+1 significa máxima competitividade. Embora as partículas nasçam nos
 vértices, a competição por dominação acontece nas arestas. No final, o
 vértice será marcado com o novo rótulo baseado no tipo de partícula
 que mais conseguiu dominar arestas desse vértice.
 
-Nesse caso particular, a implementação proposta é ligeiramente
-diferente da proposta originalmente, pois a rede complexa no cenário
-que o autor propõe as arestas não possuem peso. A modificação é
-realizada para incluir a similaridade de imagem entre dois
-superpixels, dessa maneira é criado um fator de aumento da
-probabilidade das partículas visitarem os nós mais promissores. Como
-discutido na seção
+Nesse caso particular, a implementação proposta neste trabalho é
+ligeiramente diferente da proposta originalmente, pois a rede complexa
+no cenário que o autor propõe as arestas não possuem peso. Uma
+modificação é realizada para incluir a similaridade de imagem entre
+dois superpixels, dessa maneira é criado um fator de aumento da
+probabilidade das partículas visitarem os nós mais promissores
+(texturas mais similares). Como discutido na seção
 ~\ref{sec:teorica-aprendizado-semi-supervisionado}, esse cenário de
 aprendizado é semi-supervisionado transdutivo: poucos rótulos estão
 disponíveis e nenhuma função de inferência é estimada. A inferência
@@ -325,31 +327,38 @@ acontece diretamente entre os pontos rótulados e os não-rotulados.
 
 
 \begin{figure}[!h]
-        \captionsetup{width=12cm}
-		\Caption{\label{fig:lcu-partial}
-          Rede complexa preparada com anotação parcial para execução do \gls{LCU}
-        }
-		\centering
-		\UFCfig{}{\fbox{\includegraphics[width=12cm]{figuras/lcu-partial}}}{\Fonte{\fontefigura}}
+\centering
+    \captionsetup{width=14cm}
+    \Caption{\label{fig:lcu-execution}
+      Rede complexa para execução da dinâmica \gls{LCU}. Anotação
+      parcial em~(\subref{fig:lcu-partial}) e resultado final em~(\subref{fig:lcu-done})
+    }
+
+    \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \UFCfig{}{\fbox{\includegraphics[width=7cm]{figuras/lcu-partial}}}
+    \caption{\label{fig:lcu-partial}}
+    \end{subfigure}
+\quad
+    \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \UFCfig{}{\fbox{\includegraphics[width=7cm]{figuras/lcu-done}}}
+    \caption{\label{fig:lcu-done}}
+    \end{subfigure}
+    {\Fonte{\fontefigura}}
+\quad
 \end{figure}
 \FloatBarrier{}
 
-\begin{figure}[!h]
-        \captionsetup{width=12cm}
-		\Caption{\label{fig:lcu-done}
-          Execução do \gls{LCU} finalizada.
-        }
-		\centering
-		\UFCfig{}{\fbox{\includegraphics[width=12cm]{figuras/lcu-done}}}{\Fonte{\fontefigura}}
-\end{figure}
-\FloatBarrier{}
 
-Nas figuras~\ref{fig:lcu-partially-annotated} e~\ref{fig:lcu-done} é
-possível ver a execução do algoritmo numa rede complexa densa
-aleatória, no final da execução os rótulos são propagados
-semanticamente baseado na disputa entre as partículas.
+Na figura~\ref{fig:lcu-execution},é possível ver a execução do
+algoritmo numa rede complexa densa aleatória, no início há alguns
+poucos vértices anotados em azul e vermelho. No final da execução os
+rótulos são propagados semanticamente baseado na disputa entre as
+partículas para dominar arestas, e por fim, marcar os vértices
+dominados por aquela classe.
 
 
 \section{EGSIS}\label{sec:teorica-egsis}
 
-A ser escrito, algoritmo agregador que une todas as partes.
+A ser escrito, algoritmo \gls{EGSIS} agregador que une todas as partes.
