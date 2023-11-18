@@ -22,7 +22,7 @@ o processo de segmentação.
 		\centering
 		\UFCfig{}{\fbox{\includegraphics[width=12cm]{figuras/interactive-segmentation-2008}}}{\Fonte{\cite{duchenne2008segmentation}}}
 \end{figure}
-\FloatBarrier
+\FloatBarrier{}
 
 De acordo com a figura~\ref{fig:interactive-segmentation}, na
 segmentação interativa de imagens, o usuário pode selecionar regiões
@@ -126,13 +126,13 @@ geral como um passo intermediário, mas a segmentação é realizada
 diretamente baseado nas rotulações iniciais que o usuário forneceu.
 
 
-\section{Superpixel}\label{sec:teorica-superpixel}
+\section{Superpixels}\label{sec:teorica-superpixel}
 
-Superpixels é um algoritmo de clusterização em processamento de
-imagens que ganhou popularidade nos últimos anos na comunidade de
-visão computacional~\cite{SuperpixelSurvey2020}. Em vez de processar
-uma imagem pixel por pixel, agrupa-se pixels vizinhos semelhantes em
-uma entidade maior, conhecida como superpixel.
+Superpixels fazem parte de um grupo de algoritmos de clusterização em
+processamento de imagens que ganhou popularidade nos últimos anos na
+comunidade de visão computacional~\cite{SuperpixelSurvey2020}. Em vez
+de processar uma imagem pixel por pixel, agrupa-se pixels vizinhos
+semelhantes em uma entidade maior, conhecida como superpixel.
 
 O conceito de superpixels foi introduzido para superar as limitações
 do processamento pixel a pixel, que não leva em consideração a
@@ -154,43 +154,55 @@ superpixels com diferentes características, complexidade
 computacionais, eficiência e método. No
 artigo~\cite{SuperPixelBenchmark2017}, é realizado um benchmark com 15
 algoritmos superpixels categorizados em três grupos: basedo em grafos,
-baseado em otimização de gradiente e baseado em análise de textura.
+baseado em otimização de gradiente e baseado em análise de
+textura. Nesse trabalho, é selecionado um dos mais simples: \gls{SLIC}.
 
 \subsection{SLIC}\label{sec:teorica-superpixel-slic}
 
 
-O algoritmo SLIC (Simple Linear Iterative Clustering) é um método para
+O algoritmo \gls{SLIC} é um método para
 a segmentação de imagens baseado em superpixel, é um dos mais simples
 e pode ser visto como uma variação do algoritmo k-means expandindo o
 espaço euclidiano ao incluir também o espaço de cores. Ele divide uma
 imagem em segmentos menores, chamados superpixels, que compartilham
 características semelhantes, como cor e textura.
 
-Uma explicação simplificada de como o SLIC funciona pode ser entendida
-dessa maneira.:
+Uma explicação passo-a-passo de como o SLIC funciona pode ser entendida
+dessa maneira:
 
-\begin{enumerate}
+\begin{algorithm}[h!]
+	\SetSpacedAlgorithm{}
+	\caption{\label{alg:slic} SLIC}
+	\Entrada{Imagem a ser segmentada}
+    \Resultado{Matriz de superpixels}
+	\Inicio{
+      \begin{enumerate}
 
-\item Inicialização: O algoritmo começa selecionando alguns pixels na
-imagem como centros de superpixels. Esses centros são espaçados
-uniformemente pela imagem.
+      \item \textbf{Inicialização}: O algoritmo começa selecionando alguns pixels na
+        imagem como centros de superpixels. Esses centros são espaçados
+        uniformemente pela imagem;
 
-\item Atribuição: Em seguida, para cada pixel na imagem, o algoritmo
-calcula a distância entre esse pixel e todos os centros de
-superpixels. A distância é calculada com base na cor (ou intensidade
-de cinza para imagens em preto e branco) e na proximidade espacial. O
-pixel é então atribuído ao superpixel cujo centro está mais próximo.
+      \item \textbf{Atribuição}: Em seguida, para cada pixel na imagem, o algoritmo
+        calcula a distância entre esse pixel e todos os centros de
+        superpixels. A distância é calculada com base na cor (ou intensidade
+        de cinza para imagens em preto e branco) e na proximidade espacial. O
+        pixel é então atribuído ao superpixel cujo centro está mais próximo;
 
-\item Atualização: Depois que todos os pixels foram atribuídos a um
-superpixel, o algoritmo recalcula os centros de superpixels como a
-média de todos os pixels dentro de cada superpixel.
+      \item \textbf{Atualização}: Depois que todos os pixels foram atribuídos a um
+        superpixel, o algoritmo recalcula os centros de superpixels como a
+        média de todos os pixels dentro de cada superpixel;
 
-\item O processo de atribuição e atualização é repetido várias vezes
-até que o algoritmo alcance a condição de convergência, ou seja, até
-que os centros de superpixels parem de mudar significativamente.
+      \item O processo de atribuição e atualização é repetido várias vezes
+        até que o algoritmo alcance a condição de convergência, ou seja, até
+        que os centros de superpixels parem de mudar significativamente;
 
-\item O resultado final é uma segmentação da imagem em superpixels, onde
-cada superpixel é um grupo de pixels com características semelhantes.
+      \item O resultado final é uma segmentação da imagem em superpixels, onde
+        cada superpixel é um grupo de pixels com características semelhantes.
+    \end{enumerate}
+   }
+\end{algorithm}
+
+
 
 Uma execução do SLIC é possível de ser visualizada a seguir:
 
@@ -203,8 +215,6 @@ Uma execução do SLIC é possível de ser visualizada a seguir:
 		\UFCfig{}{\fbox{\includegraphics[width=12cm]{figuras/slic}}}{\Fonte{\fontefigura}}
 \end{figure}
 
-
-\end{enumerate}
 
 \section{Geração de redes complexas}\label{sec:teorica-redes-complexas}
 
