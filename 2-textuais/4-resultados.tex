@@ -5,22 +5,55 @@ implementação armazenada em um projeto open-source no github. Nessa
 seção conterá a comparação de variações nas técnicas propostas.
 
 
-\section{Construção da rede complexa com superpixel}\label{sec:resultados-rede-complexa-superpixel}
+\section{Comparação com o estado-da-arte de segmentação interativa}\label{sec:comparacao-estado-da-arte}
 
-Ainda em desenvolvimento.
+Nesta seção, é proposto uma avaliação de como o modelo \gls{EGSIS} se
+compara ao estado-da-arte no problema de segmentação interativa.
+
+No artigo~\cite{wang2023review}, é observado
+um extenso estudo de revisão sobre os métodos de segmentação
+interativa baseado em grafos, tendo como base o algoritmo GrabCut e
+outros algoritmos que evoluiram nessa área de segmentação interativa
+de imagens. Os autores avaliam essas técnicas na base de
+dados GrabCut~\cite{rother2004grabcut} utilizando as mesmas métricas que foram
+selecionadas na metodologia de avaliação desse trabalho, com exceção
+do tempo de execução que por conta de diferentes tecnologias usadas
+para implementação das técnicas não teríamos uma avaliação justa, que
+pode ser realizada como trabalho futuro.
+
+Esse mesmo artigo, também avalia as várias técnicas em outro dataset,
+mas a rotulação inicial usada como não foi publicada, não foi possível
+replicar os experimentos para o modelo \gls{EGSIS} nas mesmas
+condições. Por esse motivo, a avaliação de resultados será limitada a
+base de dados GrabCut.
+
+A seguir, é possível visualizar tabelas de comparação com os
+algoritmos apresentados em~\cite{wang2023review}:
 
 
-\section{Extração de características com FFT}\label{sec:resultados-extracao-de-caracteristicas--fft}
+\begin{table}[!h]
+    \centering
+    \Caption{\label{tab:resultados-estado-da-arte} Resultados
+      comparativos entre o algoritmo \gls{EGSIS} e métodos
+      estado-da-arte baseado em grafo para segmentação
+      interativa. Em negrito os melhores resultados.}
+  \begin{tabular}{cclll}
+    \toprule
+    \textbf{Método}                    & \textbf{Recall} & \textbf{Precision} & \textbf{F1}     & \textbf{IoU} \\
+    \midrule \midrule
+    GrabCut                            & 0.9668          & 0.9213             & \textbf{0.9407} & \textbf{0.8927}       \\
+    LazySnapping                       & \textbf{0.9681} & 0.9104             & 0.9357          & 0.8842       \\
+    OneCut                             & 0.8585          & 0.7926             & 0.7899          & 0.6974       \\
+    Saliency Cuts                      & 0.8371          & 0.8892             & 0.8255          & 0.7458       \\
+    Iterated Graph Cuts\footnotemark{} & 0.9614          & 0.8878             & 0.9212          & 0.8597       \\
+    DenseCut                           & 0.8427          & 0.9418             & 0.8561          & 0.7927       \\
+    Deep GrabCut                       & 0.8854          & 0.8774             & 0.8701          & 0.7849       \\
+    $\gls{EGSIS}(s=200, f=gabor)$      & 0.8799          & \textbf{0.9620}    & 0.9167          & 0.8511       \\
+    $\gls{EGSIS}(s=200, f=comatrix)$   & 0.8877          & 0.9611             & 0.9212          & 0.8578       \\
+    \bottomrule
+  \end{tabular}
+  \Fonte{Baseado nos resultados encontrados no artigo~\cite{wang2023review}}
+\end{table}
 
-Ainda em desenvolvimento.
 
-
-\section{Dinâmica Coletiva LCU (distância cosseno)}\label{sec:resultados-dinamica-coletiva-lcu-cos}
-
-Ainda em desenvolvimento.
-
-\subsection{Distância Cosseno}\label{sec:resultados-distancia-cosseno}
-
-\subsection{Distância Euclidiana}\label{sec:resultados-distancia-cosseno}
-
-Ainda em desenvolvimento.
+\footnotetext{Não há um nome formal pra esse método~\cite{an2013iterated}, por ora ele será chamado assim}
