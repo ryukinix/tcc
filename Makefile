@@ -59,5 +59,5 @@ clean:
 	@rm -v -f *.out *.aux *.alg *.acr *.dvi *.gls \
 	       *.log *.bbl *.blg *.ntn *.not *.lof \
            *.lot *.toc *.loa *.lsg *.nlo *.nls \
-           *.ilg *.ind *.ist *.glg *.glo *.xdy *.acn *.idx *.loq *~
+           *.ilg *.lol *.ind *.ist *.glg *.glo *.xdy *.acn *.idx *.loq *~
 	@echo "Processo finalizado com sucesso!"
