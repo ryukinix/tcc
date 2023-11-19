@@ -4,6 +4,45 @@ Ainda em desenvolvimento. O algoritmo com nome EGSIS terá sua
 implementação armazenada em um projeto open-source no github. Nessa
 seção conterá a comparação de variações nas técnicas propostas.
 
+\section{Experimentos com a variação da quantidade de superpixels}\label{sec:variacao-superpixels}
+
+Durante a execução dos experimentos, e avaliação dos resultados, foi
+observado que o número de superpixels afeta diretamente a qualidade da
+segmentação gerada. Entre esses experimentos, foi realizada 8
+execuções com variações na técnica de extração de características
+usada e o número de superpixels, sendo o número de superpixels
+avaliados para 50, 100, 150 e 200.
+
+\begin{table}[!h]
+    \centering
+    \Caption{\label{tab:variacao-superpixels} Resultados dos
+experimentos ao variar o número de superpixels e o método de extração
+de características. Em negrito os melhores resultados.}
+  \begin{tabular}{lcccc}
+    \toprule
+    \textbf{Método}                  & \textbf{Recall} & \textbf{Precision} & \textbf{F1}     & \textbf{IoU}    \\
+    \midrule \midrule
+    $\gls{EGSIS}(s=50, f=gabor)$     & 0.7882          & 0.9225             & 0.8414          & 0.7412          \\
+    $\gls{EGSIS}(s=100, f=gabor)$    & 0.8592          & 0.9505             & 0.8992          & 0.8232          \\
+    $\gls{EGSIS}(s=150, f=gabor)$    & 0.8691          & 0.9550             & 0.9066          & 0.8354          \\
+    $\gls{EGSIS}(s=200, f=gabor)$    & 0.8799          & \textbf{0.9620}    & 0.9167          & 0.8511          \\
+    $\gls{EGSIS}(s=50, f=comatrix)$  & 0.7882          & 0.9225             & 0.8414          & 0.7412          \\
+    $\gls{EGSIS}(s=100, f=comatrix)$ & 0.8617          & 0.9510             & 0.9010          & 0.8259          \\
+    $\gls{EGSIS}(s=150, f=comatrix)$ & 0.8777          & 0.9552             & 0.9125          & 0.8441          \\
+    $\gls{EGSIS}(s=200, f=comatrix)$ & \textbf{0.8877} & 0.9611             & \textbf{0.9212} & \textbf{0.8578} \\
+    \bottomrule
+  \end{tabular}
+  \Fonte{\fonteautor}
+\end{table}
+
+Ao analisar a tabela~\ref{tab:variacao-superpixels}, é possível
+perceber que o aumento de superpixels impacta positivamente na
+qualidade da segmentação independente do método de extração de
+características. A respeito do método de extração de características,
+os resultados de ambos métodos são próximos, por outro lado, com
+exceção da métrica de precisão, os melhores resultados vieram do
+modelo com 200 superpixels e extração de características via matriz de
+co-ocorrências.
 
 \section{Comparação com o estado-da-arte de segmentação interativa}\label{sec:comparacao-estado-da-arte}
 
@@ -34,10 +73,10 @@ algoritmos apresentados em~\cite{wang2023review}:
 \begin{table}[!h]
     \centering
     \Caption{\label{tab:resultados-estado-da-arte} Resultados
-      comparativos entre o algoritmo \gls{EGSIS} e métodos
-      estado-da-arte baseado em grafo para segmentação
-      interativa. Em negrito os melhores resultados.}
-  \begin{tabular}{cclll}
+      comparativos entre o método EGSIS e métodos estado-da-arte para
+      segmentação interativa baseado em grafos. Em negrito os melhores
+      resultados.}
+  \begin{tabular}{lcccc}
     \toprule
     \textbf{Método}                    & \textbf{Recall} & \textbf{Precision} & \textbf{F1}     & \textbf{IoU} \\
     \midrule \midrule
