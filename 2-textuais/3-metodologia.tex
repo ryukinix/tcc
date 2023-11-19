@@ -6,11 +6,51 @@ binária e anotações parciais para execução de segmentações assistidas,
 como a proposta de segmentação interativa.
 
 As anotações pariciais que serão consideradas neste trabalho são
-chamadas de \textit{Lasso} simulam um usuário realizando uma marcação
-de regiões da imagem e possuem um esquema de anotação para treinamento em
-escala de cinza:
+chamadas de \textit{Lasso} e simulam um usuário realizando uma
+marcação de regiões da imagem de fundo e primeiro plano para
+segmentação. A anotação possui um esquema de anotação para treinamento
+em escala de cinza e será descrito em sequência.
 
---- escrever as regras de anotação do dataset com um exemplo de imagem
+\begin{figure}[h!]
+        \captionsetup{width=12cm}
+		\Caption{\label{fig:grabcut-dataset}
+          Exemplo de imagem dataset grabcut com anotação parcial e
+          a segmentação real (ground truth).
+        }
+		\centering
+		\UFCfig{}{\fbox{\includegraphics[width=12cm]{figuras/grabcut-dataset}}}{\Fonte{\fonteautor}}
+\end{figure}
+\FloatBarrier{}
+
+\begin{table}[h]
+  \centering
+  \caption{Regras da anotação Lasso do GrabCut}
+  \label{tab:grabcut-label}
+  \begin{tabular}{lc}
+    \toprule
+    Descrição                                       & Nível de cinza \\
+    \midrule \midrule
+     fundo                                          & 0              \\
+     fundo usado para \textbf{treinamento}          & 64             \\
+     região de inferência                           & 128            \\
+     primeiro plano usado para \textbf{treinamento} & 255            \\
+    \bottomrule
+  \end{tabular}
+  \Fonte{\cite{rother2004grabcut}}
+\end{table}
+
+
+Através da Figura~\ref{fig:grabcut-dataset}, ao observar-se a primeira
+imagem na segunda linha, tem-se a anotação \textit{Lasso}, na qual o
+significado dos níveis de cinza pode ser visualizado na
+Tabela~\ref{tab:grabcut-label}. Dessa maneira, para
+treinamento\footnotemark{} é usado dois níveis de cinza: 64 para o
+fundo e 255 para o primeiro plano.
+
+\footnotetext{\gls{EGSIS} é um algoritmo transdutivo,
+não existe treinamento, esses dados são apenas anotações parciais
+que serão usadas para execução da inferência e obter a segmentação da
+imagem.}
 
 O método de avaliação consiste em executar o algoritmo desenvolvido
 \gls{EGSIS} para essa base de dados e extrair métricas de qualidade de
