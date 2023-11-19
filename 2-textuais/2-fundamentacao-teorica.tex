@@ -291,8 +291,81 @@ Escrever sobre métodos de extração de característica via filtros de gabor.
 
 \section{Métricas de similaridade}\label{sec:teorica-metricas-de-similaridade}
 
-A ser escrito: distância euclidiana, distância manhattan, distância
-jaccard (?), métrica de similaridade exponencial $\exp(\dfrac{-d}{s})$
+
+Métricas de similaridade neste trabalho são calculadas com o propósito
+de comparar a similaridade entre os vetores de características dos
+superpixels. Para as técnicas de extração de características descritas
+na seção~\ref{sec:extracao-caracteristicas}, cada técnica se comportou
+melhor com uma métrica de similaridade diferente.
+
+Uma função de similaridade entre dois vetores de características
+retorna um valor maior quando os vetores são similares e quanto mais
+diferentes sejam, a similaridade tende a zero.
+
+A estrutura de uma métrica de similaridade pode ser criada a partir de
+uma métrica de distância. Neste trabalho, é explorado duas métricas de
+similaridades a partir das seguintes métricas de distância: distância
+euclidiana e distância de manhattan.
+
+A distância euclidiana é o módulo da reta que conecta dois pontos no
+espaço. A distância de manhattan é a soma da diferença absoluta entre
+dois pontos para cada dimensão. Na figura
+\ref{fig:manhattan-vs-euclidean}, é ilustrado atavés de duas figuras
+em que são dispostos dois pontos $ x $ e $ y $ no espaço euclidiano
+com os módulos de reta usados para compor a distância de cada métrica.
+
+\begin{figure}[!h]
+        \captionsetup{width=8cm}
+		\Caption{\label{fig:manhattan-vs-euclidean}
+          Visualização da distância de manhattan e distância euclidiana.
+        }
+		\centering
+		\UFCfig{}{\fbox{\includegraphics[width=8cm]{figuras/manhattan-vs-euclidean}}}{\Fonte{\cite{Singh2019}}}
+\end{figure}
+\FloatBarrier{}
+
+Para as equações das distâncias, tem-se a seguinte equação para a
+distância euclidiana:
+
+\begin{equation}\label{eq:euclidian-distance}
+ed(\vec{x}, \vec{y}) = \sqrt{{(y_1-x_1)}^2 + {(y_2-x_2)}^2 + \ldots + {(y_n-x_n)}^2}
+\end{equation}
+
+Para a distância de manhattan, tem-se a seguinte equação:
+
+\begin{equation}\label{eq:manhattan-distance}
+md(\vec{x}, \vec{y}) = |y_1-x_1| + |y_2-x_2| + \ldots + |y_n-x_n|
+\end{equation}
+
+\subsection{Similaridade Euclidiana Exponencial}\label{sec:teorica-similaridade-euclidiana}
+
+Para a técnica de extração de característica de matrizes de co-ocorrência
+detalhado na seção~\ref{sec:teorica-matriz-co-ocorrencia}, a métrica de
+similaridade que foi obtido melhores resultados foi a distância
+euclidiana pelo inverso da exponencial. A equação é definida como:
+
+\begin{equation}\label{eq:euclidian-similarity}
+  ed\_sim(\vec{x}, \vec{y}) = \dfrac{1}{e^{ed(\vec{x}, \vec{y})}}
+\end{equation}
+
+\subsection{Similaridade de Manhattan Logarítimica}\label{sec:teorica-similaridade-manhattan}
+
+Para a técnica envolvendo filtros de gabor, a distância entre os
+vetores de características tiveram valores tão altos que ao usar a
+similaridade euclidiana (exponencial ou não), maior parte dos valores
+chegavam a zero. Por esse motivo, o uso da conversão para o domínio
+logarítimico foi usado para suavizar o crescimento exagerado dos
+valores, obtendo bons resultados. A definição para essa equação de
+similaridade segue a seguir:
+
+\begin{equation}\label{eq:manhattan-similarity}
+  md\_sim(\vec{x}, \vec{y}) = \dfrac{1}{1 + \ln(1 + md(\vec{x}, \vec{y}))}
+\end{equation}
+
+Na equação~\ref{eq:manhattan-similarity}, os valores 1 adicionados no demoninador foram feitos para evitar uma
+possível divisão por zero e logarítmo de zero,
+ambas operações que são indefinidas na matemática.
+
 
 \section{LCU}\label{sec:teorica-lcu}
 
