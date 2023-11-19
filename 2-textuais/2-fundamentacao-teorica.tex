@@ -254,7 +254,7 @@ particular gera um grafo planar pela maneira como as arestas são
 criadas. Por outro lado, seria possível também modificar a geração da
 rede complexa para considerar as arestas do grafo baseado num raio
 parametrizado de superpixel em relação a um \textit{treshrold} e
-selecionar as k-nn similares como arestas válidas.
+selecionar as \gls{k-NN} similares como arestas válidas.
 
 Essa etapa de geração da rede complexa é crucial para a execução da
 dinâmica coletiva explorada na seção~\ref{sec:teorica-lcu}. Um dos
@@ -301,11 +301,46 @@ uma matriz de probabilidade de co-ocorrência.
 A partir desta matriz, várias características texturais podem ser
 extraídas, como contraste, correlação, energia e homogeneidade. Estas
 características podem ser usadas para tarefas como classificação de
-textura, segmentação de imagem, entre outros.
+textura, segmentação de imagem, entre outros. Após a aplicação do
+método em cada canal RGB da imagem, é extraído 5 estatísticas: média,
+mediana, variância, desvio padrão e 25-quantis. Então as
+características são concatenadas um vetor de características de 15 dimensões.
 
 \subsection{Filtros de gabor}\label{sec:filtros-gabor}
 
-Escrever sobre métodos de extração de característica via filtros de gabor.
+Os filtros de Gabor são uma família de filtros de convolução usados
+principalmente na análise de texturas e na visão computacional para a
+extração de características. Eles são nomeados em homenagem a Dennis
+Gabor, o físico que ganhou o Prêmio Nobel por sua invenção e
+desenvolvimento do método holográfico.
+
+Os filtros de Gabor são essencialmente filtros passa-banda orientados
+e localizados no espaço de frequência. Eles são muito úteis para a
+extração de características porque têm propriedades ótimas de
+localização no espaço e na frequência, o que os torna muito adequados
+para a captura de características locais e direcionais em uma imagem.
+
+Os filtros de Gabor são definidos por duas funções: uma função
+gaussiana (para o domínio espacial) e uma função harmônica complexa
+(para o domínio da frequência). A função gaussiana serve para limitar
+a aplicação do filtro a uma pequena região da imagem (localização
+espacial), enquanto a função harmônica complexa permite capturar
+características em uma determinada orientação.
+
+<inserir imagem ilustrando os filtros>
+
+A extração de características usando filtros de Gabor geralmente
+envolve a convolução da imagem com um conjunto de filtros de
+Gabor. Cada filtro é sensível a características de uma determinada
+escala e orientação. A resposta do filtro pode então ser usada como
+uma representação da presença de tais características na imagem.
+
+Neste trabalho, são gerados 16 filtros de gabor que foram avaliados
+experimentalmente com variados parâmetros. Após a aplicação do filtro
+em cada canal RGB da imagem, é extraído 5 estatísticas: média,
+mediana, variância, desvio padrão e 25-quantis. Com isso, todas as
+estatisticas são concatenadas num único vetor de características
+resultante com 63 dimensões.
 
 \section{Métricas de similaridade}\label{sec:teorica-metricas-de-similaridade}
 
