@@ -160,11 +160,11 @@ textura. Nesse trabalho, é selecionado um dos mais simples: \gls{SLIC}.
 \subsection{SLIC}\label{sec:teorica-superpixel-slic}
 
 
-O algoritmo \gls{SLIC} é um método para
-a segmentação de imagens baseado em superpixel, é um dos mais simples
-e pode ser visto como uma variação do algoritmo k-means expandindo o
-espaço euclidiano ao incluir também o espaço de cores. Ele divide uma
-imagem em segmentos menores, chamados superpixels, que compartilham
+O algoritmo \gls{SLIC} é um método para segmentação de imagens baseado
+em superpixel, é um dos mais simples e pode ser visto como uma
+variação do algoritmo de clusterização k-means expandindo o espaço
+euclidiano ao incluir também o espaço de cores. Ele divide uma imagem
+em segmentos menores, chamados superpixels, que compartilham
 características semelhantes, como cor e textura.
 
 Uma explicação passo-a-passo de como o SLIC funciona pode ser entendida
@@ -203,7 +203,6 @@ dessa maneira:
 \end{algorithm}
 
 
-
 Uma execução do SLIC é possível de ser visualizada a seguir:
 
 \begin{figure}[h!]
@@ -214,6 +213,25 @@ Uma execução do SLIC é possível de ser visualizada a seguir:
 		\centering
 		\UFCfig{}{\fbox{\includegraphics[width=12cm]{figuras/slic}}}{\Fonte{\fonteautor}}
 \end{figure}
+
+O algoritmo \gls{SLIC} possuí três hiperparâmetros: \textit{segments}, sigma e \textit{compactness}.
+
+\begin{enumerate}
+\item \textbf{Segments}: Número de superpixels que será usado para
+  segmentar a imagem.
+\item \textbf{Sigma}: Este parâmetro é usado para suavizar a imagem antes da
+segmentação. Um valor maior de sigma resultará em uma imagem mais
+suave, o que pode ajudar a reduzir o ruído e os detalhes finos. No
+entanto, um valor muito alto pode resultar em perda de detalhes
+importantes.
+\item \textbf{Compactness} Este parâmetro controla o equilíbrio entre a coerência
+de cor e a proximidade espacial na formação de superpixels. Um valor
+maior de compactness fará com que os superpixels sejam mais
+quadrados, enquanto um valor menor fará com que os superpixels
+sigam mais de perto os limites da imagem. Portanto, a compactness pode
+ser ajustada para obter superpixels que são mais representativos da
+estrutura da imagem.
+\end{enumerate}
 
 
 \section{Geração de redes complexas}\label{sec:teorica-redes-complexas}
