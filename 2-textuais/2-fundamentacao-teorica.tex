@@ -325,9 +325,26 @@ gaussiana (para o domínio espacial) e uma função harmônica complexa
 (para o domínio da frequência). A função gaussiana serve para limitar
 a aplicação do filtro a uma pequena região da imagem (localização
 espacial), enquanto a função harmônica complexa permite capturar
-características em uma determinada orientação.
+características em uma determinada orientação. Na
+figura~\ref{fig:gabor-filters}, é ilustrado variações dos
+filtros de gabor com diferentes parâmetros e a convolução resultante.
 
-<inserir imagem ilustrando os filtros>
+\begin{figure}[!h]
+        \captionsetup{width=12cm}
+		\Caption{\label{fig:gabor-filters}
+          Filtros de gabor variando a angulação $\theta$ e a convolução resultante.
+        }
+		\centering
+		\UFCfig{}{\fbox{\includegraphics[width=12cm]{figuras/gabor-filters}}}{\Fonte{\cite{Kmrinen2012GaborFI}}}
+\end{figure}
+\FloatBarrier{}
+
+A operação de convolução entre uma imagem qualquer $ x $ e um filtro de
+gabor $ k $, pode ser dada pela seguinte equação:
+
+\begin{equation}
+  (y * k)(i, j) = \sum_{m} \sum_{n} x(i-m, j-n) k(m, n)
+\end{equation}
 
 A extração de características usando filtros de Gabor geralmente
 envolve a convolução da imagem com um conjunto de filtros de
@@ -651,4 +668,138 @@ dominação.
 
 \section{EGSIS}\label{sec:teorica-egsis}
 
-A ser escrito, algoritmo \gls{EGSIS} agregador que une todas as partes.
+O algoritmo \gls{EGSIS} é a técnica de segmentação de imagens proposta
+proposta neste trabalho. Todas as seções anteriores da fundamentação
+teórica foram introduzidas para explicar o funcionamento dessa técnica
+que será descrita nessa seção.
+
+O modelo \gls{EGSIS} permite a execução de uma segmentação transdutiva
+de imagens na presença de uma rotulação parcial da imagem. Essa
+técnica possui etapas flexíveis para refinamento e otimização, quanto
+a método de extração de características, quantidade de superpixels,
+função de similaridade entre outros.
+
+Ao considerar as características do algoritmo LCU explicada na
+seção~\ref{sec:teorica-lcu}, esse algoritmo também pode ser usado para
+aprendizado semi-supervisionado multi-classe.
+
+O ponto central desse método de segmentação é realizar uma
+transformação do domínio da imagem para uma rede complexa que seja
+compatível com a dinâmica coletiva \gls{LCU}. Para isso, uma
+pré-segmentação é realizada usando superpixels através do algoritmo
+SLIC. Os rótulos iniciais da imagem são propagados aos superpixels
+baseado numa votação: a classe que tiver maior números de pixels
+rotulados, atribui-se aquela classe ao superpixel.
+
+Ao obter os superpixels e os rótulos iniciais, é construido uma rede
+complexa onde os vértices representam os superpixels e as arestas a
+vizinhança com grau de similaridade entre os superpixels. Para
+calcular a similaridade de cada aresta, primeiro é executado para cada
+superpixel o metódo de extração de características selecionado, que
+nesse caso pode ser filtros de gabor ou matrizes de co-ocorrência,
+então calcula-se a similaridade entre os superpixels com uma métrica
+de similaridade selecionada.
+
+Nessa etapa, tem-se preparado a rede complexa para execução do sistema
+dinâmico \gls{LCU} a fim de propagar os rótulos no grafo. No final da
+execução do \gls{LCU}, é reconstruído uma máscara de segmentação
+baseado nas rotulções dos vértices restantes em cada superpixel
+não-rotulado. Por fim, obtem-se uma matriz de labels correspondendo
+cada pixel ao rótulo de segmentação desejado.
+
+No Algoritmo~\ref{alg:egsis} é descrito em etapas o
+funcionamento geral do método.
+
+\begin{algorithm}[h!]
+	\SetSpacedAlgorithm{}
+	\caption{\label{alg:egsis} EGSIS}
+	\Entrada{Imagem, rotulações parciais}
+    \Resultado{Imagem segmentada}
+	\Inicio{
+      Inicializa os hiperparâmetros do modelo \gls{EGSIS}\;
+      Segmenta a imagem em $n$ superpixels usando \gls{SLIC}\;
+      Realiza a construção da rede complexa baseado nos superpixels\;
+      Atribui os superpixels rotulados baseado na anotação parcial\;
+      Calcula o vetor de características para cada superpixel\;
+      Calcula a similaridade entre superpixels da vizinhaça\;
+      Executa a dinâmica LCU sobre a rede complexa gerada\;
+      Reconstrói a máscara de segmentação baseado nos vértices rotulados\;
+   }
+\end{algorithm}
+
+
+A seguir uma ilustração da execução do algoritmo em algumas etapas. Na
+Figura~\ref{fig:egsis-init}, é observado duas etapas sendo
+realizadas: na imagem (\subref{fig:egsis-superpixels}) a segmentação
+por superpixels, na imagem (\subref{fig:egsis-complex-networks}) a rede
+complexa gerada através dos superpixels.
+
+
+\begin{figure}[!h]
+\centering
+    \captionsetup{width=14cm}
+    \Caption{\label{fig:egsis-init}
+      Construção de superpixels e a rede complexa no modelo EGSIS.\@
+    }
+
+    \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \UFCfig{}{\fbox{\includegraphics[width=7cm]{figuras/egsis-superpixels}}}
+    \caption{\label{fig:egsis-superpixels}}
+    \end{subfigure}
+\quad
+    \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \UFCfig{}{\fbox{\includegraphics[width=7cm]{figuras/egsis-complex-networks}}}
+    \caption{\label{fig:egsis-complex-networks}}
+    \end{subfigure}
+    {\Fonte{\fonteautor}}
+\quad
+\end{figure}
+\FloatBarrier{}
+
+
+
+Na Figura~\ref{fig:egsis-lcu}, tem-se alguns superpixels
+anotados em azul e vermelho, uma segmentação em duas classes. Na outra
+imagem, é ilustrado o resultado após a continuação da
+execução. Perceba que boa parte da imagem foi segmentada corretamente, mas houve
+alguns erros visíveis.
+
+\begin{figure}[!h]
+\centering
+    \captionsetup{width=14cm}
+    \Caption{\label{fig:egsis-lcu}
+      Etapa do método EGSIS para propagar rótulos iniciais através do
+      sistema dinâmico LCU.\@
+    }
+
+    \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \UFCfig{}{\fbox{\includegraphics[width=7cm]{figuras/egsis-partial-labeled}}}
+    \caption{\label{fig:egsis-partial-labeled}}
+    \end{subfigure}
+\quad
+    \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \UFCfig{}{\fbox{\includegraphics[width=7cm]{figuras/egsis-execution}}}
+    \caption{\label{fig:egsis-execution}}
+    \end{subfigure}
+    {\Fonte{\fonteautor}}
+\quad
+\end{figure}
+\FloatBarrier{}
+
+Por fim, obtem-se a seguinte máscara de segmentação ao atribuir os
+rótulos dos vértices para os superpixels iniciais, assim sendo
+possível reconstruir uma máscara de segmentação como ilustrado na
+Figura~\ref{fig:egsis-mask}.
+
+\begin{figure}[h!]
+        \captionsetup{width=12cm}
+		\Caption{\label{fig:egsis-mask}
+          Máscara de segmentação final e a imagem original.\@
+        }
+		\centering
+		\UFCfig{}{\fbox{\includegraphics[width=12cm]{figuras/egsis-segmentation-mask}}}{\Fonte{\fonteautor}}
+\end{figure}
