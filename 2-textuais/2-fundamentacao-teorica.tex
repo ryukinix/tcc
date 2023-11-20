@@ -559,7 +559,7 @@ tempo $ t $, enquanto $\delta_{i j}^c(t)$ representa a movimentação
 acumulada de partículas da classe $c$ entre a aresta $(i, j)$ no tempo
 $t$.
 
-A função de evolução determinística do sistema dinâmico é definida
+A função determinística de evolução do sistema dinâmico é definida
 por:
 
 \begin{equation}\label{eq:lcu-phi-evolution}
@@ -570,7 +570,7 @@ por:
   \end{array}\right.
 \end{equation}
 
-Entre as funções definidas na função de evolução, destaca-se a de
+Entre as funções ainda não definidas na função de evolução, destaca-se a de
 probabilidade de sobrevivência das partículas $P^c(X(t))$, na qual os
 elementos dessa matriz define-se como:
 
@@ -601,8 +601,8 @@ vértice $v_i$ e $v_j$, dessa maneira aumentando a probabilidade de
 sobrevivência de partículas que se movimentam por arestas com maior
 similaridade.
 
-A última equação $\mathbf{g}^c(X(t))$ representa a geração de partícula nas
-fontes no tempo t, é definida como:
+A última função $\mathbf{g}^c(X(t))$ representa a geração de
+partículas nos vértices fontes no tempo $t$, é definida como:
 
 \begin{equation}\label{eq:lcu-generation}
   \begin{aligned}
@@ -615,9 +615,9 @@ fontes no tempo t, é definida como:
 \end{equation}
 
 Na equação~\ref{eq:lcu-generation}, $\mathbf{1}$ onde 1 é o vetor cujo
-elementos são 1 e $\cdot$ se refere ao produto interno entre vetores. Além
+elementos são $\mathbf{1}$ e $\cdot$ se refere ao produto interno entre vetores. Além
 disso, $\mathcal{G}^c = \{v_i |v_i \in \mathcal{L} e y_i = c\}$ é o conjunto de fontes de
-particulas que pertencem a classe $c$ e $\mathcal{L}$ é o conjunto de
+particulas que pertencem a classe $c$ e $\mathcal{L}$ é o conjunto dos
 vértices rotulados.
 
 
@@ -687,7 +687,7 @@ O ponto central desse método de segmentação é realizar uma
 transformação do domínio da imagem para uma rede complexa que seja
 compatível com a dinâmica coletiva \gls{LCU}. Para isso, uma
 pré-segmentação é realizada usando superpixels através do algoritmo
-SLIC. Os rótulos iniciais da imagem são propagados aos superpixels
+SLIC.\@ Os rótulos iniciais da imagem são propagados aos superpixels
 baseado numa votação: a classe que tiver maior números de pixels
 rotulados, atribui-se aquela classe ao superpixel.
 
