@@ -3,21 +3,22 @@
 Sistemas de segmentação de imagens têm se tornado populares em
 variadas aplicações, como, por exemplo, a área de edição de imagem,
 diagnósticos médicos e parte da visão computacional necessária pra
-reconhecimento de objetos. Entre estes motivos e outros, essa área tem
+reconhecimento de objetos. Entre esses motivos e outros, essa área tem
 uma relevância científica alta considerando a situação social,
 tecnológica e econômica que é vivida no século XXI.\@
 
 A segmentação de uma imagem pode ser feita manualmente por um anotador
 humano marcando as linhas delineadoras de um objeto. Por outro lado,
 são conhecido algoritmos variados para segmentação de imagens baseados
-em aprendizagem de máquina.
+em aprendizagem de máquina, que através de exemplos de segmentação
+fornecidos para treinamento é possível inferir a segmentação de novas imagens.
 
 Na Figura~\ref{fig:image-segmentation-types} é apresentado um quadro
 comparativo de operações em uma imagem com balões, incluindo os tipos
 de segmentação de imagens conhecidos: semântica e instância. Na
 segmentação semântica o objetivo é segmentar apenas os mesmos tipos de
 objetos como o mesmo rótulo, na segmentação por instância, cada balão
-é visto como a mesma classe de balão por rótulos diferentes.
+é visto como a mesma classe de balão mas com rótulos associados diferentes.
 
 \begin{figure}[h!]
         \captionsetup{width=16cm}
@@ -31,16 +32,17 @@ Comparação de tipos de segmentação de imagem: por semântica e instância
 
 Entre os tipos de aprendizagem de máquina, para segmentação de imagens
 semântica é selecionada neste trabalho especificamente a aprendizagem
-semi-supervisionada transdutiva (mais informações na seção~\ref{sec:teorica-aprendizado-semi-supervisionado}). A
+semi-supervisionada transdutiva\footnote{mais informações na
+seção~\ref{sec:teorica-aprendizado-semi-supervisionado}}. A
 aprendizagem semi-supervisionada é uma categoria que realiza o
 aprendizado com poucas rotulações e maior parte dos dados não são
 rotulados. Outras categorias de aprendizado de máquina como
 supervisionada possui no treinamento uma base totalmente rotulada
 enquanto a aprendizagem não-supervisionada não possui rótulo algum
 (exemplo: K-means). Ao considerar a dificuldade de conseguir dados
-rotulados por humanos em ambientes de uso especialistas, como imagens
+rotulados por humanos em ambientes de uso por especialistas, como imagens
 médicas e ferramentas de edição de imagem, a abordagem
-semi-supervisionada se demonstra interessante por necessitar de poucos
+semi-supervisionada se demonstra interessante por precisar de poucos
 dados rotulados, mas ainda existir uma anotação com viés do
 especialista interessado (médico, editor).
 
@@ -53,29 +55,27 @@ possui limitações conhecidas, e entre elas é possível mencionar: haver
 muitos objetos na imagem pode dificultar a segmentação; tempo
 computacional elevado; sensibilidade ao contraste em escala cinza.
 
-A abordagem estado da arte para segmentação de imagens
-semi-supervisionada indutiva utiliza \gls{CNN}. A técnica é conhecida
-como \textit{Mask R-CNN}~\cite{he2018mask}, funciona bem em casos
-diversos e supera as técnicas anteriores nas métricas de segmentação,
-mas possui ainda uma grande limitação: alto custo computacional para
-treinamento da rede neural profunda e muitos dados anotados são
-necessários.
+Um cenário especial de segmentação semântica abordado neste trabalho
+para aplicação de um esquema de aprendizagem semi-supervisionada é o
+problema de segmentação interativa\footnote{conceito explicado em
+detalhes na seção ~\ref{sec:segmentacao-interativa}}, onde o objetivo
+é uma segmentação binária que busca segmentar um objeto alvo em
+relação ao plano de fundo.
 
 Considerando tal situação-problema, este trabalho propõe a construção
-de uma técnica de segmentação de imagem semi-supervisionada utilizando
-redes complexas e dinâmicas coletivas de tal maneira que tenha menor
-complexidade computacional em relação a \textit{Mask R-CNN} e seja
-robusta em relação aos problemas enfrentados pelas técnicas clássicas.
+de uma técnica de segmentação de imagem semi-supervisionada voltada
+para segmentação interativa utilizando redes complexas e dinâmicas
+coletivas de tal maneira que possa se equiparar as melhores técnicas
+atuais de segmentação interativa baseado em grafos.
 
 \section{Trabalhos relacionados}\label{cap:trabalhos-relacionados}
 
 Técnicas de segmentação de imagens com o paradigma semi-supervisionado
 estão em foco atualmente no campo médico, como pode ser visto em
-~\cite{LuoSemiSupervised2021}. Nesse artigo, uma das grandes motivações
-de os autores utilizarem uma técnica semi-supervisionada
-está relacionado com a dificuldade de anotação de dados no ambiente
-hospitalar, requisito para utilizar técnicas mais robustas como
-\textit{Mask R-CNN}.
+~\cite{LuoSemiSupervised2021}. Nesse artigo, uma das grandes
+motivações de os autores utilizarem uma técnica semi-supervisionada
+está relacionado com a dificuldade de possuir dados anotados de dados
+em um domínio de dados, como imagens hospitalares.
 
 Em relação ao tópico de redes complexas e dinâmicas coletivas, é
 possível mencionar o trabalho feito com o algoritmo \gls{LCU}
@@ -84,9 +84,10 @@ sobre resolução de problemas de aprendizagem de máquina
 semi-supervisionada são explorados em detalhes como uma dinâmica de
 competição de partículas na relação vértice-arestas de um grafo
 não-direcionado. Este método de aprendizagem é transdutivo, portanto,
-difere dos métodos indutivos, como é o caso de Redes Neurais. Além
-disso, esse algoritmo tem complexidade computacional linear em relação
-à quantidade de classes, arestas e vértices.
+difere dos métodos indutivos que estimam uma função de inferência no
+treinamento, como é o caso de Redes Neurais. Além disso, esse
+algoritmo tem complexidade computacional linear em relação à
+quantidade de classes, arestas e vértices.
 
 Para ilustrar uma possível ideia de segmentação de imagens, ao
 considerar um algoritmo que faça uma transformação do domínio de
@@ -146,36 +147,92 @@ topologia da imagem através de redes complexas é uma oportunidade de
 pesquisa.
 
 
+\subsection{GrabCut: Interactive Foreground Extraction Using Iterated
+  Graph Cuts}\label{sec:grabcut}
+
+Neste trabalho, um dos pioneiros em segmentação interativa, os
+autores~\cite{rother2004grabcut} desenvolveram uma técnica para segmentação interativa
+chamada GrabCut baseado em um mapeamento da imagem como um grafo e
+então um corte entre as arestas é realizado para segmentar o objeto do
+plano de fundo.
+
+
 \subsection{Aplicação de agrupamento semi-supervisionado para segmentação
   de imagens coloridas}\label{sec:franciscolira2018}
 
-Neste trabalho o autor~\cite{franciscolira2018}, na sua tese de
+Neste trabalho, o autor~\cite{franciscolira2018} na sua tese de
 graduação, propõe variações de um algoritmo de segmentação de imagem
 semi-supervisionado combinando algoritmos de agrupamento, como
 \textit{Fuzzy C-Means}, Algoritmo de Pedrycs, Algoritmo
-Semi-supervisionado Padrão (sSSC) e Algoritmo Semi-supversionado
+Semi-supervisionado Padrão (sSSC) e Algoritmo Semi-supervisionado
 Regularizado por Entropia (ESSC).
+
+\subsection{FocalClick: Towards Practical Interactive Image Segmentation}\label{sec:focalclick}
+
+Neste trabalho, os autores~\cite{chen2022focalclick} criam uma técnica de
+segmentação interativa em busca da praticidade, ao medir dois aspectos
+importantes além de qualidade de segmentação: necessidade de anotação
+e tempo de execução. O trabalho em sua metodologia de avaliação,
+utiliza métricas para minimizar interações que o usuários tenha que
+fazer para alcançar uma segmentação de qualidade. Essa técnica se
+baseia num algoritmo iterativo que possui capacidades de correção ao
+incluir novas marcações. Na Figura~\ref{fig:focalclick} é possível visualizar uma
+visão geral da técnica:
+
+
+\begin{figure}[!h]
+        \captionsetup{width=12cm}
+		\Caption{\label{fig:focalclick}
+          Visão geral da técnica de segmentação interativa FocalClick.}
+		\centering
+		\UFCfig{}{
+			\fbox{\includegraphics[width=12cm]{figuras/focalclick}}
+		}{
+			\Fonte{\cite{chen2022focalclick}}
+		}
+\end{figure}
+
+
+\subsection{Interactive image segmentation based on multi-layer
+random forest classifiers}\label{sec:superpixel-random-forest}
+
+Neste trabalho, as autoras\cite{shan2023interactive} criam uma nova
+técnica para segmentação interativa de imagens combinando uma
+pré-segmentação usando superpixels e duas camadas de modelos random
+forest para classificar o agrupamento entre os superpixels numa
+máscara de segmentação resultante.
+
 
 \section{Justificativas}\label{sec:justificativas}
 
 Como mencionado na introdução, os algoritmos conhecidos de segmentação
 de imagens possuem restrições pertinentes que podem dificultar o uso
 das técnicas em alguns problemas, como imagens médicas e edição de
-imagens. Na seção \textit{revisão biblográfica} são mencionadas propriedades
-pertinentes dos algoritmos propostos, como, por exemplo, possuirem complexidade
-computacional linear.
+imagens.
 
 Estes problemas são endereçados no desenvolvimento de uma nova técnica
 de segmentação de imagens que explora outros novos ramos de
 aprendizagem de máquina semi-supervisionada além das \gls{DNN}, neste
-caso utilizando redes complexas e dinâmicas coletivas. Parte do
-trabalho que tem sido desenvolvido em parceria com o \gls{ITA} no
-projeto DNAYA\cite{DnayaMotivation}, como por exemplo a dinâmica coletiva \gls{LCU}.
+caso utilizando redes complexas e dinâmicas coletivas.
 
-Vale mencionar que, considerando a situação de pandemia que vive-se
-desde 2020 com o COVID-19, a construção de tecnologias que facilitam o
-diagnóstico de doenças respiratórias com auxílio de radiografias
-pulmonares tem se tornado uma linha de pesquisa ainda mais relevante.
+O campo de pesquisa de segmentação interativa também tem tido aumento
+na publicação de artigos de relevância, em especial a publicação de
+artigos com a palavra-chave GrabCut (tipo de algoritmo para
+segmentação interativa), como pode ser visto na
+Figura~\ref{fig:grabcut-papers}:
+
+\begin{figure}[!h]
+        \captionsetup{width=12cm}
+		\Caption{\label{fig:grabcut-papers}
+          Quantidade de publicações relevantes envolvendo grabcut de
+          2004 a 2022}
+		\centering
+		\UFCfig{}{
+			\fbox{\includegraphics[width=12cm]{figuras/grabcut-papers}}
+		}{
+			\Fonte{\cite{wang2023review}}
+		}
+\end{figure}
 
 
 
