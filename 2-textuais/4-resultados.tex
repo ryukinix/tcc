@@ -24,10 +24,6 @@ final.
 
 \footnotetext{Software web para desenvolvimento interativo e análise de dados, disponível em \url{https://jupyter.org}}
 
-\section{Avaliação qualitativa}
-
-\ldots
-
 \section{Experimentos com a variação da quantidade de superpixels}\label{sec:variacao-superpixels}
 
 Durante a execução dos experimentos, e avaliação dos resultados, foi
@@ -68,7 +64,63 @@ exceção da métrica de precisão, os melhores resultados vieram do
 modelo com 200 superpixels e extração de características via matriz de
 co-ocorrências.
 
-\section{Comparação com o estado-da-arte de segmentação interativa}\label{sec:comparacao-estado-da-arte}
+
+\section{Avaliação qualitativa}
+
+Nesta avaliação qualitativa, é comparado visualmente a qualidade
+de segmentação do método \gls{EGSIS} com os melhores parâmetros
+encontrados na seção anterior, isto é, número de superpixels definido
+para 200 e método de extração de características via matriz de
+co-ocorrências.
+
+Como referência, o artigo~\cite{wang2023review} contém execuções
+comparativa de vários métodos na base de dados GrabCut. Neste artigo,
+é selecionado uma comparação com 16 imagens, na qual 7 diferentes
+métodos de segmentação interativa foram usados.
+
+\begin{figure}[h!]
+        \captionsetup{width=16cm}
+		\Caption{\label{fig:grabcut-comparacao}
+          Comparação entre diferentes métodos de segmentação interativa no dataset GrabCut.
+        }
+		\centering
+		\UFCfig{}{\fbox{\includegraphics[width=16cm]{figuras/grabcut-comparacao}}}{\Fonte{\cite{wang2023review}}}
+\end{figure}
+\FloatBarrier{}
+
+Na Figura~\ref{fig:grabcut-comparacao}, tem-se em cada linha duas
+imagems a ser segmentadas. Entre as máscaras de segmentação em escala
+de cinza, tem-se as segmentações dos métodos de segmentação
+interativa. O nome desses 7 métodos, em ordem, são: GrabCut,
+LazySnapping, OneCut, Saliency Cut, Iterated Graph Cuts, DenseCut e
+Deep GrabCut.
+
+Nesse aspecto, para comparação com o modelo proposto \gls{EGSIS}, para
+as mesmas imagens do dataset GrabCut, é obtido as seguintes máscaras
+de segmentação na Figura~\ref{fig:egsis-qualitativa}.
+
+\begin{figure}[h!]
+        \captionsetup{width=12cm}
+		\Caption{\label{fig:egsis-qualitativa}
+          Execução de segmentação interativa com EGSIS, a primeira
+segmentação é a do modelo e a última é a segmentação real.
+        }
+		\centering
+		\UFCfig{}{\fbox{\includegraphics[width=12cm]{figuras/egsis-qualitativa}}}{\Fonte{\fonteautor}}
+\end{figure}
+\FloatBarrier{}
+
+
+
+Como pode ser visto, os resultados do \gls{EGSIS} são de qualidade
+comparável aos métodos comparados em~\cite{wang2023review}, embora em
+algumas imagens há mais erros e outras obtem maior exito. Para
+quantificar esse resultado, na próxima
+seção~\ref{sec:comparacao-estado-da-arte} é realizado uma avaliação
+quantitativa comparando esses métodos e método proposto \gls{EGSIS}.
+
+
+\section{Comparação quantitativa com o estado-da-arte da segmentação interativa}\label{sec:comparacao-estado-da-arte}
 
 Nesta seção, é proposto uma avaliação de como o modelo \gls{EGSIS} se
 compara ao estado-da-arte no problema de segmentação interativa.
@@ -91,7 +143,9 @@ condições. Por esse motivo, a avaliação de resultados será limitada a
 base de dados GrabCut.
 
 A seguir, é possível visualizar tabelas de comparação com os
-algoritmos apresentados em~\cite{wang2023review}:
+algoritmos apresentados em~\cite{wang2023review}: GrabCut,
+LazySnapping, OneCut, Saliency Cut, Iterated Graph Cuts, DenseCut e
+Deep GrabCut. Todos algoritmos de segmentação interativa baseado em grafos.
 
 
 \begin{table}[!h]
@@ -117,6 +171,5 @@ algoritmos apresentados em~\cite{wang2023review}:
   \end{tabular}
   \Fonte{Baseado nos resultados encontrados no artigo~\cite{wang2023review}}
 \end{table}
-
 
 \footnotetext{Não há um nome formal pra esse método~\cite{an2013iterated}, por ora ele será chamado assim}
