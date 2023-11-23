@@ -12,12 +12,12 @@ em~\cite{wang2023review} no \textit{dataset} GrabCut.
 
 Uma avaliação qualitativa é demonstrada ao realizar a segmentação do
 método e disponibilizar a máscara de segmentação gerada para algumas
-imagens. Além disso, em formato de tabelas, é disponibilizado a
-avaliação quantitativa baseado nas métricas descritos na
+imagens. Além disso, em formato de tabelas, é disponibilizada a
+avaliação quantitativa baseada nas métricas descritos na
 seção~\ref{sec:metricas-avaliacao}.
 
-Por fim, foi desenvolvido uma ferramenta simples de anotação para
-exploração dos resultados integrado no software
+Por fim, foi desenvolvida uma ferramenta simples de anotação para
+exploração dos resultados integrada ao software
 JupyterLab\footnotemark, que é usada também para avaliação qualitativa
 e visualização do impacto da anotação parcial inicial no resultado
 final.
@@ -28,9 +28,9 @@ final.
 
 Durante a execução dos experimentos, e avaliação dos resultados, foi
 observado que o número de superpixels afeta diretamente a qualidade da
-segmentação gerada. Entre esses experimentos, foi realizada 8
+segmentação gerada. Entre esses experimentos, foram realizada 8
 execuções com variações na técnica de extração de características
-usada e o número de superpixels, sendo o número de superpixels
+usada e no número de superpixels, sendo o número de superpixels
 avaliados para 50, 100, 150 e 200.
 
 \begin{table}[!h]
@@ -59,7 +59,7 @@ Ao analisar a tabela~\ref{tab:variacao-superpixels}, é possível
 perceber que o aumento de superpixels impacta positivamente na
 qualidade da segmentação independente do método de extração de
 características. A respeito do método de extração de características,
-os resultados de ambos métodos são próximos, por outro lado, com
+os resultados de ambos os métodos são próximos. Por outro lado, com
 exceção da métrica de precisão, os melhores resultados vieram do
 modelo com 200 superpixels e extração de características via matriz de
 co-ocorrências.
@@ -67,15 +67,15 @@ co-ocorrências.
 
 \section{Avaliação qualitativa}
 
-Nesta avaliação qualitativa, é comparado visualmente a qualidade
+Nesta avaliação qualitativa, é comparada visualmente a qualidade
 de segmentação do método \gls{EGSIS} com os melhores parâmetros
 encontrados na seção anterior, isto é, número de superpixels definido
 para 200 e método de extração de características via matriz de
 co-ocorrências.
 
 Como referência, o artigo~\cite{wang2023review} contém execuções
-comparativa de vários métodos na base de dados GrabCut. Neste artigo,
-é selecionado uma comparação com 16 imagens, na qual 7 diferentes
+comparativas de vários métodos na base de dados GrabCut. Neste artigo,
+é selecionado uma comparação com 16 imagens, nas quais 7 diferentes
 métodos de segmentação interativa foram usados.
 
 \begin{figure}[h!]
@@ -88,15 +88,15 @@ métodos de segmentação interativa foram usados.
 \end{figure}
 \FloatBarrier{}
 
-Na Figura~\ref{fig:grabcut-comparacao}, tem-se em cada linha duas
+Na Figura~\ref{fig:grabcut-comparacao}, há em cada linha duas
 imagems a ser segmentadas. Entre as máscaras de segmentação em escala
-de cinza, tem-se as segmentações dos métodos de segmentação
+de cinza, há as segmentações dos métodos de segmentação
 interativa. O nome desses 7 métodos, em ordem, são: GrabCut,
 LazySnapping, OneCut, Saliency Cut, Iterated Graph Cuts, DenseCut e
 Deep GrabCut.
 
 Nesse aspecto, para comparação com o modelo proposto \gls{EGSIS}, para
-as mesmas imagens do dataset GrabCut, é obtido as seguintes máscaras
+as mesmas imagens do dataset GrabCut, são obtidas as seguintes máscaras
 de segmentação na Figura~\ref{fig:egsis-qualitativa}.
 
 \begin{figure}[h!]
@@ -114,38 +114,38 @@ segmentação é a do modelo e a última é a segmentação real.
 
 Como pode ser visto, os resultados do \gls{EGSIS} são de qualidade
 comparável aos métodos comparados em~\cite{wang2023review}, embora em
-algumas imagens há mais erros e outras obtem maior exito. Para
+algumas imagens haja mais erros e outras obtenham maior exito. Para
 quantificar esse resultado, na próxima
-seção~\ref{sec:comparacao-estado-da-arte} é realizado uma avaliação
-quantitativa comparando esses métodos e método proposto \gls{EGSIS}.
+seção~\ref{sec:comparacao-estado-da-arte} é realizada uma avaliação
+quantitativa comparando esses métodos e o método proposto \gls{EGSIS}.
 
 
 \section{Comparação quantitativa com o estado-da-arte da segmentação interativa}\label{sec:comparacao-estado-da-arte}
 
-Nesta seção, é proposto uma avaliação de como o modelo \gls{EGSIS} se
+Nesta seção, é proposta uma avaliação de como o modelo \gls{EGSIS} se
 compara ao estado-da-arte no problema de segmentação interativa.
 
 No artigo~\cite{wang2023review}, é observado um extenso estudo de
-revisão sobre os métodos de segmentação interativa baseado em grafos,
-tendo como base o algoritmo GrabCut e outros algoritmos que evoluiram
+revisão sobre os métodos de segmentação interativa baseados em grafos,
+tendo como base o algoritmo GrabCut e outros algoritmos que evoluíram
 nessa área de segmentação interativa de imagens. Os autores avaliam
 essas técnicas na base de dados GrabCut~\cite{rother2004grabcut}
 utilizando as mesmas métricas que foram selecionadas na metodologia de
-avaliação desse trabalho, com exceção do tempo de execução, que por
-conta de diferentes tecnologias usadas para implementação das técnicas
-não é possível fazer uma avaliação justa, por isso será deixada como
-um potencial trabalho futuro.
+avaliação deste trabalho, com exceção do tempo de execução, que, por
+conta de diferentes tecnologias usadas para implementação das
+técnicas, não foi possível usar para fazer uma avaliação justa, por
+isso será deixada como um potencial trabalho futuro.
 
-Esse mesmo artigo, também avalia as várias técnicas em outro \textit{dataset},
-mas a rotulação inicial usada como não foi publicada, não foi possível
-replicar os experimentos para o modelo \gls{EGSIS} nas mesmas
-condições. Por esse motivo, a avaliação de resultados será limitada a
-base de dados GrabCut.
+Esse mesmo artigo também avalia as várias técnicas em outro
+\textit{dataset}, mas em virtude de a rotulação inicial usada não ter
+sido publicada, não foi possível replicar os experimentos para o
+modelo \gls{EGSIS} nas mesmas condições. Por esse motivo, a avaliação
+de resultados será limitada a base de dados GrabCut.
 
 A seguir, é possível visualizar tabelas de comparação com os
 algoritmos apresentados em~\cite{wang2023review}: GrabCut,
 LazySnapping, OneCut, Saliency Cut, Iterated Graph Cuts, DenseCut e
-Deep GrabCut. Todos algoritmos de segmentação interativa baseado em grafos.
+Deep GrabCut, todos algoritmos de segmentação interativa baseado em grafos.
 
 
 \begin{table}[!h]
