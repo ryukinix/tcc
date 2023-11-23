@@ -42,10 +42,10 @@ critérios definidos pelo usuário.
 \section{Aprendizado semi-supervisionado vs.\ transdução}\label{sec:teorica-aprendizado-semi-supervisionado}
 
 Existem três principais categorias de aprendizado de máquina:
-aprendizado supervisionado, aprendizado não-supervisionado e
+aprendizado supervisionado, aprendizado não supervisionado e
 aprendizado semi-supervisionado. No aprendizado supervisionado durante
 a etapa de treinamento existe uma base de dados totalmente rotulada,
-no aprendizado não-supervisionado não é disponibilizado nenhum
+no aprendizado não supervisionado não é disponibilizado nenhum
 rotulamento dos dados. Enquanto isso, o aprendizado
 semi-supervisionado está entre essas duas categorias.
 
@@ -153,7 +153,7 @@ Atualmente, já é possível encontrar muitas técnicas baseadas em
 superpixels com diferentes características, complexidades
 computacionais, métodos e eficiência. No
 artigo~\cite{SuperPixelBenchmark2017}, é realizado um \textit{benchmark} com 15
-algoritmos do tipo superpixel categorizados em três grupos: basedo em grafos,
+algoritmos do tipo superpixel categorizados em três grupos: baseado em grafos,
 baseado em otimização de gradiente e baseado em análise de
 textura. Neste trabalho, é selecionado um dos mais simples: \gls{SLIC}.
 
@@ -439,7 +439,7 @@ similaridade segue a seguir:
 \end{equation}
 
 Na equação~\ref{eq:manhattan-similarity}, os valores $1$ adicionados
-ao demoninador foram necessários para evitar uma possível divisão por
+ao denominador foram necessários para evitar uma possível divisão por
 zero e logarítmo de zero, ambas operações que são indefinidas na
 matemática.
 
@@ -452,7 +452,7 @@ coletiva baseada em propagação de rótulos numa rede complexa. Essa
 dinâmica coletiva é modelada como um sistema dinâmico com geração de
 partículas de rotulação nas suas fontes (os vértices rotulados).
 
-Esse algoritmo possui critérios de sobrevivência das particulas
+Esse algoritmo possui critérios de sobrevivência das partículas
 inspirado em comportamentos da natureza e sociedade. Por exemplo, o
 hiperparâmetro $ \lambda $ do algoritmo denota um fator de competição entre
 0 e 1 sobre o dificuldade que as partículas terão ao trafegar nos
@@ -510,7 +510,7 @@ dominados por aquela classe.
 
 Em mais detalhes, durante uma única iteração do sistema na
 figura~\ref{fig:lcu-iteration}, pode-se visualizar o passeio das
-partículas entre as fontes de párticulas (vértices rotulados) verde e
+partículas entre as fontes de partículas (vértices rotulados) verde e
 vermelho. Algumas não sobreviveram ao processo, outras se mantiveram
 no sistema. Na última imagem, uma contagem do número de partículas por
 classe que passaram pelas arestas pode ser vista.
@@ -541,7 +541,7 @@ similarity(\vec{x_i}, \vec{x_j})$, na qual as arestas possuem um peso
 que se refere à similaridade entre os vetores de características
 representados pelos vértices. Nessa situação, supõe-se que $l << u$,
 ou seja, há muito mais dados não-rotulados do que rotulados, na qual
-caracteriza-se um cenário para aprendizado semi-supervisioado.
+caracteriza-se um cenário para aprendizado semi-supervisionado.
 
 Os vértices rotulados são chamados de fontes, que geram partículas com
 a classe que responde ao vértice. Partículas que alcançam um vértice fonte
@@ -643,7 +643,7 @@ E, então, define-se o grafo por classe $c$ como:
 Por fim, as redes $ G^c(\tau) $ são usadas para classificação dos
 vértices. São atribuídos os rótulos $y_j \in \{1, \ldots, C\}$ para cada
 vértice não-rotulado com a informação provida pela rede $G^c$.  O
-rótulo $y_j$ é atribuido baseado na densidade das arestas na sua
+rótulo $y_j$ é atribuído baseado na densidade das arestas na sua
 vizinhaça. Formalmente, escrito como:
 
 \begin{equation}\label{eq:lcu-vertex-classification}
@@ -700,7 +700,7 @@ Ao obter os superpixels e os rótulos iniciais, é construída uma rede
 complexa onde os vértices representam os superpixels e as arestas a
 vizinhança com grau de similaridade entre os superpixels. Para
 calcular a similaridade de cada aresta, primeiro é executado para cada
-superpixel o metódo de extração de características selecionado, que
+superpixel o método de extração de características selecionado, que
 nesse caso pode ser filtros de Gabor ou matrizes de co-ocorrência,
 então calcula-se a similaridade entre os superpixels com uma métrica
 de similaridade selecionada.
@@ -731,7 +731,7 @@ geral do método.
       Reconstrói a máscara de segmentação com base nos vértices rotulados\;
    }
 \end{algorithm}
-\FloatBarrier
+\FloatBarrier{}
 
 A seguir uma ilustração da execução do algoritmo em algumas etapas. Na
 figura~\ref{fig:egsis-init}, são observadas duas etapas sendo
