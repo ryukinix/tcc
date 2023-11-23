@@ -2,9 +2,11 @@
 
 Sistemas de segmentação de imagens têm se tornado populares em
 variadas aplicações, como, por exemplo, a área de edição de imagem,
-diagnósticos médicos e parte da visão computacional necessária pra
-reconhecimento de objetos. Entre esses motivos e outros, essa área tem
-uma relevância científica alta considerando a situação social,
+diagnósticos médicos~\cite{zhou2019interactive} e parte da visão
+computacional necessária pra reconhecimento de objetos, muito
+importante para desenvolvimento de direção autônoma em
+carros~\cite{feng2021review}. Entre esses motivos e outros, essa área
+tem uma relevância científica alta considerando a situação social,
 tecnológica e econômica que é vivida no século XXI.\@
 
 A segmentação de uma imagem pode ser feita manualmente por um anotador
@@ -30,7 +32,7 @@ Comparação de tipos de segmentação de imagem: por semântica e instância
 \end{figure}
 
 
-Entre os tipos de aprendizagem de máquina, para segmentação de imagens
+Entre os tipos de aprendizagem de máquina~\cite{sah2020machine}, para segmentação de imagens
 semântica é selecionada neste trabalho especificamente a aprendizagem
 semi-supervisionada transdutiva\footnote{mais informações na
 seção~\ref{sec:teorica-aprendizado-semi-supervisionado}}. A
@@ -58,9 +60,11 @@ computacional elevado; sensibilidade ao contraste em escala cinza.
 Um cenário especial de segmentação semântica abordado neste trabalho
 para aplicação de um esquema de aprendizagem semi-supervisionada é o
 problema de segmentação interativa\footnote{conceito explicado em
-detalhes na seção ~\ref{sec:segmentacao-interativa}}, no qual o objetivo
-é uma segmentação binária que busca segmentar um objeto alvo em
-relação ao plano de fundo.
+detalhes na seção ~\ref{sec:segmentacao-interativa}}, no qual o
+objetivo é uma segmentação binária que busca segmentar um objeto alvo
+em relação ao plano de fundo. Para segmentação interativa existem
+variadas técnicas, com diferentes abordagens, limitações e
+vantagens~\cite{ramadan2020survey}.
 
 Considerando tal situação-problema, este trabalho propõe a construção
 de uma técnica de segmentação de imagem semi-supervisionada voltada
@@ -173,7 +177,7 @@ Neste trabalho, os autores~\cite{chen2022focalclick} criam uma técnica de
 segmentação interativa em busca da praticidade, ao medir dois aspectos
 importantes além de qualidade de segmentação: necessidade de anotação
 e tempo de execução. O trabalho em sua metodologia de avaliação
-utiliza métricas para minimizar interações que o usuários tenham que
+utiliza métricas para minimizar interações que os usuários tenham que
 fazer para alcançar uma segmentação de qualidade. Essa técnica se
 baseia num algoritmo iterativo que possui capacidades de correção ao
 incluir novas marcações. Na Figura~\ref{fig:focalclick} é possível visualizar uma
