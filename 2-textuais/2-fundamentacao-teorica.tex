@@ -1,7 +1,7 @@
 \chapter{FUNDAMENTAÇÃO TEÓRICA}\label{cap:fundamentacao-teorica}
 
 
-Nesta capítulo são apresentados vários conceitos e técnicas para fundamentar
+Neste capítulo são apresentados vários conceitos e técnicas para fundamentar
 o desenvolvimento do método proposto, descrito na seção~\ref{sec:teorica-egsis}.
 
 
@@ -85,7 +85,7 @@ Em contraponto, existem algoritmos que não estimam tal função e apenas
 realizam a inferência direta entre os dados rotulados disponíveis e os
 não rotulados. Isso é chamado de transdução e um algoritmo bem
 conhecido com essa característica é o classificador \gls{k-NN}.\@ Na
-figura~\ref{fig:induction-vs-transduction} são ilustrados as
+figura~\ref{fig:induction-vs-transduction} são ilustradas as
 diferenças entre transdução e indução no processo de aprendizagem:
 
 
@@ -305,7 +305,7 @@ A partir desta matriz, várias características texturais podem ser
 extraídas, como contraste, correlação, energia e homogeneidade. Estas
 características podem ser usadas para tarefas como classificação de
 textura, segmentação de imagem, entre outros. Após a aplicação do
-método em cada canal RGB da imagem, são extraído cinco estatísticas: média,
+método em cada canal RGB da imagem, são extraídas cinco estatísticas: média,
 mediana, variância, desvio padrão e 25-quantis. Então as
 características são concatenadas um vetor de características de 15 dimensões.
 
@@ -333,7 +333,7 @@ a aplicação do filtro a uma pequena região da imagem (localização
 espacial), enquanto a função harmônica complexa permite capturar
 características em uma determinada orientação. Na
 figura~\ref{fig:gabor-filters} são ilustrados variações dos
-filtros de gabor com diferentes parâmetros e a convolução resultante.
+filtros de Gabor com diferentes parâmetros e a convolução resultante.
 
 \begin{figure}[!h]
         \captionsetup{width=12cm}
@@ -379,7 +379,7 @@ retorna um valor maior quando os vetores são similares e quanto mais
 diferentes sejam, mais a similaridade tende a zero.
 
 A estrutura de uma métrica de similaridade pode ser criada a partir de
-uma métrica de distância. Neste trabalho, são explorados duas métricas de
+uma métrica de distância. Neste trabalho, são exploradas duas métricas de
 similaridades a partir das seguintes métricas de distância: distância
 euclidiana e distância de manhattan.
 
@@ -416,7 +416,7 @@ md(\vec{x}, \vec{y}) = |y_1-x_1| + |y_2-x_2| + \cdots + |y_n-x_n|
 \subsection{Similaridade Euclidiana Exponencial}\label{sec:teorica-similaridade-euclidiana}
 
 Para a técnica de extração de característica de matrizes de co-ocorrência,
-detalhado na seção~\ref{sec:teorica-matriz-co-ocorrencia}, a métrica de
+detalhada na seção~\ref{sec:teorica-matriz-co-ocorrencia}, a métrica de
 similaridade que obteve os melhores resultados foi a distância
 euclidiana pelo inverso da exponencial. A equação é definida como:
 
@@ -439,7 +439,7 @@ similaridade segue a seguir:
 \end{equation}
 
 Na equação~\ref{eq:manhattan-similarity}, os valores $1$ adicionados
-no demoninador foram necessários para evitar uma possível divisão por
+ao demoninador foram necessários para evitar uma possível divisão por
 zero e logarítmo de zero, ambas operações que são indefinidas na
 matemática.
 
@@ -580,7 +580,7 @@ por:
 
 Entre as funções ainda não definidas na função de evolução, destaca-se a de
 probabilidade de sobrevivência das partículas $P^c(X(t))$, na qual os
-elementos dessa matriz são definidas como:
+elementos dessa matriz são definidos como:
 
 \begin{equation} \label{eq:lcu-probability}
   p_{i j}^c(X(t)):= \begin{cases}0 & \text { se } v_j \in \mathcal{L} \text { e
@@ -602,8 +602,8 @@ conectadas) e variável $\sigma_{i j}^c$ define-se como:
 
 A modificação dessa dinâmica coletiva em relação à proposta original
 em~\cite{VerriNetworkUnfoldingMap2018} é realizada em $a_{ij}$,
-enquanto no trabalho original o grafo é não-ponderado e, portanto, todas
-arestas possuem valor unitário. Neste trabalho a aresta representa um
+enquanto no trabalho original o grafo é não-ponderado e, portanto,
+todas as arestas possuem valor unitário. Neste trabalho a aresta representa um
 valor de similaridade entre os vetores de características anexados ao
 vértice $v_i$ e $v_j$, dessa maneira aumentando a probabilidade de
 sobrevivência de partículas que se movimentam por arestas com maior
@@ -653,7 +653,7 @@ y_j = \underset{c \in \{1, \ldots, C\}}{\arg \max }\left| \mathcal{E}(\mathcal{N
 Em que ${\mathcal{N}_{c,j}}$ são as arestas da vizinhança do vértice $j$ que
 foram dominadas por párticulas da classe $c$. Na
 figura~\ref{fig:lcu-classification}, é ilustrada a dinâmica coletiva
-aplicada em uma rede complexa de formato similar a duas bananas, a
+aplicada em uma rede complexa de formato similar a duas bananas. A
 ilustração está dividida em quatro etapas: (a) inicialização com 6
 vértices rotulados, 3 para cada classe, vértices pretos não estão
 rotulados; (b) 4 iterações do sistema, com as arestas coloridas
