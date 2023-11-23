@@ -614,7 +614,7 @@ partículas nos vértices fontes no tempo $t$, e é definida como:
 
 \begin{equation}\label{eq:lcu-generation}
   \begin{aligned}
-    g_i^c(X(t)) &:=\rho_i^c \max \left\{0, \lVert \mathbf{n}^c(0) \rVert - \lVert \mathbf{n}^c(t) \rVert\right\} \\
+    g_i^c(X(t)) &:=\rho_i^c \max \left\{0, \sum_{j=1}^{\left| \mathcal{V} \right|}(\mathbf{n}_{j}^c(0) - \mathbf{n}_{j}^c(t))\right\} \\
     \rho_i^c &:= \begin{cases}\frac{\deg v_i}{\sum_{v_j \in \mathcal{G}^c}
       \deg v_j} & \text { se } v_i \in \mathcal{G}^c, \\ 0 & \text {
                                                                do contrário }\end{cases}
