@@ -75,10 +75,10 @@ que são comumente utilizadas para avaliação de segmentação de imagens:
 Para avaliação da precisão da segmentação, tem-se a seguinte definição:
 
 \begin{equation}\label{eq:precision}
-  Precision = \dfrac{TP}{TP + FP}
+  Precision = \dfrac{TP}{TP + FP},
 \end{equation}
 \noindent
-Em que \textit{TP} são os pixels classificados corretamente e \textit{FP}
+em que \textit{TP} são os pixels classificados corretamente e \textit{FP}
 os falsos-positivos. Essa métrica penaliza a presença de falsos
 positivos. Quanto menos falsos-positivos, maior será a precisão.
 
@@ -127,7 +127,7 @@ regiões. A fórmula para calcular o IoU é:
 
 
 Nessa equação, $A$ e $B$ são matrizes de rótulos da imagem que serão
-comparadas, sendo a matriz A os rótulos estimados e a matriz B os
+comparadas, sendo a matriz $A$ os rótulos estimados e a matriz $B$ os
 reais. O valor de IoU varia de 0 a 1, com o valor 1 indicando uma
 correspondência perfeita entre as regiões delimitadoras previstas e
 reais, e o valor 0 indicando que não há sobreposição (pior valor). Em
