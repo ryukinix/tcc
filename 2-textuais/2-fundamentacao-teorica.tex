@@ -211,7 +211,7 @@ Uma execução do SLIC é possível de ser visualizada a seguir:
           Execução do algoritmo SLIC na fotografia de um gato.
         }
 		\centering
-		\UFCfig{}{\fbox{\includegraphics[width=12cm]{figuras/slic}}}{\Fonte{\fonteautor}}
+		\UFCfig{}{\fbox{\includegraphics[width=12cm]{figuras/slic}}}{\Fonte{\fonteautorscikit}}
 \end{figure}
 
 O algoritmo \gls{SLIC} possuí três hiperparâmetros: \textit{segments}, sigma e \textit{compactness}.
@@ -268,7 +268,7 @@ ilustração~\ref{fig:slic}, ao executar o algoritmo SLIC.\@
           Geração de rede complexa baseado nos superpixels.
         }
 		\centering
-		\UFCfig{}{\fbox{\includegraphics[width=12cm]{figuras/complex-networks}}}{\Fonte{\fonteautor}}
+		\UFCfig{}{\fbox{\includegraphics[width=12cm]{figuras/complex-networks}}}{\Fonte{\fonteautorscikit}}
 \end{figure}
 \FloatBarrier{}
 
@@ -276,10 +276,8 @@ ilustração~\ref{fig:slic}, ao executar o algoritmo SLIC.\@
 
 \subsection{Matriz de co-ocorrências}\label{sec:teorica-matriz-co-ocorrencia}
 
-O método de extração de características através de matriz de
-co-ocorrências, originalmente proposto por Haralick em
-\textit{\blockquote{Statistical and structural approaches to
-texture}}~\cite{haralick1979statistical}, é uma técnica utilizada em
+O método de extração de características da matriz de
+co-ocorrências~\cite{haralick1979statistical} é uma técnica utilizada em
 processamento de imagem e visão computacional para extrair
 características texturais de uma imagem.
 
@@ -311,10 +309,7 @@ características são concatenadas um vetor de características de 15 dimensões
 
 \subsection{Filtros de Gabor}\label{sec:filtros-gabor}
 
-Os filtros de Gabor, originalmente proposto por Daugman em
-\textit{\blockquote{Complete discrete 2-D Gabor transforms by neural
-networks for image analysis and
-compression}}~\cite{daugman1988complete}, são uma família de filtros
+Os filtros de Gabor~\cite{daugman1988complete} são uma família de filtros
 de convolução usados principalmente na análise de texturas e na visão
 computacional para a extração de características. Eles são nomeados em
 homenagem a Dennis Gabor, o físico que ganhou o Prêmio Nobel por sua
@@ -362,8 +357,9 @@ Neste trabalho, são gerados 16 filtros de Gabor que foram avaliados
 experimentalmente com variados parâmetros. Após a aplicação do filtro
 em cada canal RGB da imagem, são extraídos cinco estatísticas: média,
 mediana, variância, desvio padrão e 25-quantis. Com isso, todas as
-estatisticas são concatenadas num único vetor de características
-resultante com 63 dimensões.
+cinco estatisticas dos 16 filtros aplicados em cada um dos três canais
+são concatenadas num único vetor de características resultante com 240
+($16 \times 5 \times 3$) dimensões, pois é o resultado.
 
 \section{Métricas de similaridade}\label{sec:teorica-metricas-de-similaridade}
 
@@ -758,7 +754,7 @@ complexa gerada através dos superpixels.
     \UFCfig{}{\fbox{\includegraphics[width=7cm]{figuras/egsis-complex-networks}}}
     \caption{\label{fig:egsis-complex-networks}}
     \end{subfigure}
-    {\Fonte{\fonteautor}}
+    {\Fonte{\fonteautorscikit}}
 \quad
 \end{figure}
 \FloatBarrier{}
@@ -790,7 +786,7 @@ alguns erros visíveis.
     \UFCfig{}{\fbox{\includegraphics[width=7cm]{figuras/egsis-execution}}}
     \caption{\label{fig:egsis-execution}}
     \end{subfigure}
-    {\Fonte{\fonteautor}}
+    {\Fonte{\fonteautorscikit}}
 \quad
 \end{figure}
 \FloatBarrier{}
@@ -806,5 +802,5 @@ figura~\ref{fig:egsis-mask}.
           Máscara de segmentação final e a imagem original.\@
         }
 		\centering
-		\UFCfig{}{\fbox{\includegraphics[width=12cm]{figuras/egsis-segmentation-mask}}}{\Fonte{\fonteautor}}
+		\UFCfig{}{\fbox{\includegraphics[width=12cm]{figuras/egsis-segmentation-mask}}}{\Fonte{\fonteautorscikit}}
 \end{figure}
