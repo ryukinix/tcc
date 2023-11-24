@@ -100,14 +100,14 @@ diferenças entre transdução e indução no processo de aprendizagem:
 \end{figure}
 
 
-No texto~\cite{vapnik2006semi}, o criador do famoso algoritmo SVM,
+No texto~\cite{vapnik2006semi}, o criador do famoso algoritmo SVM
 estabelece uma profunda formalização dos problemas de aprendizado
-semi-supervisionado e inferência transdutiva. No final do texto, ele declara
-algumas reflexões sobre a solução de problemas em aprendizagem de
-máquina. Em uma delas, ele diz que ao resolver um problema, não tente
-resolver o problema geral como um passo intermediário, tente obter a
-resposta que você precisa, mas não a mais geral. Por fim, Vapnik
-deixa uma sugestão relevante:
+semi-supervisionado e inferência transdutiva. No final do texto, ele
+declara algumas reflexões sobre a solução de problemas em aprendizagem
+de máquina. Em uma delas, ele diz que ao resolver um problema, não
+tente resolver o problema geral como um passo intermediário, tente
+obter a resposta que você precisa, mas não a mais geral. Por fim,
+Vapnik deixa uma sugestão relevante:
 
 
 \begin{displayquote}
@@ -357,9 +357,9 @@ Neste trabalho, são gerados 16 filtros de Gabor que foram avaliados
 experimentalmente com variados parâmetros. Após a aplicação do filtro
 em cada canal RGB da imagem, são extraídos cinco estatísticas: média,
 mediana, variância, desvio padrão e 25-quantis. Com isso, todas as
-cinco estatisticas dos 16 filtros aplicados em cada um dos três canais
+cinco estatísticas dos 16 filtros aplicados em cada um dos três canais
 são concatenadas num único vetor de características resultante com 240
-($16 \times 5 \times 3$) dimensões, pois é o resultado.
+($16 \times 5 \times 3$) dimensões.
 
 \section{Métricas de similaridade}\label{sec:teorica-metricas-de-similaridade}
 
@@ -382,7 +382,7 @@ euclidiana e distância de manhattan.
 A distância euclidiana é o módulo da reta que conecta dois pontos no
 espaço. A distância de manhattan é a soma da diferença absoluta entre
 dois pontos para cada dimensão. Na
-figura~\ref{fig:manhattan-vs-euclidean} é ilustrado a disposição de
+figura~\ref{fig:manhattan-vs-euclidean} é ilustrada a disposição de
 dois pontos $ x $ e $ y $ no espaço euclidiano com os módulos de
 segmento de reta usados para compor a distância de cada métrica.
 
@@ -442,7 +442,7 @@ matemática.
 
 \section{LCU}\label{sec:teorica-lcu}
 
-O algoritmo \gls{LCU} foi desenvolvido por um
+O algoritmo \gls{LCU}, foi desenvolvido por um
 brasileiro~\cite{VerriNetworkUnfoldingMap2018}, é uma dinâmica
 coletiva baseada em propagação de rótulos numa rede complexa. Essa
 dinâmica coletiva é modelada como um sistema dinâmico com geração de
@@ -469,7 +469,7 @@ probabilidade das partículas visitarem os nós mais promissores
 seção~\ref{sec:teorica-aprendizado-semi-supervisionado}, esse cenário
 de aprendizado é semi-supervisionado transdutivo: poucos rótulos estão
 disponíveis e nenhuma função de inferência é estimada. A inferência
-acontece diretamente entre os pontos rotulados e os não-rotulados.
+acontece diretamente entre os pontos rotulados e os não rotulados.
 
 
 \begin{figure}[!h]
@@ -528,7 +528,7 @@ Considera-se uma rede complexa expressada por um simples grafo
 ponderado não-direcionado $G = (\mathcal{V}, \mathcal{E})$, onde $\mathcal{V}$ é o conjunto de
 vértices e $\mathcal{E} \subset \mathcal{V} \times \mathcal{V}$ é o conjunto de arestas. A rede possui
 $\left|\mathcal{V}\right| = l + u$ vértices que podem ser representações de
-dados rotulados ($ l $) ou não-rotulados ($ u $). Os vértices anotados
+dados rotulados ($ l $) ou não rotulados ($ u $). Os vértices anotados
 podem ter um rótulo $y_i = \{1, \ldots, C\}$, em que $C$ é o número total de
 classes, além disso possuem um vetor de características $\vec{x_i}$ da
 representação daquele dado. A rede é representada por uma matriz de
@@ -536,12 +536,12 @@ adjacência $A = (a_{ij})$, onde $a_{ij} =a_{ji} =
 similarity(\vec{x_i}, \vec{x_j})$, na qual as arestas possuem um peso
 que se refere à similaridade entre os vetores de características
 representados pelos vértices. Nessa situação, supõe-se que $l << u$,
-ou seja, há muito mais dados não-rotulados do que rotulados, na qual
+ou seja, há muito mais dados não rotulados do que rotulados, na qual
 caracteriza-se um cenário para aprendizado semi-supervisionado.
 
 Os vértices rotulados são chamados de fontes, que geram partículas com
 a classe que responde ao vértice. Partículas que alcançam um vértice fonte
-com classe diferente são eliminados automaticamente do sistema.
+com classe diferente são eliminadas automaticamente do sistema.
 
 O sistema dinâmico não-linear $X(t)$ que representa o \gls{LCU} é definido
 matematicamente como:
@@ -551,11 +551,11 @@ matematicamente como:
     \mathbf{n}^c(t)={\left[n_i^c(t)\right]}_i \\
     N^c(t)={\left(n_{i j}^c(t)\right)}_{i, j} \\
     \Delta^c(t)={\left(\delta_{i j}^c(t)\right)}_{i, j}
-\end{array}\right]
+\end{array}\right],
 \end{equation}
 
 \noindent
-Em que $ \mathbf{n}^c(t)$ é um vetor linha cujo elementos $n_i^c(t)$
+em que $ \mathbf{n}^c(t)$ é um vetor linha cujos elementos $n_i^c(t)$
 representam a população de partículas com rótulo $c$ em cada vértice
 $v_i$ no tempo $t$. Os elementos $n_{i j}^c(t)$ representam o número
 de partículas da classe $c$ que se movem do vértice $v_i$ para $v_j$ no
@@ -582,10 +582,10 @@ elementos dessa matriz são definidos como:
   p_{i j}^c(X(t)):= \begin{cases}0 & \text { se } v_j \in \mathcal{L} \text { e
                                      } y_j \neq c, \\
     \frac{a_{i j}}{\deg v_i}\left(1-\lambda \sigma_{i
-    j}^c(X(t))\right) & \text { do contrário }\end{cases}
+    j}^c(X(t))\right) & \text { do contrário, }\end{cases}
 \end{equation}
 \noindent
-Em que ${\deg v_i}$ o grau do vértice (número de arestas
+em que ${\deg v_i}$ o grau do vértice (número de arestas
 conectadas) e variável $\sigma_{i j}^c$ define-se como:
 
 \begin{equation}\label{eq:lcu-sigma}
@@ -610,10 +610,10 @@ partículas nos vértices fontes no tempo $t$, e é definida como:
 
 \begin{equation}\label{eq:lcu-generation}
   \begin{aligned}
-    g_i^c(X(t)) &:=\rho_i^c \max \left\{0, \sum_{j=1}^{\left| \mathcal{V} \right|}(\mathbf{n}_{j}^c(0) - \mathbf{n}_{j}^c(t))\right\} \\
+    g_i^c(X(t)) &:=\rho_i^c \max \left\{0, \sum_{j=1}^{\left| \mathcal{V} \right|}(\mathbf{n}_{j}^c(0) - \mathbf{n}_{j}^c(t))\right\}, \\
     \rho_i^c &:= \begin{cases}\frac{\deg v_i}{\sum_{v_j \in \mathcal{G}^c}
       \deg v_j} & \text { se } v_i \in \mathcal{G}^c, \\ 0 & \text {
-                                                               do contrário }\end{cases}
+                                                               do contrário. }\end{cases}
   \end{aligned}
 \end{equation}
 
@@ -640,20 +640,20 @@ Por fim, as redes $ G^c(\tau) $ são usadas para classificação dos
 vértices. São atribuídos os rótulos $y_j \in \{1, \ldots, C\}$ para cada
 vértice não-rotulado com a informação provida pela rede $G^c$.  O
 rótulo $y_j$ é atribuído baseado na densidade das arestas na sua
-vizinhaça. Formalmente, escrito como:
+vizinhança. Formalmente, escrito como:
 
 \begin{equation}\label{eq:lcu-vertex-classification}
-y_j = \underset{c \in \{1, \ldots, C\}}{\arg \max }\left| \mathcal{E}(\mathcal{N}_{c,j}) \right|
+y_j = \underset{c \in \{1, \ldots, C\}}{\arg \max }\left| \mathcal{E}(\mathcal{N}_{c,j}) \right|,
 \end{equation}
 \noindent
-Em que ${\mathcal{N}_{c,j}}$ são as arestas da vizinhança do vértice $j$ que
+em que ${\mathcal{N}_{c,j}}$ são as arestas da vizinhança do vértice $j$ que
 foram dominadas por párticulas da classe $c$. Na
 figura~\ref{fig:lcu-classification}, é ilustrada a dinâmica coletiva
 aplicada em uma rede complexa de formato similar a duas bananas. A
 ilustração está dividida em quatro etapas: (a) inicialização com 6
-vértices rotulados, 3 para cada classe, vértices pretos não estão
+vértices rotulados, 3 para cada classe, com vértices pretos não
 rotulados; (b) 4 iterações do sistema, com as arestas coloridas
-sendo dominadas por particulas, enquanto as cinzas ainda não foram
+sendo dominadas por partículas, enquanto as cinzas ainda não foram
 dominadas; (c) 20 iterações, todo o grafo foi percorrido; (d) a
 classificação dos vértices pela classe correspondente que obteve maior
 dominação.
@@ -729,7 +729,7 @@ geral do método.
 \end{algorithm}
 \FloatBarrier{}
 
-A seguir uma ilustração da execução do algoritmo em algumas etapas. Na
+A seguir, uma ilustração da execução do algoritmo em algumas etapas. Na
 figura~\ref{fig:egsis-init}, são observadas duas etapas sendo
 realizadas: na imagem (\subref{fig:egsis-superpixels}) a segmentação
 por superpixels, na imagem (\subref{fig:egsis-complex-networks}) a rede
