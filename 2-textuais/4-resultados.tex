@@ -180,14 +180,14 @@ observar que o método $\gls{EGSIS}(s=200, f=gabor)$ atinge o maior
 valor médio de precisão entre todos os métodos comparados, com um
 valor de 0.9620. Seguindo o método EGSIS, o segundo colocado na
 métrica de precisão foi o método DenseCut, com um valor de precisão de
-0.9418, que é próximo, mas ainda significativamente maior. É
+0.9418, que é próximo, mas ainda significativamente menor. É
 importante ressaltar que uma alta precisão implica uma baixa
 incidência de pixels falsos-positivos.
 
-Em nenhuma das métricas apresentadas na comparação, o EGSIS se
+Em nenhuma das métricas apresentadas na comparação o EGSIS se
 classifica como o pior método. No entanto, observa-se um valor menor
 de \textit{recall} em comparação à precisão, o que impacta diretamente
-no valor das métricas \textit{F1} e IoU. Nesse cenário, conclui-se que
+no valor das métricas \textit{F1} e IoU. Neste cenário, conclui-se que
 o modelo EGSIS tem uma taxa maior de falsos-negativos do que de
 falsos-positivos.
 
@@ -198,18 +198,20 @@ quantidade de pixels entre as classes, sendo o plano de fundo a classe
 dominante. No algoritmo \gls{LCU}, um dos fatores importantes para
 classificar um vértice que representa um superpixel é a extração de
 características que através de uma função de similaridade calcula o
-peso nas arestas do grafo. No entanto, esse é apenas um dos fatores do
-sistema dinâmico: também há a geração de partículas e a transição
-entre os vértices. Em geral, a classe que representa o objeto é
-cercada pelo plano de fundo, portanto, é provável que a maior rede
-fora do objeto gere partículas com a classe do plano de fundo, o que,
-por fim, pode forçar a dominação de vértices que deveriam fazer parte
-da classe do objeto, gerando falsos-negativos.
+peso das arestas da rede complexa. No entanto, esse é apenas um dos
+fatores do sistema dinâmico, pois também há a geração de partículas e a
+transição entre os vértices. Em geral, a classe que representa o
+objeto é cercada pelo plano de fundo, portanto, é provável no domínio
+da rede complexa gerada, a maior rede fora do objeto gere partículas
+com a classe do plano de fundo, o que, por fim, pode forçar a
+dominação de vértices que deveriam fazer parte da classe do objeto, mas
+foram classificados como plano de fundo gerando falsos-negativos.
 
 Se isso for confirmado, uma possível contramedida seria modificar o
 sistema dinâmico para dar maior peso às similaridades entre
-superpixels na probabilidade de sobrevivência das partículas. Além
-disso, seria útil explorar novas técnicas de extração de
+superpixels, de tal maneira que haja um aumento da probabilidade
+de sobrevivência das partículas entre superpixels de mesma
+classe. Além disso, seria útil explorar novas técnicas de extração de
 características que gerem valores de similaridade mais
 discriminantes. Essas ideias serão discutidas com mais detalhes na
 próxima seção deste trabalho.
