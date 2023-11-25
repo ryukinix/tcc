@@ -153,23 +153,63 @@ Deep GrabCut, todos algoritmos de segmentação interativa baseado em grafos.
     \Caption{\label{tab:resultados-estado-da-arte} Resultados
       comparativos entre o método EGSIS e métodos estado-da-arte para
       segmentação interativa baseado em grafos. Em negrito os melhores
-      resultados.}
+      resultados, em vermelho os piores.}
   \begin{tabular}{lcccc}
     \toprule
-    \textbf{Método}                    & \textbf{Recall} & \textbf{Precision} & \textbf{F1}     & \textbf{IoU} \\
+    \textbf{Método}                    & \textbf{Recall} & \textbf{Precision} & \textbf{F1}     & \textbf{IoU}    \\
     \midrule \midrule
-    GrabCut                            & 0.9668          & 0.9213             & \textbf{0.9407} & \textbf{0.8927}       \\
-    LazySnapping                       & \textbf{0.9681} & 0.9104             & 0.9357          & 0.8842       \\
-    OneCut                             & 0.8585          & 0.7926             & 0.7899          & 0.6974       \\
-    Saliency Cuts                      & 0.8371          & 0.8892             & 0.8255          & 0.7458       \\
-    Iterated Graph Cuts\footnotemark{} & 0.9614          & 0.8878             & 0.9212          & 0.8597       \\
-    DenseCut                           & 0.8427          & 0.9418             & 0.8561          & 0.7927       \\
-    Deep GrabCut                       & 0.8854          & 0.8774             & 0.8701          & 0.7849       \\
-    $\gls{EGSIS}(s=200, f=gabor)$      & 0.8799          & \textbf{0.9620}    & 0.9167          & 0.8511       \\
-    $\gls{EGSIS}(s=200, f=comatrix)$   & 0.8877          & 0.9611             & 0.9212          & 0.8578       \\
+    GrabCut                            & 0.9668          & 0.9213             & \textbf{0.9407} & \textbf{0.8927} \\
+    LazySnapping                       & \textbf{0.9681} & 0.9104             & 0.9357          & 0.8842          \\
+    OneCut                             & 0.8585          & \red{0.7926}       & \red{0.7899}    & \red{0.6974}    \\
+    Saliency Cuts                      & \red{0.8371}    & 0.8892             & 0.8255          & 0.7458          \\
+    Iterated Graph Cuts\footnotemark{} & 0.9614          & 0.8878             & 0.9212          & 0.8597          \\
+    DenseCut                           & 0.8427          & 0.9418             & 0.8561          & 0.7927          \\
+    Deep GrabCut                       & 0.8854          & 0.8774             & 0.8701          & 0.7849          \\
+    $\gls{EGSIS}(s=200, f=gabor)$      & 0.8799          & \textbf{0.9620}    & 0.9167          & 0.8511          \\
+    $\gls{EGSIS}(s=200, f=comatrix)$   & 0.8877          & 0.9611             & 0.9212          & 0.8578          \\
     \bottomrule
   \end{tabular}
   \Fonte{Baseado nos resultados encontrados no artigo~\cite{wang2023review}}
 \end{table}
+\FloatBarrier{}
 
 \footnotetext{Não há um nome formal pra esse método~\cite{an2013iterated}, por ora ele será chamado assim}
+
+Na tabela~\ref{tab:resultados-estado-da-arte}, é possível
+observar que o método $\gls{EGSIS}(s=200, f=gabor)$ atinge o maior
+valor médio de precisão entre todos os métodos comparados, com um
+valor de 0.9620. Seguindo o método EGSIS, o segundo colocado na
+métrica de precisão foi o método DenseCut, com um valor de precisão de
+0.9418, que é próximo, mas ainda significativamente maior. É
+importante ressaltar que uma alta precisão implica uma baixa
+incidência de pixels falsos-positivos.
+
+Em nenhuma das métricas apresentadas na comparação, o EGSIS se
+classifica como o pior método. No entanto, observa-se um valor menor
+de \textit{recall} em comparação à precisão, o que impacta diretamente
+no valor das métricas \textit{F1} e IoU. Nesse cenário, conclui-se que
+o modelo EGSIS tem uma taxa maior de falsos-negativos do que de
+falsos-positivos.
+
+Embora seja necessária uma investigação mais aprofundada para
+determinar a causa dessa maior taxa de falsos-negativos, é importante
+notar que o conjunto de dados GrabCut possui um desequilíbrio na
+quantidade de pixels entre as classes, sendo o plano de fundo a classe
+dominante. No algoritmo \gls{LCU}, um dos fatores importantes para
+classificar um vértice que representa um superpixel é a extração de
+características que através de uma função de similaridade calcula o
+peso nas arestas do grafo. No entanto, esse é apenas um dos fatores do
+sistema dinâmico: também há a geração de partículas e a transição
+entre os vértices. Em geral, a classe que representa o objeto é
+cercada pelo plano de fundo, portanto, é provável que a maior rede
+fora do objeto gere partículas com a classe do plano de fundo, o que,
+por fim, pode forçar a dominação de vértices que deveriam fazer parte
+da classe do objeto, gerando falsos-negativos.
+
+Se isso for confirmado, uma possível contramedida seria modificar o
+sistema dinâmico para dar maior peso às similaridades entre
+superpixels na probabilidade de sobrevivência das partículas. Além
+disso, seria útil explorar novas técnicas de extração de
+características que gerem valores de similaridade mais
+discriminantes. Essas ideias serão discutidas com mais detalhes na
+próxima seção deste trabalho.
