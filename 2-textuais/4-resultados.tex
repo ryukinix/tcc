@@ -199,13 +199,13 @@ dominante. No algoritmo \gls{LCU}, um dos fatores importantes para
 classificar um vértice que representa um superpixel é a extração de
 características que através de uma função de similaridade calcula o
 peso das arestas da rede complexa. No entanto, esse é apenas um dos
-fatores do sistema dinâmico, pois também há a geração de partículas e a
-transição entre os vértices. Em geral, a classe que representa o
-objeto é cercada pelo plano de fundo, portanto, é provável no domínio
-da rede complexa gerada, a maior rede fora do objeto gere partículas
-com a classe do plano de fundo, o que, por fim, pode forçar a
-dominação de vértices que deveriam fazer parte da classe do objeto, mas
-foram classificados como plano de fundo gerando falsos-negativos.
+fatores do sistema dinâmico, pois também há a geração de partículas e
+a transição entre os vértices. Geralmente, o objeto é cercado pelo
+plano de fundo. Isso pode levar a uma situação onde a rede complexa
+maior, localizada fora do objeto, gera partículas da classe do plano
+de fundo em quantidade suficiente para dominar os vértices na região
+do objeto. Esse comportamento implicaria um aumento na incidência de
+falsos-negativos.
 
 Se isso for confirmado, uma possível contramedida seria modificar o
 sistema dinâmico para dar maior peso às similaridades entre
