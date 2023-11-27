@@ -46,8 +46,12 @@
 %%                                                   %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+% macros de utilidade
+\newcommand{\fonteautor}{Elaborado pelo autor.}
+\newcommand{\fonteautorscikit}{Elaborado pelo autor através de imagens
+disponíveis na biblioteca \textit{scikit-image}~\cite{scikit-image}.}
+
 % Importações de pacotes
-\usepackage{mathtools}                              % centralizar equações
 \usepackage{csquotes}                               % displayquote
 \usepackage[utf8]{inputenc}                         % Acentuação direta
 \usepackage[T1]{fontenc}                            % Codificação da fonte em 8 bits
@@ -60,6 +64,7 @@
 \usepackage{listings}                               % Utilizar codigo fonte no documento
 \usepackage[table,xcdraw]{xcolor}
 \usepackage{xcolor}
+\newcommand{\red}[1]{\textcolor{red}{\textbf{#1}}}  % bold red text
 \usepackage{microtype}                              % Para melhorias de justificação?
 \usepackage[portuguese,ruled,lined]{algorithm2e}    % Escrever algoritmos
 \usepackage{algorithmic}                            % Criar Algoritmos
@@ -70,11 +75,20 @@
 \usepackage{tocloft}                                % Permite alterar a formatação do Sumário
 \usepackage{etoolbox}                               % Usado para alterar a fonte da Section no Sumário
 \usepackage[nogroupskip,nonumberlist]{glossaries}   % Permite fazer o glossario
+%\usepackage{natbib}                                 % Permite citação dupla com \citealp e \citealt, \citep
 
-\usepackage[font=singlespacing,format=plain,justification=justified,skip=0pt,singlelinecheck = false]{caption}            % Altera o comportamento da tag caption
+% Altera o comportamento da tag caption:
+\usepackage[font=singlespacing,format=plain,justification=justified,skip=0pt,singlelinecheck = false]{caption}
+
+% Permite desenhar figuras lado a lado
+\usepackage{subcaption}
+\usepackage{graphicx}
 
 \usepackage[alf, abnt-emphasize=bf, recuo=0cm, abnt-etal-cite=2, abnt-etal-list=0, abnt-etal-text=it]{abntex2cite}  % Citações padrão ABNT
-\usepackage[bottom]{footmisc}                      % Mantém as notas de rodapé sempre na mesma posição
+
+%% essa desgraça aq ta eh fodendo bem legal as notas de rodapé!!!
+%%\usepackage[bottom]{footmisc}                      % Mantém as notas de rodapé sempre na mesma posição
+
 \usepackage{times}                                 % Usa a fonte Times
 %%%%%%%%%%%%%%%%%%% AVISO %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %descomente as duas linhas abaixo para alterar o texto de Times New Roman para Arial:
@@ -99,6 +113,8 @@
 \usepackage{pdfpages}         % Incluir pdf no documento
 \usepackage{amsmath}          % Usar equacoes matematicas
 \usepackage{placeins}         % /FloatBarrier (controlar posição das figuras)
+% \begin{displayquote} ficam itálicos
+\renewcommand{\mkbegdispquote}[2]{\itshape} % chktex 6
 
 \makeglossaries% Organiza e gera a lista de abreviaturas, simbolos e glossario
 \makeindex     % Gera o Indice do documento

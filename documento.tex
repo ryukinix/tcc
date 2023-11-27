@@ -78,12 +78,12 @@
     english,          % Hifenizacoes em ingles
     spanish,          % Hifenizacoes em espanhol
     brazil,           % Ultimo idioma eh o idioma padrao do documento
-    fleqn             % Comente esta linha se quiser centralizar as equacoes. Comente também a linha 65 abaixo
+%    fleqn            % Comente esta linha se quiser centralizar as equacoes. Comente também a linha 65 abaixo
 ]{abntex2}
 
 \input{lib/preambulo}
 
-\setlength{\mathindent}{0pt} %Complementa o alinhamento de equações para totalmente a esquerda.
+% \setlength{\mathindent}{0pt} %Complementa o alinhamento de equações para totalmente a esquerda.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%                     ATENCAO                     %%
@@ -178,7 +178,7 @@
 \autor{Manoel Vilela Machado Neto}
 \titulo{Segmentação Semi-Supervisionada de Imagens através de
 Dinâmicas Coletivas em Redes Complexas}
-\data{2022}
+\data{2023}
 \local{Sobral}
 
 % Exemplo: \dataaprovacao{01 de Janeiro de 2012}
@@ -235,8 +235,8 @@ Dinâmicas Coletivas em Redes Complexas}
 
     % Elementos pré-textuais
     \imprimircapa{}
-    %\imprimirfolhaderosto{}
-	%\imprimirfichacatalografica{1-pre-textuais/ficha-catalografica}
+    \imprimirfolhaderosto{}
+	\imprimirfichacatalografica{1-pre-textuais/ficha-catalografica}
 	%\imprimirerrata{elementos-pre-textuais/errata}
 	\imprimirfolhadeaprovacao{}
 	\imprimirdedicatoria{1-pre-textuais/dedicatoria}
@@ -247,12 +247,12 @@ Dinâmicas Coletivas em Redes Complexas}
     % Se você comentar esta linha o título da lista fica: LISTA DE ILUSTRAÇÕES
 	\renewcommand*\listfigurename{Lista de Figuras}
 	\imprimirlistadeilustracoes{}
-	%\imprimirlistadetabelas
+	\imprimirlistadetabelas{}
 	%\imprimirlistadequadros
-	%\imprimirlistadealgoritmos
+	\imprimirlistadealgoritmos{}
 	%\imprimirlistadecodigosfonte
 	\imprimirlistadeabreviaturasesiglas{}
-	%\imprimirlistadesimbolos{1-pre-textuais/lista-de-simbolos}
+	\imprimirlistadesimbolos{1-pre-textuais/lista-de-simbolos}
 	\imprimirsumario{}
 
 	\setcounter{table}{0}% Deixe este comando antes da primeira tabela.
@@ -260,10 +260,7 @@ Dinâmicas Coletivas em Redes Complexas}
 	%Elementos textuais
 	\textual{}
 	\input{2-textuais/1-introducao}
-	\input{2-textuais/2-objetivos}
 	\input{2-textuais/2-fundamentacao-teorica}
-	\input{2-textuais/3-justificativas}
-    \input{2-textuais/trabalhos-relacionados}
 	\input{2-textuais/3-metodologia}
 	\input{2-textuais/4-resultados}
 	\input{2-textuais/5-conclusao}

@@ -1,9 +1,78 @@
-\chapter{Conclusões e Trabalhos Futuros}\label{chap:conclusoes-e-trabalhos-futuros}
+\chapter{CONCLUSÕES E TRABALHOS FUTUROS}\label{chap:conclusoes-e-trabalhos-futuros}
 
-Em desenvolvimento.
+Neste trabalho, foi possível conceber um novo algoritmo chamado de
+\gls{EGSIS} que pode ser enquadrado na resolução de problemas de
+segmentação interativa de imagens. Ao realizar a pesquisa sobre esse
+tema, foi observado que a linha de pesquisa sobre algoritmos
+transdutivos de segmentação de imagens ainda está evoluindo, mas com
+menos volume que as técnicas indutivas e, por esse motivo, este
+trabalho pode se posicionar como uma referência para construção de
+mais trabalhos envolvendo técnicas similares.
 
-%\label{sec:contribuicoes-do-trabalho}
+Na seção de resultados, o algoritmo \gls{EGSIS} obteve uma performance
+próxima daquelas obtidas pelos métodos estado-da-arte baseados em
+grafos para segmentação interativa de imagens. Durante a exploração
+dos resultados, foi observado que a qualidade da segmentação final
+depende crucialmente da qualidade da pré-segmentação com superpixels.
+
+Durante os experimentos, foi observado também que os melhores
+resultados foram alcançados com um maior número de superpixels e que
+o aumento do número de superpixels aumentou também o tempo de
+execução do algoritmo.
+
+O algoritmo possui várias partes móveis e trocáveis, o que permite no
+futuro a evolução de técnicas para melhorar ainda mais a qualidade de
+segmentação final. Os métodos de superpixel, extração de
+características, construção da rede complexa e dinâmica coletiva são
+partes móveis que podem ser testadas com técnicas mais avançadas.
+
+\section{Limitações e desafios}\label{sec:limitacoes-desafios}
+
+Um ponto de dificuldade em toda a pesquisa foi encontrar trabalhos de
+referência nessas condições com a palavra-chave semi-supervisionado,
+uma vez que as buscas realizadas direcionavam para trabalhos nos quais
+os algoritmos eram indutivos. Após trocar para segmentação transdutiva
+e segmentação interativa (mais recente), foi possível encontrar
+trabalhos que poderiam se enquadrar melhor com a proposta deste trabalho.
+
+A falta de \textit{datasets} para segmentação interativa com a
+inclusão da anotação parcial inicial foi um dos maiores desafios
+deste trabalho, o que limitou a capacidade de exploração e comparação
+com outros datasets de segmentação de imagens, assim como outras
+técnicas propostas em outros artigos. Por conta dessa ausência, o
+trabalho se limitou ao dataset GrabCut.
+
+A segmentação interativa é um tipo de problema que, por natureza, é
+uma segmentação binária. O algoritmo \gls{EGSIS} permite a segmentação
+interativa, mas não é limitado a esta. O desenvolvimento da técnica
+considerou também segmentação multi-classes, mas, por conta da
+dificuldade de encontrar \textit{datasets} públicos que contivessem as
+rotulações parciais, se tornou uma limitação da pesquisa.
+
+A exploração na linha de pesquisa sobre algoritmos de segmentação
+transdutiva multi-classes ainda possui espaço para crescer. A criação
+de um dataset novo para benchmark que tivesse essas anotações do
+usuário, como existe no GrabCut, poderia ser uma contribuição
+relevante para essa linha de pesquisa.
 
 
+\section{Trabalhos futuros}\label{sec:trabalhos-futuros}
 
-%\label{sec:limitacoes}
+Como mencionado anteriormente, o algoritmo \gls{EGSIS} possui uma
+flexibilidade na troca de várias partes que o compõem. Como potenciais
+trabalhos futuros, uma das principais oportunidades de pesquisa seria
+testar técnicas estado-da-arte de extração de características de
+imagens. Neste trabalho, a extração de características foi limitada a
+matriz de co-ocorrência e filtros de Gabor, que não são as melhores
+técnicas atualmente, apesar de já terem sido suficientes para prover
+bons resultados.
+
+A segmentação interativa evoluiu tanto para melhorar a qualidade de
+segmentação quanto para para reduzir ao mínimo a necessidade de
+rotulações iniciais providas pelo usuário. Em publicações mais
+recentes sobre segmentação interativa, novos estudos buscam criar
+técnicas que minimizam o número de cliques de anotação que o usuário
+precisa fazer para alcançar segmentações de boa qualidade. Um trabalho
+futuro seria expandir as atuais métricas para simular a quantidade
+mínima de anotação necessária para alcançar um IoU com um determinado
+valor mínimo, geralmente entre 0.85 e 0.95.
