@@ -9,13 +9,13 @@
 % Inserting the preamble file with the packages
 \input{templatebeamerufc/libs/preamble.tex}
 % Inserting the references file
-\bibliography{templatebeamerufc/references.bib}
+\bibliography{3-pos-textuais/referencias.bib}
 \listfiles
 % Title
 \title[EGSIS]{\textbf{Segmentação Semi-Supervisionada de Imagens através de
 Dinâmicas Coletivas em Redes Complexas}}
 % Subtitle
-\subtitle{}
+\subtitle{Uma avaliação no cenário de segmentação interativa}
 % Author of the presentation
 \author{Manoel Vilela Machado Neto}
 % Institute's Name
@@ -30,7 +30,7 @@ Dinâmicas Coletivas em Redes Complexas}}
     \ufc{}
 }
 % date of the presentation
-\date{\today}
+\date{Sobral, \today}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -56,29 +56,30 @@ Dinâmicas Coletivas em Redes Complexas}}
 
 %% ---------------------------------------------------------------------------
 % This presentation is separated by sections and subsections
-\section{Seção I}
-\begin{frame}{Explicações}
-    % itemize
-    Este é um template que pode ser utilizado para:
-    \begin{itemize}
-        \item Apresentação de Trabalhos Acadêmicos
-        \item Apresentação de Disciplinas
-        \item Apresentações de Teses e Dissertações
-    \end{itemize}
+\section{Visão geral}
+\begin{frame}{Definição do problema}
+  \begin{block}{Definição}
+      Em segmentação de imagens, o objetivo é dividir imagens em regiões
+      de interesse.
+  \end{block}
 
-    \vspace{0.4cm} % vertical space
+  Existem alguns tipos diferentes de segmentação de imagens, como por
+exemplo:
+  \begin{enumerate}
+    \item Segmentação semântica;
+    \item Segmentação de instâncias;
+    \item Segmentação interativa.
+  \end{enumerate}
+\end{frame}
 
-    % enumeration
-    Para utilizar este template corretamente é importante que:
-    \begin{enumerate}
-        \item Tenha conhecimento mínimo sobre LaTeX
-        \item Ler os comentários no template (explicações)
-        \item Ler o README.md (documentação)
-    \end{enumerate}
-
-    \vspace{0.2cm}
-
-    \example{Este é um texto de exemplo!} \emph{Texto de Ênfase!}
+\begin{frame}{Segmentação de instâncias e semântica}
+  % imagem comparando segmentação semântica vs segmentação por instâncias
+  \begin{figure}\label{fig:semantic-vs-instance-segmentation}
+    \centering
+    \caption{Comparação entre segmentação semântica e segmentação de instâncias.}
+    \includegraphics[scale=0.2]{figuras/image-segmentation-types}
+    \source{\cite{MediumInstanceSegmentation2019}}
+  \end{figure}
 \end{frame}
 
 %% ---------------------------------------------------------------------------
@@ -112,52 +113,6 @@ Dinâmicas Coletivas em Redes Complexas}}
     \simplebox{testando o simple box}
 \end{frame}
 
-%% ---------------------------------------------------------------------------
-\subsection{Subseção III}
-\begin{frame}{Criando Algoritmos (Pseudocódigo)}
-    \begin{algorithm}[H]
-        \SetAlgoLined
-        \LinesNumbered
-        \SetKwInOut{Input}{input}
-        \SetKwInOut{Output}{output}
-        \Input{x: float, y: float}
-        \Output{r: float}
-        \While{True}{
-          r = x + y\;
-          \eIf{r >= 30}{
-           ``O valor de $r$ é maior ou iqual a 10.''\;
-           break\;
-           }{
-           ``O valor de $r$ = '', r\;
-          }
-         }
-         \caption{Algorithm Example}
-    \end{algorithm}
-\end{frame}
-
-%% ---------------------------------------------------------------------------
-
-\begin{frame}{Inserindo Algoritmos}
-    \lstset{language=Python}
-    \lstinputlisting[language=Python]{templatebeamerufc/code/main.py}
-\end{frame}
-
-%% ---------------------------------------------------------------------------
-\begin{frame}{Inserindo Algoritmos}
-    \lstinputlisting[language=C]{templatebeamerufc/code/source.c}
-\end{frame}
-
-%% ---------------------------------------------------------------------------
-\begin{frame}{Inserindo Algoritmos}
-    \lstinputlisting[language=Java]{templatebeamerufc/code/helloworld.java}
-\end{frame}
-
-%% ---------------------------------------------------------------------------
-\begin{frame}{Inserindo Algoritmos}
-    \lstinputlisting[language=HTML]{templatebeamerufc/code/index.html}
-\end{frame}
-
-%% ---------------------------------------------------------------------------
 % This frame show an example to insert multicolumns
 \section{Multicolunas}
 \begin{frame}{Seção II - Multicolunas}
@@ -181,7 +136,7 @@ Dinâmicas Coletivas em Redes Complexas}}
         \centering
         \caption{Emblema da UFC.}
         \includegraphics[scale=0.3]{templatebeamerufc/libs/emblemufc.pdf}
-        \source{Obtido pelo site oficial da UFC~\cite{siteufc}~\cite{einstein}}
+        \source{Obtido pelo site oficial da UFC ...}
         \label{fig:ufc_emblem}
     \end{figure}
 \end{frame}
