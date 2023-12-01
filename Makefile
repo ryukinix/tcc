@@ -23,6 +23,7 @@
 
 SRC = $(shell find . -iname '*.tex')
 FILENAME=documento
+PRESENTATION=apresentacao
 
 all: compile clean
 
@@ -43,6 +44,19 @@ compile:
 	make clean
 	@echo "Processo finalizado com sucesso!"
 
+presentation:
+	@echo "*********************************************************"
+	@echo "*													   *"
+	@echo "* APRESENTAÇÃO - TRABALHO CONCLUSÃO DE CURSO (UFC)	   *"
+	@echo "*													   *"
+	@echo "*********************************************************"
+	@echo "Compilando..."
+	make clean
+	latexmk -pdf $(PRESENTATION).tex
+	make clean
+	@echo "Processo finalizado com sucesso!"
+
+
 open:
 	xdg-open $(FILENAME).pdf
 
@@ -59,5 +73,6 @@ clean:
 	@rm -v -f *.out *.aux *.alg *.acr *.dvi *.gls \
 	       *.log *.bbl *.blg *.ntn *.not *.lof \
            *.lot *.toc *.loa *.lsg *.nlo *.nls \
-           *.ilg *.lol *.ind *.ist *.glg *.glo *.xdy *.acn *.idx *.loq *~
+           *.ilg *.lol *.ind *.ist *.glg *.glo *.xdy *.acn *.idx *.loq *~ \
+           *.bcf *.nav *.run.xml *.snm *.fdb_latexmk *.fls
 	@echo "Processo finalizado com sucesso!"
