@@ -8,8 +8,6 @@
 \documentclass{templatebeamerufc/libs/ufc_format}
 % Inserting the preamble file with the packages
 \input{templatebeamerufc/libs/preamble.tex}
-% Inserting the references file
-\bibliography{3-pos-textuais/referencias.bib}
 \listfiles
 % Title
 \title[EGSIS]{\textbf{Segmentação Semi-Supervisionada de Imagens através de
@@ -144,8 +142,10 @@ exemplo:
 %% ---------------------------------------------------------------------------
 % Reference frames
 \begin{frame}[allowframebreaks]
-    \frametitle{Referências}
-    \printbibliography{}
+  \frametitle{Referências}
+  % Inserting the references file
+  \bibliography{3-pos-textuais/referencias.bib}
+  %\printbibliography{}
 \end{frame}
 
 %% ---------------------------------------------------------------------------
