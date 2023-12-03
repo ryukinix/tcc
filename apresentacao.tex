@@ -1,13 +1,7 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% This project aims to create the UFC template for presentation.                %%
-%% author: Maurício Moreira Neto - Doctoral student in Computer Science (MDCC)   %%
-%% contacts:                                                                     %%
-%%    e-mail: maumneto@ufc.br                                                    %%
-%%    linktree: https://linktr.ee/maumneto                                       %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \documentclass{templatebeamerufc/libs/ufc_format}
 % Inserting the preamble file with the packages
 \input{templatebeamerufc/libs/preamble.tex}
+\input{lib/macros}
 \listfiles
 % Title
 \title[EGSIS]{\textbf{Segmentação Semi-Supervisionada de Imagens através de
@@ -37,7 +31,6 @@ Dinâmicas Coletivas em Redes Complexas}}
 \begin{document}
 % insert the code style
 \input{templatebeamerufc/libs/code_style}
-
 %% ---------------------------------------------------------------------------
 % First frame (with tile, subtitle, ...)
 \begin{frame}{}
@@ -46,15 +39,19 @@ Dinâmicas Coletivas em Redes Complexas}}
 
 %% ---------------------------------------------------------------------------
 % Second frame
-\begin{frame}{Sumário}
-    \begin{multicols}{2}
-        \tableofcontents
-    \end{multicols}
+\begin{frame}[allowframebreaks]{Sumário}
+  \tableofcontents[sections={1-2}]
+    \framebreak{}
+  \tableofcontents[sections={3-5}]
 \end{frame}
 
 %% ---------------------------------------------------------------------------
 % This presentation is separated by sections and subsections
-\section{Visão geral}
+\section{Introdução}
+
+%% ---------------------------------------------------------------------------
+\subsection{Tipos de segmentação de imagem}
+
 \begin{frame}{Definição do problema}
   \begin{block}{Definição}
       Em segmentação de imagens, o objetivo é dividir imagens em regiões
@@ -70,6 +67,7 @@ exemplo:
   \end{enumerate}
 \end{frame}
 
+
 \begin{frame}{Segmentação de instâncias e semântica}
   % imagem comparando segmentação semântica vs segmentação por instâncias
   \begin{figure}\label{fig:semantic-vs-instance-segmentation}
@@ -80,25 +78,21 @@ exemplo:
   \end{figure}
 \end{frame}
 
-%% ---------------------------------------------------------------------------
-\subsection{Subseção I}
-\begin{frame}{Criando Blocos}
-    % Blocks styles
-    \begin{block}{Bloco Padrão}
-        Texto do corpo do bloco.
-    \end{block}
-
-    \begin{alertblock}{Bloco de Alerta}
-        Texto do corpo do bloco.
-    \end{alertblock}
-
-    \begin{exampleblock}{Bloco de Exemplo}
-        Texto do corpo do bloco.
-    \end{exampleblock}
+\begin{frame}{Segmentação interativa}
+  \begin{figure}\label{fig:interactive--segmentation}
+    \centering
+    \caption{Ilustração de segmentação interativa, rotulação em azul e
+      vermelho.\\ Na imagem a direita, foto segmentada.}
+    \includegraphics[scale=0.6]{figuras/interactive-segmentation-2008}
+    \source{\cite{duchenne2008segmentation}}
+  \end{figure}
 \end{frame}
 
+
+
 %% ---------------------------------------------------------------------------
-\subsection{Subseção II}
+\subsection{Aprendizagem semi-supervisionada}
+\subsection{Algoritmos indutivos vs transdutivos}
 \begin{frame}{Criando Caixas}
     \successbox{testando o success box}
 
@@ -111,8 +105,12 @@ exemplo:
     \simplebox{testando o simple box}
 \end{frame}
 
-% This frame show an example to insert multicolumns
-\section{Multicolunas}
+\section{Fundamentação Teórica}
+\subsection{Superpixels}
+\subsection{Redes complexas}
+\subsection{Extração de características}
+\subsection{Dinâmicas coletivas}
+\subsection{EGSIS}
 \begin{frame}{Seção II - Multicolunas}
     \begin{columns}{}
         \begin{column}{0.5\textwidth}
@@ -126,18 +124,51 @@ exemplo:
     \end{columns}
 \end{frame}
 
-%% ---------------------------------------------------------------------------
-% This frame show an example to insert figures
-\section{Imagens}
-\begin{frame}{Seção III - Figures}
-    \begin{figure}
-        \centering
-        \caption{Emblema da UFC.}
-        \includegraphics[scale=0.3]{templatebeamerufc/libs/emblemufc.pdf}
-        \source{Obtido pelo site oficial da UFC ...}
-        \label{fig:ufc_emblem}
-    \end{figure}
+
+% This frame show an example to insert multicolumns
+
+\section{Metodologia}
+\begin{frame}{Seção II - Multicolunas}
+    \begin{columns}{}
+        \begin{column}{0.5\textwidth}
+            \justify
+            É possível colocar mais de uma coluna utilizando os comandos de $\backslash$begin\{column\}\{\} e $\backslash$end\{column\}
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            \justify
+            Porém, o espaçamento deve ser proporcional entre as colunas para que estas colunas não entrem em coflito. O espaçamento é dado pelo segundo argumento do $\backslash$begin.
+        \end{column}
+    \end{columns}
 \end{frame}
+
+\subsection{Dataset GrabCut}
+
+\subsection{Métricas de avaliação}
+
+
+\section{Resultados}
+
+\subsection{Variação na quantidade de superpixels}
+\subsection{Resultados qualitativos}
+\subsection{Resultados quantitativos}
+
+\section{Conclusão}
+\begin{frame}{Seção II - Multicolunas}
+    \begin{columns}{}
+        \begin{column}{0.5\textwidth}
+            \justify
+            É possível colocar mais de uma coluna utilizando os comandos de $\backslash$begin\{column\}\{\} e $\backslash$end\{column\}
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            \justify
+            Porém, o espaçamento deve ser proporcional entre as colunas para que estas colunas não entrem em coflito. O espaçamento é dado pelo segundo argumento do $\backslash$begin.
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\subsection{Limitações e desafios}
+\subsection{Trabalhos futuros}
+
 
 %% ---------------------------------------------------------------------------
 % Reference frames
