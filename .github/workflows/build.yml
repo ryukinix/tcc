@@ -21,17 +21,8 @@ jobs:
       uses: xu-cheng/latex-action@v2
       with:
         root_file: documento.tex
-    - name: Clean build
-      run: make clean        
-    - name: Build presentation
-      uses: xu-cheng/latex-action@v2
-      with:
-        args: -pdflua -file-line-error -f -interaction=nonstopmode
-        root_file: apresentacao.tex
     - name: Upload binaries to release
       uses: actions/upload-artifact@v2
       with:
         name: draft_tcc
-        path: |
-          documento.pdf
-          apresentacao.pdf
+        path: documento.pdf
