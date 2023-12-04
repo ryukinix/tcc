@@ -1,24 +1,25 @@
 \documentclass{templatebeamerufc/libs/ufc_format}
-% Inserting the preamble file with the packages
+% Insere preâmbulo com a importação de pacotes
 \input{templatebeamerufc/libs/preamble.tex}
+% Macros pessoais
 \input{lib/macros}
 \listfiles
-% Title
+% Título
 \title[EGSIS]{\textbf{Segmentação Semi-Supervisionada de Imagens através de
 Dinâmicas Coletivas em Redes Complexas}}
-% Subtitle
+% Subtítulo
 \subtitle{Uma avaliação no cenário de segmentação interativa}
-% Author of the presentation
+% Autor da apresentação
 \author{Manoel Vilela Machado Neto}
-% Institute's Name
+% Nome do instituto
 \institute[UFC]{
-    % email for contact
+    % email para contato
     \normalsize{\email{manoel.machado@alu.ufc.br}}
     \newline
-    % Department Name
+    % Nome do departamento
     \department{Engenharia da Computação}
     \newline
-    % university name
+    % Nome da universidade
     \ufc{}
 }
 % date of the presentation
@@ -26,27 +27,28 @@ Dinâmicas Coletivas em Redes Complexas}}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Start Document of the Presentation                                           %%
+%% Inicío do Documento de Apresentação                                          %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
-% insert the code style
+% Insere o estílo de código (quase não usado)
 \input{templatebeamerufc/libs/code_style}
 %% ---------------------------------------------------------------------------
-% First frame (with tile, subtitle, ...)
+% Primeiro slide (com título, subtítulo, ...)
 \begin{frame}{}
     \maketitle
 \end{frame}
 
 %% ---------------------------------------------------------------------------
-% Second frame
+% Segundo slide com sumário
 \begin{frame}[allowframebreaks]{Sumário}
   \tableofcontents[sections={1-2}]
     \framebreak{}
   \tableofcontents[sections={3-5}]
 \end{frame}
 
-%% ---------------------------------------------------------------------------
-% This presentation is separated by sections and subsections
+%% ---------------------------------------------------------------------------------
+%% ------------ INTRODUÇÃO -------------------------------
+%% ---------------------------------------------------------------------------------
 \section{Introdução}
 
 %% ---------------------------------------------------------------------------
@@ -89,18 +91,39 @@ exemplo:
 
 \begin{frame}{Segmentação interativa}
   \begin{alertblock}{Foco}
-  O foco desta apresentação é demonstrar uma nova técnica de
-  segmentação de imagens, avaliado no cenário de segmentação
-  interativa com duas classes: o objeto de interesse e o fundo.
+  O foco desta apresentação é demonstrar uma \textbf{nova técnica de
+  segmentação de imagens}, avaliada no cenário de segmentação
+  interativa com \textbf{duas classes}: o objeto de interesse e o plano de fundo.
   \end{alertblock}
 \end{frame}
 
 
 %% ---------------------------------------------------------------------------
-\subsection{Aprendizado semi-supervisionado}
+\subsection{Aprendizado de máquina}
+
+\begin{frame}{Aprendizado de máquina}
+  Em~\cite{samuel1959some}, aprendizado de maquina é definido como:
+
+  \begin{block}{Definição} Campo de estudo que dá aos computadores a
+    habilidade de aprender sem serem explicitamente programados.
+  \end{block}
+
+  \pause{}
+
+  \begin{figure}\label{fig:samuel}
+    \centering
+    \caption{
+      Arthur Samuel, 1956, apresenta sua criação ao público na
+      TV, uma inteligência artificial capaz de jogar damas no
+      computador IBM 701.
+    }
+    \includegraphics[scale=0.18]{figuras/samuel}
+    \source{\cite{press2021machine}}
+  \end{figure}
+\end{frame}
 
 \begin{frame}{Aprendizado semi-supervisionado}
-  \begin{figure}\label{fig:interactive--segmentation}
+  \begin{figure}\label{fig:ilustraca;ao-aprendizado-semi-supervisionado}
     \centering
     \caption{
       O aprendizado semi-supervisionado tem como principal
@@ -117,8 +140,8 @@ de treinamento.
   \begin{block}{Dados de treinamento}
     Dado um conjunto de dados de treinamento $ \mathbf{X} =
     \{\vec{x_1}, \vec{x_2}, \ldots, \vec{x_n}\} $, tal que $ \vec{x_n} \in \mathbb{R}^d $,
-    onde apenas um subconjunto $ \vec{Y} = \{y_1, y_2, \ldots , y_m\} $ em que
-    $ (m < n) $ tem rótulos correspondentes.
+    apenas um subconjunto $ \vec{Y} = \{y_1, y_2, \ldots , y_m\} $,
+    em que $ (m < n) $, tem rótulos correspondentes.
   \end{block}
 
   \pause{}
@@ -135,7 +158,7 @@ um novo exemplo $ \vec{x} $.
 \subsection{Aprendizado indutivo vs aprendizado transdutivo}
 
 \begin{frame}{Aprendizado indutivo vs aprendizado transdutivo}
-  \begin{figure}\label{fig:interactive--segmentation}
+  \begin{figure}\label{fig:induction-vs-transudciton-cropped}
     \centering
     \caption{
       No aprendizado indutivo, como em redes neurais, uma função de
@@ -143,13 +166,14 @@ inferência é estimada durante o treinamento. Enquanto isso,
 no aprendizado transdutivo a inferência de novos pontos é realizado sem a
 necessidade de estimar essa função.
 }
-    \includegraphics[scale=0.43]{figuras/induction_vs_transduction_cropped}
+    \includegraphics[scale=0.42]{figuras/induction_vs_transduction_cropped}
     \source{\cite{vapnik1995}}
   \end{figure}
 \end{frame}
 
 \begin{frame}{Aprendizado indutivo vs aprendizado transdutivo}
-  \begin{figure}\label{fig:interactive--segmentation} \centering
+  \begin{figure}\label{fig:transductive-vs-inductive}
+    \centering
     \caption{ Uma ilustração de aprendizado indutivo e aprendizado
       transdutivo.  }
     \includegraphics[scale=0.75]{figuras/transductive-vs-inductive}
@@ -160,49 +184,29 @@ necessidade de estimar essa função.
 \begin{frame}{Aprendizado indutivo vs aprendizado transdutivo}
   \begin{exampleblock}{Analogia}
      Através de uma analogia, pode-se considerar o aprendizado
-indutivo como um sistema de educação para o aprendizado generalizado,
-enquanto o aprendizado transdutivo é um sistema de educação orientado
-para exames.
+indutivo como um sistema de educação que alcança o entendimento generalizado,
+enquanto o aprendizado transdutivo é um sistema de educação focado
+em realização de provas.
   \end{exampleblock}
 \end{frame}
 
 
+%% -----------------------------------------------------------------------------------
+%% ----- FUNDAMENTAÇÃO TEÓRICA ---------
+%% ------------------------------------------------------------------------------------
 \section{Fundamentação Teórica}
 \subsection{Superpixels}
 \subsection{Redes complexas}
 \subsection{Extração de características}
 \subsection{Dinâmicas coletivas}
 \subsection{EGSIS}
-\begin{frame}{Seção II - Multicolunas}
-    \begin{columns}{}
-        \begin{column}{0.5\textwidth}
-            \justify
-            É possível colocar mais de uma coluna utilizando os comandos de $\backslash$begin\{column\}\{\} e $\backslash$end\{column\}
-        \end{column}
-        \begin{column}{0.5\textwidth}
-            \justify
-            Porém, o espaçamento deve ser proporcional entre as colunas para que estas colunas não entrem em coflito. O espaçamento é dado pelo segundo argumento do $\backslash$begin.
-        \end{column}
-    \end{columns}
-\end{frame}
 
-
-% This frame show an example to insert multicolumns
-
+%% -----------------------------------------------------------------------------------
+%% ---------- METODOLOGIA ------------------------------------
+%% -------------------------------------------------------------------------------------
 \section{Metodologia}
-\begin{frame}{Seção II - Multicolunas}
-    \begin{columns}{}
-        \begin{column}{0.5\textwidth}
-            \justify
-            É possível colocar mais de uma coluna utilizando os comandos de $\backslash$begin\{column\}\{\} e $\backslash$end\{column\}
-        \end{column}
-        \begin{column}{0.5\textwidth}
-            \justify
-            Porém, o espaçamento deve ser proporcional entre as colunas para que estas colunas não entrem em coflito. O espaçamento é dado pelo segundo argumento do $\backslash$begin.
-        \end{column}
-    \end{columns}
-\end{frame}
 
+%%
 \subsection{Dataset GrabCut}
 
 \subsection{Métricas de avaliação}
@@ -215,17 +219,10 @@ para exames.
 \subsection{Resultados quantitativos}
 
 \section{Conclusão}
-\begin{frame}{Seção II - Multicolunas}
-    \begin{columns}{}
-        \begin{column}{0.5\textwidth}
-            \justify
-            É possível colocar mais de uma coluna utilizando os comandos de $\backslash$begin\{column\}\{\} e $\backslash$end\{column\}
-        \end{column}
-        \begin{column}{0.5\textwidth}
-            \justify
-            Porém, o espaçamento deve ser proporcional entre as colunas para que estas colunas não entrem em coflito. O espaçamento é dado pelo segundo argumento do $\backslash$begin.
-        \end{column}
-    \end{columns}
+\begin{frame}{Principais conclusões}
+  \begin{alertblock}{WIP}
+    Ler documento de conclusao e sumarizar
+  \end{alertblock}
 \end{frame}
 
 \subsection{Limitações e desafios}
@@ -233,7 +230,7 @@ para exames.
 
 
 %% ---------------------------------------------------------------------------
-% Reference frames
+% Slides de referência
 \begin{frame}[allowframebreaks]
   \frametitle{Referências}
   % Inserting the references file
@@ -242,7 +239,7 @@ para exames.
 \end{frame}
 
 %% ---------------------------------------------------------------------------
-% Final frame
+% Slide final com agradecimento e contato
 \begin{frame}{}
     \centering
     \huge{\textbf{\example{Obrigado pela atenção!}}}
