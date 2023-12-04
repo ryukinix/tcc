@@ -54,8 +54,7 @@ Dinâmicas Coletivas em Redes Complexas}}
 
 \begin{frame}{Definição do problema}
   \begin{block}{Definição}
-      Em segmentação de imagens, o objetivo é dividir imagens em regiões
-      de interesse.
+    Segmentar uma imagem significa dividí-la em regiões de interesse.
   \end{block}
 
   Existem alguns tipos diferentes de segmentação de imagens, como por
@@ -82,7 +81,7 @@ exemplo:
   \begin{figure}\label{fig:interactive--segmentation}
     \centering
     \caption{Ilustração de segmentação interativa, rotulação em azul e
-      vermelho.\\ Na imagem a direita, foto segmentada.}
+      vermelho.\\ Na imagem a direita, foto segmentada sem o fundo.}
     \includegraphics[scale=0.6]{figuras/interactive-segmentation-2008}
     \source{\cite{duchenne2008segmentation}}
   \end{figure}
@@ -91,7 +90,35 @@ exemplo:
 
 
 %% ---------------------------------------------------------------------------
-\subsection{Aprendizagem semi-supervisionada}
+\subsection{Aprendizado semi-supervisionada}
+
+\begin{frame}{Aprendizado semi-supervisionado}
+  \begin{figure}\label{fig:interactive--segmentation}
+    \centering
+    \caption{
+      O aprendizado semi-supervisionado tem como principal
+característica \\ a utilização de dados rotulados e não rotulados na base
+de treinamento.
+}
+    \includegraphics[scale=0.1]{figuras/ilustracao-aprendizado-semi-supervisionado}
+    \source{\fonteautor}
+  \end{figure}
+\end{frame}
+
+
+\begin{frame}{Aprendizado semi-supervisionado}
+  \begin{block}{Definição}
+      Dado um conjunto de dados de treinamento $ \mathbf{X} =
+\{\vec{x_1}, \vec{x_2}, \ldots, \vec{x_n}\} $, tal que $ \vec{x_n} \in \mathbb{R}^d $,
+onde apenas um subconjunto $ \vec{Y} = \{y_1, y_2, \ldots , y_m\} $ em que
+$ (m < n) $ tem rótulos correspondentes, o objetivo do aprendizado
+semi-supervisionado é usar tanto o conjunto de dados rotulado quanto o
+não rotulado para aprender a função $ f: \mathbf{X} \rightarrow \vec{Y} $ que
+pode prever o rótulo $ y $ para um novo exemplo $ \vec{x} $.
+  \end{block}
+\end{frame}
+
+
 \subsection{Algoritmos indutivos vs transdutivos}
 \begin{frame}{Criando Caixas}
     \successbox{testando o success box}
