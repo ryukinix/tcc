@@ -18,9 +18,13 @@ jobs:
     - name: Build
       uses: xu-cheng/latex-action@v2
       with:
-        root_file: documento.tex
+        root_file: |
+          documento.tex
+          apresentacao.tex
     - name: Upload binaries to release
       uses: actions/upload-artifact@v2
       with:
         name: draft_tcc
-        path: documento.pdf
+        path: |
+          documento.pdf
+          apresentacao.pdf
