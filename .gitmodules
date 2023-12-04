@@ -3,4 +3,4 @@
 	url = git@github.com:ryukinix/egsis.git
 [submodule "templatebeamerufc"]
 	path = templatebeamerufc
-	url = git@github.com:maumneto/TemplateBeamerUFC.git
+	url = git@github.com:ryukinix/TemplateBeamerUFC.git
