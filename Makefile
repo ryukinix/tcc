@@ -21,7 +21,7 @@
 ##                                                                    ##
 ########################################################################
 
-SRC = $(shell find . -iname '*.tex')
+SRC = $(shell find . -iname '*.tex' -not -path "./templatebeamerufc/*.tex")
 FILENAME=documento
 PRESENTATION=apresentacao
 
@@ -61,7 +61,7 @@ open:
 	xdg-open $(FILENAME).pdf
 
 lint:
-	@chktex $(SRC)
+	@chktex --verbosity=0 -q $(SRC)
 
 spell-check:
 	bash scripts/spell-check.sh $(SRC)
