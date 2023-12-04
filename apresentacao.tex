@@ -52,7 +52,7 @@ Dinâmicas Coletivas em Redes Complexas}}
 %% ---------------------------------------------------------------------------
 \subsection{Tipos de segmentação de imagem}
 
-\begin{frame}{Definição do problema}
+\begin{frame}{Segmentação de imagens}
   \begin{block}{Definição}
     Segmentar uma imagem significa dividí-la em regiões de interesse.
   \end{block}
@@ -72,7 +72,7 @@ exemplo:
   \begin{figure}\label{fig:semantic-vs-instance-segmentation}
     \centering
     \caption{Comparação entre segmentação semântica e segmentação de instâncias.}
-    \includegraphics[scale=0.2]{figuras/image-segmentation-types}
+    \includegraphics[scale=0.23]{figuras/image-segmentation-types}
     \source{\cite{MediumInstanceSegmentation2019}}
   \end{figure}
 \end{frame}
@@ -80,17 +80,24 @@ exemplo:
 \begin{frame}{Segmentação interativa}
   \begin{figure}\label{fig:interactive--segmentation}
     \centering
-    \caption{Ilustração de segmentação interativa, rotulação em azul e
-      vermelho.\\ Na imagem a direita, foto segmentada sem o fundo.}
+    \caption{Ilustração de segmentação interativa, rotulações em azul  e
+      vermelho.\\ Na imagem à direita, após segmentação o fundo foi removido.}
     \includegraphics[scale=0.6]{figuras/interactive-segmentation-2008}
     \source{\cite{duchenne2008segmentation}}
   \end{figure}
 \end{frame}
 
+\begin{frame}{Segmentação interativa}
+  \begin{alertblock}{Foco}
+  O foco desta apresentação é demonstrar uma nova técnica de
+  segmentação de imagens, avaliado no cenário de segmentação
+  interativa com duas classes: o objeto de interesse e o fundo.
+  \end{alertblock}
+\end{frame}
 
 
 %% ---------------------------------------------------------------------------
-\subsection{Aprendizado semi-supervisionada}
+\subsection{Aprendizado semi-supervisionado}
 
 \begin{frame}{Aprendizado semi-supervisionado}
   \begin{figure}\label{fig:interactive--segmentation}
@@ -107,30 +114,58 @@ de treinamento.
 
 
 \begin{frame}{Aprendizado semi-supervisionado}
-  \begin{block}{Definição}
-      Dado um conjunto de dados de treinamento $ \mathbf{X} =
-\{\vec{x_1}, \vec{x_2}, \ldots, \vec{x_n}\} $, tal que $ \vec{x_n} \in \mathbb{R}^d $,
-onde apenas um subconjunto $ \vec{Y} = \{y_1, y_2, \ldots , y_m\} $ em que
-$ (m < n) $ tem rótulos correspondentes, o objetivo do aprendizado
-semi-supervisionado é usar tanto o conjunto de dados rotulado quanto o
-não rotulado para aprender a função $ f: \mathbf{X} \rightarrow \vec{Y} $ que
-pode prever o rótulo $ y $ para um novo exemplo $ \vec{x} $.
+  \begin{block}{Dados de treinamento}
+    Dado um conjunto de dados de treinamento $ \mathbf{X} =
+    \{\vec{x_1}, \vec{x_2}, \ldots, \vec{x_n}\} $, tal que $ \vec{x_n} \in \mathbb{R}^d $,
+    onde apenas um subconjunto $ \vec{Y} = \{y_1, y_2, \ldots , y_m\} $ em que
+    $ (m < n) $ tem rótulos correspondentes.
+  \end{block}
+
+  \pause{}
+
+  \begin{block}{Objetivo}
+    O objetivo do aprendizado semi-supervisionado é usar tanto o
+conjunto de dados rotulado quanto o não rotulado para aprender a
+função $ f: \mathbf{X} \rightarrow \vec{Y} $ que pode prever o rótulo $ y $ para
+um novo exemplo $ \vec{x} $.
   \end{block}
 \end{frame}
 
 
-\subsection{Algoritmos indutivos vs transdutivos}
-\begin{frame}{Criando Caixas}
-    \successbox{testando o success box}
+\subsection{Aprendizado indutivo vs aprendizado transdutivo}
 
-    \pause
-
-    \alertbox{testando o alert box}
-
-    \pause
-
-    \simplebox{testando o simple box}
+\begin{frame}{Aprendizado indutivo vs aprendizado transdutivo}
+  \begin{figure}\label{fig:interactive--segmentation}
+    \centering
+    \caption{
+      No aprendizado indutivo, como em redes neurais, uma função de
+inferência é estimada durante o treinamento. Enquanto isso,
+no aprendizado transdutivo a inferência de novos pontos é realizado sem a
+necessidade de estimar essa função.
+}
+    \includegraphics[scale=0.43]{figuras/induction_vs_transduction_cropped}
+    \source{\cite{vapnik1995}}
+  \end{figure}
 \end{frame}
+
+\begin{frame}{Aprendizado indutivo vs aprendizado transdutivo}
+  \begin{figure}\label{fig:interactive--segmentation} \centering
+    \caption{ Uma ilustração de aprendizado indutivo e aprendizado
+      transdutivo.  }
+    \includegraphics[scale=0.75]{figuras/transductive-vs-inductive}
+    \source{\cite{vapnik1995}}
+  \end{figure}
+\end{frame}
+
+\begin{frame}{Aprendizado indutivo vs aprendizado transdutivo}
+  \begin{exampleblock}{Analogia}
+     Através de uma analogia, pode-se considerar o aprendizado
+indutivo como um sistema de educação para o aprendizado generalizado,
+enquanto o aprendizado transdutivo é um sistema de educação orientado
+para exames.
+  \end{exampleblock}
+\end{frame}
+
 
 \section{Fundamentação Teórica}
 \subsection{Superpixels}
