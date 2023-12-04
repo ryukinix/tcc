@@ -24,6 +24,7 @@ jobs:
     - name: Build presentation
       uses: xu-cheng/latex-action@v2
       with:
+        args: -pdf -file-line-error -f -interaction=nonstopmode
         root_file: apresentacao.tex
     - name: Upload binaries to release
       uses: actions/upload-artifact@v2

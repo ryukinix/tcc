@@ -52,7 +52,7 @@ presentation:
 	@echo "*********************************************************"
 	@echo "Compilando..."
 	make clean
-	latexmk -pdf $(PRESENTATION).tex
+	latexmk -pdf -file-line-error $(PRESENTATION).tex
 	make clean
 	@echo "Processo finalizado com sucesso!"
 
