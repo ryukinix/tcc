@@ -23,7 +23,7 @@ Dinâmicas Coletivas em Redes Complexas}}
     \ufc{}
 }
 % date of the presentation
-\date{Sobral, \today}
+\date{Sobral, 12 de dezembro de 2023}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -183,10 +183,9 @@ necessidade de estimar essa função.
 
 \begin{frame}{Aprendizado indutivo vs aprendizado transdutivo}
   \begin{exampleblock}{Analogia}
-     Através de uma analogia, pode-se considerar o aprendizado
-indutivo como um sistema de educação que alcança o entendimento generalizado,
-enquanto o aprendizado transdutivo é um sistema de educação focado
-em realização de provas.
+    O aprendizado indutivo pode ser considerado um sistema de educação que
+alcança um entendimento generalizado, enquanto o aprendizado
+transdutivo é um sistema de educação focado na realização de provas.
   \end{exampleblock}
 \end{frame}
 
@@ -220,13 +219,80 @@ em realização de provas.
 
 \section{Conclusão}
 \begin{frame}{Principais conclusões}
-  \begin{alertblock}{WIP}
-    Ler documento de conclusao e sumarizar
-  \end{alertblock}
+  \begin{enumerate}[<+->]
+
+  \item Desenvolvimento de um novo algoritmo chamado EGSIS que permite
+    a resolução de problemas de segmentação interativa de imagens.
+
+  \item O algoritmo EGSIS apresentou uma performance próxima dos métodos
+    estado-da-arte baseados em grafos para segmentação interativa de
+    imagens.
+
+  \item A qualidade da segmentação final é altamente dependente da
+    qualidade da pré-segmentação com superpixels.
+
+  \item Melhores resultados foram alcançados com um maior número de
+    superpixels, mas isso também aumentou o tempo de execução do
+    algoritmo.
+
+  \item O algoritmo possui várias partes móveis e trocáveis, permitindo a
+    evolução de técnicas para melhorar a qualidade de segmentação final.
+
+  \end{enumerate}
 \end{frame}
 
 \subsection{Limitações e desafios}
+
+
+\begin{frame}{Limitações e desafios}
+  \begin{enumerate}[<+->]
+  \item A busca por trabalhos de referência com a palavra-chave
+    semi-supervisionado foi desafiadora, mas a mudança para
+    segmentação transdutiva e interativa permitiu encontrar trabalhos
+    mais relevantes.
+
+  \item A falta de datasets para segmentação interativa com anotação
+    parcial inicial limitou a exploração e comparação com outros
+    datasets e técnicas, restringindo o trabalho ao dataset GrabCut.
+
+  \item O algoritmo EGSIS permite segmentação interativa além da
+    binária, mas a dificuldade em encontrar datasets públicos com rotulações
+    parciais limitou a pesquisa de segmentação interativa multi-classes.
+
+  \item Há espaço para crescimento na pesquisa de algoritmos de
+    segmentação interativa multi-classes, e um novo dataset para
+    benchmark seria uma contribuição relevante.
+
+  \end{enumerate}
+\end{frame}
+
+
+
+
 \subsection{Trabalhos futuros}
+
+\begin{frame}{Trabalhos futuros}
+  \begin{enumerate}[<+->]
+  \item A pesquisa sobre algoritmos transdutivos de segmentação de
+imagens ainda está em evolução, mas com menos volume que as técnicas
+indutivas.
+
+  \item Métodos de superpixel, extração de características, construção
+da rede complexa e dinâmica coletiva são partes móveis que podem ser
+refinadas.
+
+  \item Extração de características de imagens: este trabalho
+limitou-se à matrizes de co-ocorrências e filtros de Gabor. Trabalhos
+futuros podem explorar técnicas estado-da-arte de extração de
+características.
+
+  \item Minimização do número de cliques de anotação: estudos recentes
+buscam técnicas que minimizem o número de cliques de anotação
+necessários para alcançar segmentações de boa qualidade.
+
+
+  \end{enumerate}
+\end{frame}
 
 
 %% ---------------------------------------------------------------------------
