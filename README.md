@@ -27,7 +27,7 @@ desse material.
   author       = {Manoel Vilela Machado Neto},
   howpublished = {Universidade Federal do Ceará (UFC)},
   address      = {repositorio.ufc.br},
-  year         = 2022,
+  year         = 2023,
   note         = {orientado pelo Dr. Jarbas Joaci de Mesquita Sá Junior}
 }
 ```
