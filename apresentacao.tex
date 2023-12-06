@@ -236,15 +236,15 @@ transdutivo é um sistema de educação focado na realização de provas.
   \item Desenvolvimento de um novo algoritmo chamado EGSIS que permite
     a resolução de problemas de segmentação interativa de imagens.
 
-  \item O algoritmo EGSIS apresentou uma performance próxima dos métodos
-    estado-da-arte baseados em grafos para segmentação interativa de
-    imagens.
+  \item O algoritmo EGSIS apresentou uma \textbf{eficácia equiparável}
+    aos métodos estado-da-arte baseados em grafos para segmentação
+    interativa de imagens.
 
   \item A qualidade da segmentação final é altamente dependente da
     qualidade da pré-segmentação com superpixels.
 
-  \item Melhores resultados foram alcançados com um maior número de
-    superpixels, mas isso também aumentou o tempo de execução do
+  \item Melhores resultados foram alcançados com um \textbf{maior número de
+    superpixels}, mas isso também aumentou o tempo de execução do
     algoritmo.
 
   \item O algoritmo possui várias partes móveis e trocáveis, permitindo a
@@ -254,35 +254,30 @@ transdutivo é um sistema de educação focado na realização de provas.
 \end{frame}
 
 \subsection{Limitações e desafios}
-
-
 \begin{frame}{Limitações e desafios}
   \begin{enumerate}[<+->]
   \item A busca por trabalhos de referência com a palavra-chave
     semi-supervisionado foi desafiadora, mas a mudança para
-    segmentação transdutiva e interativa permitiu encontrar trabalhos
+    \textbf{segmentação transdutiva e interativa} permitiu encontrar trabalhos
     mais relevantes.
 
   \item A falta de datasets para segmentação interativa com anotação
     parcial inicial limitou a exploração e comparação com outros
     datasets e técnicas, restringindo o trabalho ao dataset GrabCut.
 
-  \item O algoritmo EGSIS permite segmentação interativa além da
-    binária, mas a dificuldade em encontrar datasets públicos com rotulações
-    parciais limitou a pesquisa de segmentação interativa multi-classes.
+  \item O algoritmo EGSIS permite segmentação interativa
+    multi-classes, mas a dificuldade em encontrar datasets públicos com rotulações
+    parciais restringiu o avanço desta linha de pesquisa.
 
   \item Há espaço para crescimento na pesquisa de algoritmos de
-    segmentação interativa multi-classes, e um novo dataset para
+    segmentação interativa multi-classes. Um novo conjunto de dados para
     benchmark seria uma contribuição relevante.
 
   \end{enumerate}
 \end{frame}
 
 
-
-
 \subsection{Trabalhos futuros}
-
 \begin{frame}{Trabalhos futuros}
   \begin{enumerate}[<+->]
   \item A pesquisa sobre algoritmos transdutivos de segmentação de
@@ -295,12 +290,12 @@ refinadas.
 
   \item Extração de características de imagens: este trabalho
 limitou-se à matrizes de co-ocorrências e filtros de Gabor. Trabalhos
-futuros podem explorar técnicas estado-da-arte de extração de
-características.
+futuros podem explorar \textbf{técnicas estado-da-arte de extração de
+características}.
 
-  \item Minimização do número de cliques de anotação: estudos recentes
-buscam técnicas que minimizem o número de cliques de anotação
-necessários para alcançar segmentações de boa qualidade.
+\item \textbf{Minimização do número de cliques de anotação}: estudos recentes \cite{chen2022focalclick}
+  buscam técnicas que minimizem o número de cliques de anotação
+  necessários para alcançar segmentações de boa qualidade.
 
 
   \end{enumerate}
