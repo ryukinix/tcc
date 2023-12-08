@@ -223,6 +223,20 @@ transdutivo é um sistema de educação focado na realização de provas.
 \subsection{Dataset GrabCut}
 
 \subsection{Métricas de avaliação}
+\begin{frame}{Métricas de avaliação}
+  As métricas de avaliação que este trabalho será submetido são:
+
+
+  \begin{equation*}\label{eq:metricas}
+    \begin{aligned}
+      Precision &= \dfrac{TP}{TP + FP} \\~\\
+      Recall &= \dfrac{TP}{TP + FN} \\~\\
+      F1 &= \dfrac{2 \cdot Precision \cdot Recall}{Precision + Recall} \\~\\
+      IoU &= \dfrac{\left| A \cap B \right|}{\left| A \cup B \right|}
+    \end{aligned}
+  \end{equation*}
+
+\end{frame}
 
 
 \section{Resultados}
@@ -260,7 +274,7 @@ transdutivo é um sistema de educação focado na realização de provas.
   \begin{figure}\label{fig:egsis-qualitativa}
     \centering
     \caption{Avaliação qualitativa do método EGSIS no dataset GrabCut.}
-    \includegraphics[scale=0.27]{figuras/egsis-qualitativa}
+    \includegraphics[scale=0.43]{figuras/egsis-qualitativa-transposto}
     \source{\cite{wang2023review}}
   \end{figure}
 \end{frame}
@@ -278,7 +292,7 @@ transdutivo é um sistema de educação focado na realização de provas.
   \begin{figure}\label{fig:egsis-pior}
     \centering
     \caption{Pior resultado do método EGSIS entre as 16 imagens.}
-    \includegraphics[scale=0.27]{figuras/egsis-pior}
+    \includegraphics[scale=0.36]{figuras/egsis-pior}
     \source{Elaborado pelo autor.}
   \end{figure}
 \end{frame}
