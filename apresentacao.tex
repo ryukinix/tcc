@@ -1,4 +1,5 @@
 \documentclass{templatebeamerufc/libs/ufc_format}
+
 % Insere preâmbulo com a importação de pacotes
 \input{templatebeamerufc/libs/preamble.tex}
 % Macros pessoais
@@ -226,9 +227,118 @@ transdutivo é um sistema de educação focado na realização de provas.
 
 \section{Resultados}
 
-\subsection{Variação na quantidade de superpixels}
+\begin{frame}{Avaliação qualitativa}
+  \begin{figure}\label{fig:imagens-avaliadas}
+    \centering
+    \caption{16 imagens do dataset GrabCut usadas na avaliação qualitativa.}
+    \includegraphics[scale=0.55]{figuras/imagens-avaliadas}
+    \source{Elaborado pelo autor baseado no dataset GrabCut~\cite{rother2004grabcut}}
+  \end{figure}
+\end{frame}
+
+
 \subsection{Resultados qualitativos}
+\begin{frame}{Avaliação qualitativa: métodos de referência}
+    \begin{figure}\label{fig:grabcut-comparacao-split1}
+    \centering
+    \caption{Avaliação qualitativa de métodos de referência no dataset GrabCut.}
+    \includegraphics[scale=0.325]{figuras/grabcut-comparacao-split1}
+    \source{\cite{wang2023review}}
+  \end{figure}
+\end{frame}
+
+\begin{frame}{Avaliação qualitativa: métodos de referência}
+  \begin{figure}\label{fig:grabcut-comparacao-split2}
+    \centering
+    \caption{Avaliação qualitativa de métodos de referência no dataset GrabCut.}
+    \includegraphics[scale=0.325]{figuras/grabcut-comparacao-split2}
+    \source{\cite{wang2023review}}
+  \end{figure}
+\end{frame}
+
+\begin{frame}{Avaliação qualitativa: método EGSIS}
+  \begin{figure}\label{fig:egsis-qualitativa}
+    \centering
+    \caption{Avaliação qualitativa do método EGSIS no dataset GrabCut.}
+    \includegraphics[scale=0.27]{figuras/egsis-qualitativa}
+    \source{\cite{wang2023review}}
+  \end{figure}
+\end{frame}
+
+\begin{frame}{Avaliação qualitativa: melhor resultado}
+  \begin{figure}\label{fig:egsis-melhor}
+    \centering
+    \caption{Melhor resultado do método EGSIS entre as 16 imagens.}
+    \includegraphics[scale=0.35]{figuras/egsis-melhor}
+    \source{Elaborado pelo autor.}
+  \end{figure}
+\end{frame}
+
+\begin{frame}{Avaliação qualitativa: pior resultado}
+  \begin{figure}\label{fig:egsis-pior}
+    \centering
+    \caption{Pior resultado do método EGSIS entre as 16 imagens.}
+    \includegraphics[scale=0.27]{figuras/egsis-pior}
+    \source{Elaborado pelo autor.}
+  \end{figure}
+\end{frame}
+
+
+\subsection{Variação na quantidade de superpixels}
+\begin{frame}{Variação na quantidade de superpixels}
+  \begin{table}[!h]
+    \centering
+    \caption{Resultados dos experimentos ao variar o número de superpixels e o método de extração
+      de características. Em negrito os melhores resultados.}\label{tab:variacao-superpixels}
+    \resizebox{\columnwidth}{!}{%
+    \begin{tabular}{lcccc}
+      \toprule
+      \textbf{Método}            & \textbf{Recall} & \textbf{Precision} & \textbf{F1}     & \textbf{IoU}    \\
+      \midrule \midrule
+      $EGSIS(s=50, f=gabor)$     & 0.7882          & 0.9225             & 0.8414          & 0.7412          \\
+      $EGSIS(s=100, f=gabor)$    & 0.8592          & 0.9505             & 0.8992          & 0.8232          \\
+      $EGSIS(s=150, f=gabor)$    & 0.8691          & 0.9550             & 0.9066          & 0.8354          \\
+      $EGSIS(s=200, f=gabor)$    & 0.8799          & \textbf{0.9620}    & 0.9167          & 0.8511          \\
+      $EGSIS(s=50, f=comatrix)$  & 0.7882          & 0.9225             & 0.8414          & 0.7412          \\
+      $EGSIS(s=100, f=comatrix)$ & 0.8617          & 0.9510             & 0.9010          & 0.8259          \\
+      $EGSIS(s=150, f=comatrix)$ & 0.8777          & 0.9552             & 0.9125          & 0.8441          \\
+      $EGSIS(s=200, f=comatrix)$ & \textbf{0.8877} & 0.9611             & \textbf{0.9212} & \textbf{0.8578} \\
+      \bottomrule
+    \end{tabular}
+    }
+    \source{\fonteautor}
+  \end{table}
+\end{frame}
+
 \subsection{Resultados quantitativos}
+\begin{frame}{Resultados quantitativos}
+  \begin{table}[!h]
+    \centering
+    \caption{Resultados
+      comparativos entre o método EGSIS e métodos estado-da-arte para
+      segmentação interativa baseado em grafos. Em negrito os melhores
+      resultados, em vermelho os piores.}\label{tab:resultados-estado-da-arte}
+    \resizebox{\columnwidth}{!}{%
+      \begin{tabular}{lcccc}
+        \toprule
+        \textbf{Método}            & \textbf{Recall} & \textbf{Precision} & \textbf{F1}     & \textbf{IoU}    \\
+        \midrule \midrule
+        GrabCut                    & 0.9668          & 0.9213             & \textbf{0.9407} & \textbf{0.8927} \\
+        LazySnapping               & \textbf{0.9681} & 0.9104             & 0.9357          & 0.8842          \\
+        OneCut                     & 0.8585          & \red{0.7926}       & \red{0.7899}    & \red{0.6974}    \\
+        Saliency Cuts              & \red{0.8371}    & 0.8892             & 0.8255          & 0.7458          \\
+        Iterated Graph Cuts        & 0.9614          & 0.8878             & 0.9212          & 0.8597          \\
+        DenseCut                   & 0.8427          & 0.9418             & 0.8561          & 0.7927          \\
+        Deep GrabCut               & 0.8854          & 0.8774             & 0.8701          & 0.7849          \\
+        $EGSIS(s=200, f=gabor)$    & 0.8799          & \textbf{0.9620}    & 0.9167          & 0.8511          \\
+        $EGSIS(s=200, f=comatrix)$ & 0.8877          & 0.9611             & 0.9212          & 0.8578          \\
+        \bottomrule
+      \end{tabular}
+    }
+    \source{Baseado nos resultados encontrados no artigo~\cite{wang2023review}}
+  \end{table}
+\end{frame}
+
 
 \section{Conclusão}
 \begin{frame}{Principais conclusões}
@@ -294,7 +404,7 @@ limitou-se à matrizes de co-ocorrências e filtros de Gabor. Trabalhos
 futuros podem explorar \textbf{técnicas estado-da-arte de extração de
 características}.
 
-\item \textbf{Minimização do número de cliques de anotação}: estudos recentes \cite{chen2022focalclick}
+\item \textbf{Minimização do número de cliques de anotação}: estudos recentes~\cite{chen2022focalclick}
   buscam técnicas que minimizem o número de cliques de anotação
   necessários para alcançar segmentações de boa qualidade.
 
