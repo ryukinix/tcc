@@ -94,7 +94,7 @@ exemplo:
   \end{figure}
 \end{frame}
 
-\begin{frame}{Segmentação interativa: casos de uso}
+\begin{frame}{Segmentação interativa: alguns casos de uso}
   \begin{enumerate}
   \item \textbf{Medicina}: usada para identificar e isolar áreas específicas de
     interesse em imagens médicas, como tumores em imagens de
@@ -236,6 +236,73 @@ transdutivo é um sistema de educação especializado na realização de provas.
 
 %%
 \subsection{Dataset GrabCut}
+\begin{frame}{Dataset GrabCut}
+
+    \begin{figure}\label{fig:grabcut-dataset}
+    \centering
+    \caption{ Para a avaliação deste trabalho,
+será usado o dataset GrabCut~\cite{rother2004grabcut}, que contém
+\textbf{50 imagens} com segmentação binária e anotações parciais para
+segmentação interativa.}
+    \includegraphics[scale=0.21]{figuras/grabcut-dataset}
+    \source{\fonteautor}
+  \end{figure}
+
+\end{frame}
+
+\begin{frame}{Anotação lasso no dataset GrabCut}
+
+  \begin{columns}{}
+
+    % tabela com descrição da anotação
+    \begin{column}{0.62\textwidth}
+      \begin{table}[!h]\label{tab:grabcut-label}
+        \centering
+          \resizebox{\columnwidth}{!}{%
+          \begin{tabular}{lc}
+            \toprule
+            Descrição                             & Nível de cinza \\
+            \midrule \midrule
+            fundo                                 & 0              \\
+            fundo [\textbf{treinamento}]          & 64             \\
+            região de inferência                  & 128            \\
+            primeiro plano [\textbf{treinamento}] & 255            \\
+            \bottomrule
+          \end{tabular}}
+        \source{\cite{rother2004grabcut}}
+      \end{table}
+    \end{column}
+
+    % imagem de exemplo
+    \begin{column}{0.6\textwidth}
+      \begin{figure}\label{fig:grabcut-dataset-lasso}
+        \centering
+        \includegraphics[scale=0.35]{figuras/grabcut-dataset-lasso}
+        \source{\cite{rother2004grabcut}}
+      \end{figure}
+    \end{column}
+
+  \end{columns}
+\end{frame}
+
+\subsection{Métodos de referência}
+\begin{frame}{Métodos de referência}
+
+No artigo~\cite{wang2023review}, os autores realizam uma revisão de
+sete métodos de segmentação interativa baseados em grafos. Esses
+métodos são avaliados utilizando o dataset GrabCut, entre outros.
+
+\begin{enumerate}
+    \item GrabCut
+    \item LazySnapping
+    \item OneCut
+    \item Saliency Cuts
+    \item Iterated Graph Cuts
+    \item DenseCut
+    \item Deep GrabCut
+\end{enumerate}
+
+\end{frame}
 
 \subsection{Métricas de avaliação}
 \begin{frame}{Métricas de avaliação}
