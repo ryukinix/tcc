@@ -219,20 +219,25 @@ necessidade de estimar essa função.
 \subsection{Superpixels}
 \begin{frame}{Superpixels}
   \begin{columns}{}
-    \begin{column}{0.5\textwidth}
-      \begin{enumerate}
-      \item Superpixels são parte de um grupo de algoritmos de
-        \textbf{clusterização} de imagens;
+
+    \begin{column}{0.6\textwidth}
+      \begin{block}{Definição}
+        Superpixels são parte de um grupo de algoritmos de
+        \textbf{clusterização} de imagens.
+      \end{block}
+
+      \begin{itemize}
       \item Eles agrupam pixels vizinhos semelhantes em uma entidade
         maior, conhecida como superpixel;
       \item Eles são formados com base na similaridade dos pixels em
         termos de cor, intensidade e localização na imagem.
-      \end{enumerate}
+      \end{itemize}
     \end{column}
+
     \begin{column}{0.5\textwidth}
       \begin{figure}\label{fig:superpixel-variation}
         \centering
-        \caption{Uma mulher com imagem segmentada por diferentes
+        \caption{Uma mulher com imagem clusterizada por diferentes
           quantidades de superpixels.}
         \includegraphics[scale=0.32]{figuras/superpixel-variation}
         \source{\cite{achanta2010slic}}
@@ -259,8 +264,13 @@ necessidade de estimar essa função.
 \subsection{Redes complexas}
 
 \begin{frame}{Redes complexas}
-  \begin{enumerate}
-    \item Redes complexas são grafos de alta complexidade;
+  \begin{block}{Definição}
+    Redes complexas são grafos de topologia não-trivial.
+  \end{block}
+  \begin{itemize}
+  \item Redes complexas são usadas para representar uma variedade de
+sistemas e fenômenos em diversas áreas, incluindo física, biologia,
+ciência da computação, engenharia e ciências sociais;
     \item Existem variados algoritmos para geração de redes complexas~\cite{ComplexNetworksSurvey2007};
     \item Redes complexas podem ser usadas como um domínio de dados para realizar várias tarefas, incluindo:
     \begin{enumerate}
@@ -268,7 +278,7 @@ necessidade de estimar essa função.
         \item Extração de características~\cite{JarbasComplexNetworks2020};
         \item Segmentação de imagens.
     \end{enumerate}
-\end{enumerate}
+  \end{itemize}
 \end{frame}
 
 \begin{frame}{Geração de redes complexas}
@@ -317,19 +327,21 @@ que representa aquele \textbf{superpixel}.
 
 \subsection{Dinâmicas coletivas}
 \begin{frame}{Dinâmicas Coletivas}
-\begin{enumerate}
-\item Dinâmicas coletivas em redes complexas referem-se ao estudo de
+  \begin{block}{Definição}
+    Dinâmicas coletivas em redes complexas referem-se ao estudo de
 como os comportamentos individuais interagem e se combinam para formar
 comportamentos coletivos em redes.
+  \end{block}
+  \begin{enumerate}
 \item Essas redes podem ser de vários tipos, como redes sociais, redes
 de computadores, redes biológicas, entre outras.
-\item Alguns exemplos de dinâmicas coletivas em redes complexas
-incluem a propagação de doenças em redes de contato.
-\item A disseminação de informações ou rumores em redes sociais é
-outro exemplo de dinâmica coletiva em redes complexas.
-\item A formação de opiniões em grupos sociais e a sincronização de
-relógios biológicos em redes de neurônios também são exemplos de
-dinâmicas coletivas em redes complexas.
+\item Exemplos de dinâmicas coletivas:
+  \begin{enumerate}
+  \item Propagação de doenças em redes de contato;
+  \item Disseminação de informações ou rumores em redes sociais;
+  \item Formação de opiniões em grupos sociais;
+  \item Sincronização de relógios biológicos em redes de neurônios.
+  \end{enumerate}
 \end{enumerate}
 \end{frame}
 \begin{frame}{LCU}
