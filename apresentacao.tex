@@ -232,10 +232,11 @@ necessidade de estimar essa função.
     \begin{column}{0.5\textwidth}
       \begin{figure}\label{fig:superpixel-variation}
         \centering
-        \caption{Uma mulher com imagem segmentada por superpixels de diferentes tamanhos.}
+        \caption{Uma mulher com imagem segmentada por diferentes
+          quantidades de superpixels.}
         \includegraphics[scale=0.32]{figuras/superpixel-variation}
         \source{\cite{achanta2010slic}}
-      \end{figure}
+      \end{figure}n
     \end{column}
   \end{columns}
 \end{frame}
@@ -256,6 +257,33 @@ necessidade de estimar essa função.
 \end{frame}
 
 \subsection{Redes complexas}
+
+\begin{frame}{Redes complexas}
+  \begin{enumerate}
+    \item Redes complexas são grafos de alta complexidade;
+    \item Existem variados algoritmos para geração de redes complexas~\cite{ComplexNetworksSurvey2007};
+    \item Redes complexas podem ser usadas como um domínio de dados para realizar várias tarefas, incluindo:
+    \begin{enumerate}
+        \item Classificação de imagens~\cite{ComplexNetworksImageClassification2015};
+        \item Extração de características~\cite{JarbasComplexNetworks2020};
+        \item Segmentação de imagens.
+    \end{enumerate}
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Geração de redes complexas}
+  Neste trabalho, o uso de redes complexas é realizado de uma maneira
+acoplada ao algoritmo de superpixels. Nesse cenário, cada superpixel
+gerado na imagem é um \textbf{vértice} e as \textbf{arestas} são
+geradas com base na vizinhança.
+
+\begin{figure}\label{fig:slic}
+     \centering
+        \includegraphics[scale=0.32]{figuras/complex-networks-simplified}
+        \source{Elaborado pelo autor baseado em~\cite{scikit-image}.}
+   \end{figure}
+\end{frame}
+
 \subsection{Extração de características}
 \subsection{Dinâmicas coletivas}
 \subsection{EGSIS}
