@@ -1,5 +1,5 @@
 \documentclass{templatebeamerufc/libs/ufc_format}
-
+\usepackage{subcaption}
 % Insere preâmbulo com a importação de pacotes
 \input{templatebeamerufc/libs/preamble.tex}
 % Macros pessoais
@@ -277,7 +277,7 @@ acoplada ao algoritmo de superpixels. Nesse cenário, cada superpixel
 gerado na imagem é um \textbf{vértice} e as \textbf{arestas} são
 geradas com base na vizinhança.
 
-\begin{figure}\label{fig:slic}
+   \begin{figure}\label{fig:complex-networks-simplified}
      \centering
         \includegraphics[scale=0.32]{figuras/complex-networks-simplified}
         \source{Elaborado pelo autor baseado em~\cite{scikit-image}.}
@@ -285,8 +285,85 @@ geradas com base na vizinhança.
 \end{frame}
 
 \subsection{Extração de características}
+\begin{frame}{Extração de características}
+  \begin{itemize}
+  \item A realização da extração de características é realizada através de um
+    \textbf{janelamento} na imagem pelo superpixel correspondente.
+  \item Através de pequenos recortes retangulares e uma função de
+extração de características, é calculado um vetor de características
+que representa aquele \textbf{superpixel}.
+  \end{itemize}
+
+  \begin{figure}\label{fig:superpixels-feature-extraction}
+    \centering
+    \caption{Quatro superpixels recortados com o mesmo tamanho de janela.}
+    \includegraphics[scale=0.4]{figuras/superpixels-feature-extraction}
+    \source{Elaborado pelo autor baseado em~\cite{scikit-image}.}
+  \end{figure}
+
+\end{frame}
+
+\begin{frame}{Matrizes de co-ocorrência}
+\end{frame}
+\begin{frame}{Filtros de Gabor}
+\end{frame}
+
+\subsection{Métricas de distância e similaridade}
+
+\begin{frame}{Métricas de distância}
+\end{frame}
+\begin{frame}{Métricas de similaridade}
+\end{frame}
+
 \subsection{Dinâmicas coletivas}
+\begin{frame}{Dinâmicas Coletivas}
+\begin{enumerate}
+\item Dinâmicas coletivas em redes complexas referem-se ao estudo de
+como os comportamentos individuais interagem e se combinam para formar
+comportamentos coletivos em redes.
+\item Essas redes podem ser de vários tipos, como redes sociais, redes
+de computadores, redes biológicas, entre outras.
+\item Alguns exemplos de dinâmicas coletivas em redes complexas
+incluem a propagação de doenças em redes de contato.
+\item A disseminação de informações ou rumores em redes sociais é
+outro exemplo de dinâmica coletiva em redes complexas.
+\item A formação de opiniões em grupos sociais e a sincronização de
+relógios biológicos em redes de neurônios também são exemplos de
+dinâmicas coletivas em redes complexas.
+\end{enumerate}
+\end{frame}
+\begin{frame}{LCU}
+  \textit{Labeled Component Unfolding} (LCU) é uma dinâmica baseada em
+propagação de rótulos numa rede complexa inspirada em fenômenos
+naturais, como competição e sobrevivência.
+
+\begin{figure}[!h]
+\centering
+    \caption{\label{fig:lcu-execution}
+      Rede complexa para execução da dinâmica LCU.\@
+      Anotação parcial em~(\subref{fig:lcu-partial}) e resultado final em~(\subref{fig:lcu-done}).
+    }
+
+    \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[scale=0.4]{figuras/lcu-partial}
+    \caption{\label{fig:lcu-partial}}
+    \end{subfigure}
+\quad
+    \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[scale=0.4]{figuras/lcu-done}
+    \caption{\label{fig:lcu-done}}
+    \end{subfigure}
+    \source{\fonteautor}
+\quad
+\end{figure}
+\end{frame}
 \subsection{EGSIS}
+
+\begin{frame}{EGSIS}
+
+\end{frame}
 
 %% -----------------------------------------------------------------------------------
 %% ---------- METODOLOGIA ------------------------------------
