@@ -1,5 +1,9 @@
 \documentclass{templatebeamerufc/libs/ufc_format}
-\usepackage{subcaption}
+
+% mini preambulo
+\usepackage{subcaption} % subfigure, lado a lado
+\usepackage{changepage} % ajusta margens do slide
+
 % Insere preâmbulo com a importação de pacotes
 \input{templatebeamerufc/libs/preamble.tex}
 % Macros pessoais
@@ -45,10 +49,10 @@ Dinâmicas Coletivas em Redes Complexas}}
 
 %% ---------------------------------------------------------------------------
 % Segundo slide com sumário
-\begin{frame}[allowframebreaks]{Sumário}
+\begin{frame}[t, allowframebreaks]{Sumário}
   \tableofcontents[sections={1---2}]  % chktex 8
     \framebreak{}
-  \tableofcontents[sections={3---5}]  % chktex 8
+  \tableofcontents[sections={3---6}]  % chktex 8
 \end{frame}
 
 %% ---------------------------------------------------------------------------------
@@ -297,7 +301,7 @@ geradas com base na vizinhança.
 \subsection{Extração de características}
 \begin{frame}{Extração de características}
   \begin{itemize}
-  \item A realização da extração de características é realizada através de um
+  \item A extração de características é realizada através de um
     \textbf{janelamento} na imagem pelo superpixel correspondente.
   \item Através de pequenos recortes retangulares e uma função de
 extração de características, é calculado um vetor de características
@@ -320,9 +324,56 @@ que representa aquele \textbf{superpixel}.
 
 \subsection{Métricas de distância e similaridade}
 
-\begin{frame}{Métricas de distância}
+\begin{frame}{Métricas de distância e similaridade}
+\begin{itemize}
+  \item Neste trabalho, as métricas de similaridade são utilizadas para comparar a
+similaridade entre os vetores de características dos superpixels.
+  \item Cada técnica de extração de características descrita nos
+slides anteriores se comportou melhor com uma métrica de similaridade
+diferente.
+  \item Uma função de similaridade entre dois vetores de
+características retorna um valor maior quando os vetores são similares
+e tende a zero quanto mais são diferentes.
+ \item O valor de similaridade determina o \textbf{peso da aresta} entre os dois superpixels.
+\end{itemize}
 \end{frame}
+
+\begin{frame}{Métricas de distância}
+  \begin{equation*}\label{eq:distancias}
+    \begin{aligned}
+      ed(\vec{x}, \vec{y}) &= \sqrt{{(y_1-x_1)}^2 + {(y_2-x_2)}^2 + \cdots + {(y_n-x_n)}^2} \\
+      md(\vec{x}, \vec{y}) &= |y_1-x_1| + |y_2-x_2| + \cdots + |y_n-x_n|
+    \end{aligned}
+  \end{equation*}
+  \begin{figure}[!h]
+    \centering
+    \caption{
+      Este trabalho explora a criação de métricas de similaridade a
+      partir de duas métricas de distância: a distância euclidiana e a
+      distância de Manhattan.
+    }
+    \includegraphics[scale=0.5]{figuras/manhattan-vs-euclidean}
+    \source{\cite{Singh2019}}
+  \end{figure}
+\end{frame}
+
 \begin{frame}{Métricas de similaridade}
+  \begin{itemize}
+  \item A distância euclidiana foi usada
+    para formar a métrica de similaridade euclidiana exponencial, que se
+    comportou melhor para \textbf{matrizes de co-ocorrência}.
+   \item A distância de Manhattan foi usada para formar a métrica de
+     similaridade de manhattan logarítmica, que se comportou melhor para
+     \textbf{filtros de Gabor}.
+  \end{itemize}
+
+  \begin{equation*}\label{eq:similaridades}
+    \begin{aligned}
+      ed\_sim(\vec{x}, \vec{y}) &= \dfrac{1}{e^{ed(\vec{x}, \vec{y})}} \\
+      md\_sim(\vec{x}, \vec{y}) &= \dfrac{1}{1 + \ln(1 + md(\vec{x}, \vec{y}))}
+    \end{aligned}
+  \end{equation*}
+
 \end{frame}
 
 \subsection{Dinâmicas coletivas}
@@ -345,7 +396,7 @@ de computadores, redes biológicas, entre outras.
 \end{enumerate}
 \end{frame}
 \begin{frame}{LCU}
-  \textit{Labeled Component Unfolding} (LCU) é uma dinâmica baseada em
+  \textit{Labeled Component Unfolding} (LCU)~\cite{VerriNetworkUnfoldingMap2018} é uma dinâmica baseada em
 propagação de rótulos numa rede complexa inspirada em fenômenos
 naturais, como competição e sobrevivência.
 
@@ -659,11 +710,12 @@ características}.
 
 %% ---------------------------------------------------------------------------
 % Slides de referência
-\begin{frame}[allowframebreaks]
+\section{Referências}
+\begin{frame}[t, allowframebreaks]
   \frametitle{Referências}
   % Inserting the references file
   \bibliography{3-pos-textuais/referencias.bib}
-  %\printbibliography{}
+
 \end{frame}
 
 %% ---------------------------------------------------------------------------
