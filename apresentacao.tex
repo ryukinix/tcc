@@ -217,6 +217,44 @@ necessidade de estimar essa função.
 %% ------------------------------------------------------------------------------------
 \section{Fundamentação Teórica}
 \subsection{Superpixels}
+\begin{frame}{Superpixels}
+  \begin{columns}{}
+    \begin{column}{0.5\textwidth}
+      \begin{enumerate}
+      \item Superpixels são parte de um grupo de algoritmos de
+        \textbf{clusterização} de imagens;
+      \item Eles agrupam pixels vizinhos semelhantes em uma entidade
+        maior, conhecida como superpixel;
+      \item Eles são formados com base na similaridade dos pixels em
+        termos de cor, intensidade e localização na imagem.
+      \end{enumerate}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{figure}\label{fig:superpixel-variation}
+        \centering
+        \caption{Uma mulher com imagem segmentada por superpixels de diferentes tamanhos.}
+        \includegraphics[scale=0.32]{figuras/superpixel-variation}
+        \source{\cite{achanta2010slic}}
+      \end{figure}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Superpixels: SLIC}
+
+  \begin{itemize}
+  \item  O algoritmo SLIC~\cite{achanta2010slic} é um
+    método para segmentação de imagens baseado em superpixel;
+  \item Pode ser visto como uma variação do algoritmo de clusterização \textbf{k-means} expandindo
+    o espaço euclidiano ao incluir também o espaço de cores.
+  \end{itemize}
+  \begin{figure}\label{fig:slic}
+     \centering
+        \includegraphics[scale=0.40]{figuras/slic2}
+        \source{Elaborado pelo autor baseado em~\cite{scikit-image}.}
+   \end{figure}
+\end{frame}
+
 \subsection{Redes complexas}
 \subsection{Extração de características}
 \subsection{Dinâmicas coletivas}
@@ -350,7 +388,7 @@ métodos são avaliados utilizando o dataset GrabCut, entre outros.
     \centering
     \caption{Avaliação qualitativa do método EGSIS no dataset GrabCut.}
     \includegraphics[scale=0.43]{figuras/egsis-qualitativa-transposto}
-    \source{\cite{wang2023review}}
+    \source{Elaborado pelo autor.}
   \end{figure}
 \end{frame}
 
