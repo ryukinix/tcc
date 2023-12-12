@@ -1,5 +1,4 @@
 \documentclass{templatebeamerufc/libs/ufc_format}
-
 % mini preambulo
 \usepackage{subcaption} % subfigure, lado a lado
 \usepackage{changepage} % ajusta margens do slide
@@ -506,7 +505,34 @@ dominação completa das arestas e (d) propagação de rótulos nos vértices.
 \subsection{EGSIS}
 
 \begin{frame}{EGSIS}
+  \textbf{E}xploratory \textbf{G}raph-based
+  \textbf{S}emi-supervised \textbf{I}mage \textbf{S}egmentation (EGSIS) é
+  a técnica de segmentação de imagens proposta proposta neste trabalho.
 
+  \begin{enumerate}
+  \item O modelo EGSIS permite a segmentação transdutiva de imagens
+    na presença de uma rotulação parcial da imagem;
+  \item Possui etapas flexíveis para refinamento e otimização,
+    incluindo método de extração de características, quantidade de
+    superpixels, função de similaridade, entre outros;
+  \item O método de segmentação realiza uma transformação do domínio
+    da imagem para uma rede complexa compatível com a dinâmica coletiva
+    LCU.\@
+  \end{enumerate}
+
+\end{frame}
+
+\begin{frame}{EGSIS:\@ Algoritmo}
+  \begin{enumerate}
+  \item Inicializa os hiperparâmetros do modelo EGSIS;\@
+  \item Segmenta a imagem em $n$ superpixels usando SLIC;\@
+  \item Realiza a construção da rede complexa baseado nos superpixels;
+  \item Atribui os superpixels rotulados baseado na anotação parcial;
+  \item Calcula o vetor de características para cada superpixel;
+  \item Calcula a similaridade entre superpixels da vizinhança;
+  \item Executa a dinâmica LCU sobre a rede complexa gerada;
+  \item Reconstrói a máscara de segmentação com base nos vértices rotulados.
+  \end{enumerate}
 \end{frame}
 
 %% -----------------------------------------------------------------------------------
