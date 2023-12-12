@@ -535,6 +535,68 @@ dominação completa das arestas e (d) propagação de rótulos nos vértices.
   \end{enumerate}
 \end{frame}
 
+\begin{frame}{EGSIS:\@ Execução}
+
+  \begin{figure}[!h]
+    \centering
+    \caption{\label{fig:egsis-init}
+      Construção de superpixels e a rede complexa no modelo EGSIS.\@
+    }
+
+    \begin{subfigure}[b]{0.45\textwidth}
+      \centering
+      \includegraphics[scale=0.45]{figuras/egsis-superpixels}
+      \caption{\label{fig:egsis-superpixels}}
+    \end{subfigure}
+    \quad
+    \begin{subfigure}[b]{0.45\textwidth}
+      \centering
+      \includegraphics[scale=0.442]{figuras/egsis-complex-networks}
+      \caption{\label{fig:egsis-complex-networks}}
+    \end{subfigure}
+    \source{Elaborado pelo autor baseado em~\cite{scikit-image}}
+    \quad
+  \end{figure}
+
+\end{frame}
+
+\begin{frame}{EGSIS:\@ Execução}
+\begin{figure}[!h]
+  \centering
+  \captionsetup{width=14cm}
+  \caption{\label{fig:egsis-lcu}
+    Etapa para propagar rótulos iniciais através da dinâmica coletiva LCU.\@
+  }
+
+  \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[scale=0.47]{figuras/egsis-partial-labeled}
+    \caption{\label{fig:egsis-partial-labeled}}
+  \end{subfigure}
+  \quad
+  \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[scale=0.47]{figuras/egsis-execution}
+    \caption{\label{fig:egsis-execution}}
+  \end{subfigure}
+  \hfill\source{Elaborado pelo autor baseado em~\cite{scikit-image}}
+  \quad
+\end{figure}
+  \vspace{4cm}
+
+\end{frame}
+
+\begin{frame}{EGSIS:\@ Resultado}
+  \begin{figure}[h!]
+    \centering
+    \caption{\label{fig:egsis-mask}
+      Máscara de segmentação final e a imagem original.\@
+    }
+    \includegraphics[scale=0.7]{figuras/egsis-segmentation-mask}
+    \source{Elaborado pelo autor baseado em~\cite{scikit-image}}
+  \end{figure}
+\end{frame}
+
 %% -----------------------------------------------------------------------------------
 %% ---------- METODOLOGIA ------------------------------------
 %% -------------------------------------------------------------------------------------
