@@ -317,9 +317,43 @@ que representa aquele \textbf{superpixel}.
 
 \end{frame}
 
-\begin{frame}{Matrizes de co-ocorrência}
+\begin{frame}{Matriz de co-ocorrências}
+
+  \begin{itemize}
+  \item A matriz de co-ocorrências~\cite{haralick1979statistical} é uma técnica de processamento de
+    imagem que extrai características de textura de uma imagem, contando a
+    frequência de pares de pixels com intensidades específicas em
+    distâncias definidas.
+  \item A matriz é normalmente normalizada para se tornar uma matriz de
+    probabilidade de co-ocorrência, a partir da qual características como
+    contraste, correlação, energia e homogeneidade podem ser extraídas.
+  \end{itemize}
+
+  \begin{equation*}\label{eq:comatrix}
+    C_{\Delta x, \Delta y}(i,j) = \sum_{x=1}^n\sum_{y=1}^m
+    \begin{cases} 1, & \text{se }I(x,y)=i\text{ e }I(x+\Delta x, y+\Delta y)=j
+      \\ 0, & \text{caso contrário}
+    \end{cases}
+  \end{equation*}
+
+  Na equação acima, $C_{\Delta x, \Delta y}(i,j)$ é o número de vezes
+  que o par de pixels com intensidades $i$ e $j$ ocorre em dois pixels
+  separados pelas distâncias na imagem $I$.
+
+  \vspace{1cm}
 \end{frame}
 \begin{frame}{Filtros de Gabor}
+  \begin{block}{Definição simplificada}
+      Os filtros de Gabor~\cite{daugman1988complete} são filtros de
+convolução que podem ser usados na extração de características de
+imagens.
+  \end{block}
+  \begin{figure}[!h]\label{fig:gabor-filters}
+    \centering
+    \caption{Filtros de Gabor variando a angulação $\theta$ e a convolução resultante.}
+    \includegraphics[scale=0.3]{figuras/gabor-filters}
+    \source{\cite{Kmrinen2012GaborFI}}
+  \end{figure}
 \end{frame}
 
 \subsection{Métricas de distância e similaridade}
@@ -361,7 +395,7 @@ e tende a zero quanto mais são diferentes.
   \begin{itemize}
   \item A distância euclidiana foi usada
     para formar a métrica de similaridade euclidiana exponencial, que se
-    comportou melhor para \textbf{matrizes de co-ocorrência}.
+    comportou melhor para \textbf{matrizes de co-ocorrências}.
    \item A distância de Manhattan foi usada para formar a métrica de
      similaridade de manhattan logarítmica, que se comportou melhor para
      \textbf{filtros de Gabor}.
@@ -395,8 +429,8 @@ de computadores, redes biológicas, entre outras.
   \end{enumerate}
 \end{enumerate}
 \end{frame}
-\begin{frame}{LCU}
-  \textit{Labeled Component Unfolding} (LCU)~\cite{VerriNetworkUnfoldingMap2018} é uma dinâmica baseada em
+\begin{frame}{LCU:\@ Labeled Component Unfolding}
+  O algoritmo LCU~\cite{VerriNetworkUnfoldingMap2018} é uma dinâmica coletiva baseada em
 propagação de rótulos numa rede complexa inspirada em fenômenos
 naturais, como competição e sobrevivência.
 
@@ -421,6 +455,53 @@ naturais, como competição e sobrevivência.
     \source{\fonteautor}
 \quad
 \end{figure}
+\end{frame}
+
+\begin{frame}{LCU:\@ Labeled Component Unfolding}
+  \begin{figure}[h!]\label{fig:lcu-classification-splig1}
+    \centering
+    \caption{
+      Execução da dinâmica coletiva LCU:\@ (a) rotulação inicial nos
+vértices e (b) algumas iterações com dominação de arestas.
+    }
+    \includegraphics[scale=0.43]{figuras/lcu-classification-split1}
+    \source{\cite{VerriNetworkUnfoldingMap2018}}
+  \end{figure}
+  \vspace{1cm}
+\end{frame}
+
+\begin{frame}{LCU:\@ Labeled Component Unfolding}
+  \begin{figure}[h!]\label{fig:lcu-classification-split2}
+    \centering
+    \caption{
+      Execução da dinâmica coletiva LCU:\@ (c) iteração avançada com
+dominação completa das arestas e (d) propagação de rótulos nos vértices.
+    }
+    \includegraphics[scale=0.43]{figuras/lcu-classification-split2}
+    \source{\cite{VerriNetworkUnfoldingMap2018}}
+  \end{figure}
+
+\end{frame}
+
+\begin{frame}{LCU modificado com arestas ponderadas}
+  \begin{columns}{}
+
+    \begin{column}{0.6\textwidth}
+      A implementação proposta neste trabalho difere da original,
+      pois inclui a \textbf{similaridade de imagem} entre dois superpixels na rede
+      complexa como \textbf{peso nas arestas}, criando um fator de aumento da
+      probabilidade das partículas sobreviverem ao visitar os nós mais promissores.
+    \end{column}
+
+    \begin{column}{0.5\textwidth}
+      \begin{figure}[h!]\label{fig:lcu-classification-split2}
+        \centering
+        \includegraphics[scale=0.21]{figuras/lcu-iteration}
+        \source{\cite{VerriNetworkUnfoldingMap2018}}
+      \end{figure}
+    \end{column}
+  \end{columns}
+
 \end{frame}
 \subsection{EGSIS}
 
