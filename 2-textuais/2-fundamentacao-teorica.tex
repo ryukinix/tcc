@@ -245,9 +245,9 @@ imagens, identificação de comunidades e também extração de
 características~\cite{JarbasComplexNetworks2020}.
 
 Neste trabalho, o uso de redes complexas é realizado de uma maneira
-acoplada ao algoritmo de clusterização inicial da imagem (superpixel). Nesse
-cenário, cada superpixel gerado na imagem é um vértice e as arestas
-são gerados com base na vizinhança.
+acoplada ao algoritmo de clusterização inicial da imagem
+(superpixel). Nesse cenário, cada superpixel gerado na imagem é um
+vértice e as arestas são geradas com base na vizinhança.
 
 Apesar de considerar o tema como redes complexas, esse cenário em
 particular gera um grafo planar pela maneira como as arestas são
@@ -409,7 +409,7 @@ Para a distância de manhattan, tem-se a seguinte equação:
 md(\vec{x}, \vec{y}) = |y_1-x_1| + |y_2-x_2| + \cdots + |y_n-x_n|
 \end{equation}
 
-\subsection{Similaridade Euclidiana Exponencial}\label{sec:teorica-similaridade-euclidiana}
+\subsection{Similaridade euclidiana exponencial}\label{sec:teorica-similaridade-euclidiana}
 
 Para a técnica de extração de característica de matrizes de co-ocorrência,
 detalhada na seção~\ref{sec:teorica-matriz-co-ocorrencia}, a métrica de
@@ -420,7 +420,7 @@ euclidiana pelo inverso da exponencial. A equação é definida como:
   ed\_sim(\vec{x}, \vec{y}) = \dfrac{1}{e^{ed(\vec{x}, \vec{y})}}
 \end{equation}
 
-\subsection{Similaridade de Manhattan Logarítmica}\label{sec:teorica-similaridade-manhattan}
+\subsection{Similaridade de Manhattan logarítmica}\label{sec:teorica-similaridade-manhattan}
 
 Para a técnica envolvendo filtros de Gabor, a distância entre os
 vetores de características tiveram valores tão altos que ao usar a
@@ -451,7 +451,7 @@ partículas de rotulação nas suas fontes (os vértices rotulados).
 Esse algoritmo possui critérios de sobrevivência das partículas
 inspirado em comportamentos da natureza e sociedade. Por exemplo, o
 hiperparâmetro $ \lambda $ do algoritmo denota um fator de competição entre
-0 e 1 sobre o dificuldade que as partículas terão ao trafegar nos
+0 e 1 sobre a dificuldade que as partículas terão ao trafegar nos
 vértices, tornando a sobrevivência delas mais difícil ao percorrer o
 grafo. Para esse parâmetro, 0 significa um passeio aleatório no grafo,
 1 significa máxima competitividade. Embora as partículas nasçam nos
