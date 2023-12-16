@@ -36,14 +36,14 @@ objeto de interesse seja isolado em sua própria região.
 Este tipo de segmentação de imagem é útil em uma variedade de
 aplicações, incluindo processamento de imagens médicas, visão
 computacional, reconhecimento de padrões e muitos outros campos onde é
-útil poder dividir uma imagem em regiões distintas com base em
+útil dividir uma imagem em regiões distintas com base em
 critérios definidos pelo usuário.
 
 \section{Aprendizado semi-supervisionado vs.\ transdução}\label{sec:teorica-aprendizado-semi-supervisionado}
 
 Existem três principais categorias de aprendizado de máquina:
 aprendizado supervisionado, aprendizado não supervisionado e
-aprendizado semi-supervisionado. No aprendizado supervisionado durante
+aprendizado semi-supervisionado. No aprendizado supervisionado, durante
 a etapa de treinamento existe uma base de dados totalmente rotulada,
 no aprendizado não supervisionado não é disponibilizado nenhum
 rotulamento dos dados. Enquanto isso, o aprendizado
@@ -100,7 +100,7 @@ diferenças entre transdução e indução no processo de aprendizagem:
 \end{figure}
 
 
-No texto~\cite{vapnik2006semi}, o criador do famoso algoritmo SVM
+No texto~\citeonline{vapnik2006semi}, o criador do famoso algoritmo SVM
 estabelece uma profunda formalização dos problemas de aprendizado
 semi-supervisionado e inferência transdutiva. No final do texto, ele
 declara algumas reflexões sobre a solução de problemas em aprendizagem
@@ -152,7 +152,7 @@ de imagens, mantendo a informação visual importante.
 Atualmente, já é possível encontrar muitas técnicas baseadas em
 superpixels com diferentes características, complexidades
 computacionais, métodos e eficiência. No
-artigo~\cite{SuperPixelBenchmark2017}, é realizado um \textit{benchmark} com 15
+artigo~\citeonline{SuperPixelBenchmark2017}, é realizado um \textit{benchmark} com 15
 algoritmos do tipo superpixel categorizados em três grupos: baseado em grafos,
 baseado em otimização de gradiente e baseado em análise de
 textura. Neste trabalho, é selecionado um dos mais simples: \gls{SLIC}.
@@ -669,7 +669,7 @@ dominação.
 
 \section{EGSIS}\label{sec:teorica-egsis}
 
-O algoritmo \gls{EGSIS} é a técnica de segmentação de imagens proposta
+O algoritmo \gls{EGSIS} é a técnica de segmentação de imagens
 proposta neste trabalho. Todas as seções anteriores da fundamentação
 teórica foram introduzidas para explicar o funcionamento dessa técnica
 que será descrita nesta seção.
@@ -708,7 +708,7 @@ baseado nas rotulações dos vértices restantes em cada superpixel
 não rotulado. Por fim, obtém-se uma matriz de labels relacionando
 cada pixel ao rótulo de segmentação desejado.
 
-No Algoritmo~\ref{alg:egsis} são descritos as etapas do funcionamento
+No Algoritmo~\ref{alg:egsis} são descritas as etapas do funcionamento
 geral do método.
 
 \begin{algorithm}[h!]

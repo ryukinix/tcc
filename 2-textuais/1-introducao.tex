@@ -11,7 +11,7 @@ tecnológica e econômica que é vivida no século XXI.\@
 
 A segmentação de uma imagem pode ser feita manualmente por um anotador
 humano marcando as linhas delineadoras de um objeto. Por outro lado,
-são conhecidos algoritmos variados para segmentação de imagens baseados
+são conhecidos variados algoritmos para segmentação de imagens baseados
 em aprendizagem de máquina, que através de exemplos de segmentação
 fornecidos para treinamento é possível inferir a segmentação de novas imagens.
 
@@ -76,10 +76,10 @@ atuais de segmentação interativa baseado em grafos.
 
 Técnicas de segmentação de imagens com o paradigma semi-supervisionado
 estão em foco atualmente no campo médico, como pode ser visto em
-~\cite{LuoSemiSupervised2021}. Nesse artigo, uma das grandes
+~\citeonline{LuoSemiSupervised2021}. Nesse artigo, uma das grandes
 motivações de os autores utilizarem uma técnica semi-supervisionada
-está relacionado com a dificuldade de possuir dados anotados de dados
-em um domínio de dados, como imagens hospitalares.
+está relacionada com a dificuldade de adquirir dados rotulados em
+domínios especializados, como imagens hospitalares.
 
 Em relação ao tópico de redes complexas e dinâmicas coletivas, é
 possível mencionar o trabalho feito com o algoritmo \gls{LCU}
@@ -155,7 +155,7 @@ pesquisa.
   Graph Cuts}\label{sec:grabcut}
 
 Neste trabalho, um dos pioneiros em segmentação interativa, os
-autores~\cite{rother2004grabcut} desenvolveram uma técnica para segmentação interativa
+autores~\citeonline{rother2004grabcut} desenvolveram uma técnica para segmentação interativa
 chamada GrabCut baseado em um mapeamento da imagem como um grafo e
 então um corte entre as arestas é realizado para segmentar o objeto do
 plano de fundo.
@@ -164,7 +164,7 @@ plano de fundo.
 \subsection{Aplicação de agrupamento semi-supervisionado para segmentação
   de imagens coloridas}\label{sec:franciscolira2018}
 
-Neste trabalho, o autor~\cite{franciscolira2018}, na sua tese de
+Neste trabalho, o autor~\citeonline{franciscolira2018}, na sua tese de
 graduação, propõe variações de um algoritmo de segmentação de imagem
 semi-supervisionado combinando algoritmos de agrupamento, como
 \textit{Fuzzy C-Means}, Algoritmo de Pedrycs, Algoritmo
@@ -173,13 +173,13 @@ Regularizado por Entropia (ESSC).
 
 \subsection{FocalClick: Towards Practical Interactive Image Segmentation}\label{sec:focalclick}
 
-Neste trabalho, os autores~\cite{chen2022focalclick} criam uma técnica de
+Neste trabalho, os autores~\citeonline{chen2022focalclick} criam uma técnica de
 segmentação interativa em busca da praticidade, ao medir dois aspectos
 importantes além de qualidade de segmentação: necessidade de anotação
 e tempo de execução. O trabalho em sua metodologia de avaliação
 utiliza métricas para minimizar interações que os usuários tenham que
 fazer para alcançar uma segmentação de qualidade. Essa técnica se
-baseia num algoritmo iterativo que possui capacidades de correção ao
+baseia em um algoritmo iterativo que possui capacidades de correção ao
 incluir novas marcações. Na Figura~\ref{fig:focalclick} é possível visualizar uma
 visão geral da técnica:
 
@@ -200,7 +200,7 @@ visão geral da técnica:
 \subsection{Interactive image segmentation based on multi-layer
 random forest classifiers}\label{sec:superpixel-random-forest}
 
-Neste trabalho, as autoras~\cite{shan2023interactive} criam uma nova
+Neste trabalho, as autoras~\citeonline{shan2023interactive} criam uma nova
 técnica para segmentação interativa de imagens combinando uma
 pré-segmentação usando superpixels e duas camadas de modelos
 \textit{random forest} para classificar o agrupamento entre os
@@ -252,7 +252,7 @@ foco em segmentação interativa.
 \item Explorar técnicas de redes complexas e dinâmicas coletivas sobre
   o problema de segmentação de imagens.
 \item Aplicar em casos variados de segmentação de imagens, como
-  objetos comuns, carros.
+  objetos comuns, carros, pessoas, paisagens, etc.
 \item Avaliar o impacto da segmentação por superpixel na segmentação final.
 \item Desenvolver uma ferramenta para segmentação interativa
   utilizando o método de segmentação proposto.
