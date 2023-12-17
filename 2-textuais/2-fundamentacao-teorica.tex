@@ -2,7 +2,7 @@
 
 
 Neste capítulo são apresentados vários conceitos e técnicas para fundamentar
-o desenvolvimento do método proposto, descrito na seção~\ref{sec:teorica-egsis}.
+o desenvolvimento do método proposto, descrito na Seção~\ref{sec:teorica-egsis}.
 
 
 \section{Segmentação interativa de imagens}\label{sec:segmentacao-interativa}
@@ -24,7 +24,7 @@ o processo de segmentação.
 \end{figure}
 \FloatBarrier{}
 
-De acordo com a figura~\ref{fig:interactive-segmentation}, na
+De acordo com a Figura~\ref{fig:interactive-segmentation}, na
 segmentação interativa de imagens, o usuário pode selecionar regiões
 de interesse, definir marcadores ou fazer anotações na imagem. Essas
 entradas do usuário são então usadas para informar o algoritmo de
@@ -85,7 +85,7 @@ Em contraponto, existem algoritmos que não estimam tal função e apenas
 realizam a inferência direta entre os dados rotulados disponíveis e os
 não rotulados. Isso é chamado de transdução e um algoritmo bem
 conhecido com essa característica é o classificador \gls{k-NN}.\@ Na
-figura~\ref{fig:induction-vs-transduction} são ilustradas as
+Figura~\ref{fig:induction-vs-transduction} são ilustradas as
 diferenças entre transdução e indução no processo de aprendizagem:
 
 
@@ -257,8 +257,8 @@ parametrizado de superpixel em relação a um \textit{treshrold} e
 selecionar as \gls{k-NN} similares como arestas válidas.
 
 Essa etapa de geração da rede complexa é crucial para a execução da
-dinâmica coletiva explorada na seção~\ref{sec:teorica-lcu}, que é um dos
-pontos centrais deste trabalho. Na figura~\ref{fig:complex-networks},
+dinâmica coletiva explorada na Seção~\ref{sec:teorica-lcu}, que é um dos
+pontos centrais deste trabalho. Na Figura~\ref{fig:complex-networks},
 um exemplo de geração de rede complexa é apresentado conectado com a
 ilustração~\ref{fig:slic}, ao executar o algoritmo SLIC.\@
 
@@ -291,7 +291,7 @@ $I$, para um deslocamento $\Delta x, \Delta y$, como:
   \end{cases}
 \end{equation}
 
-Na equação~\ref{eq:comatrix} $C_{\Delta x, \Delta y}(i,j)$ é o número de vezes
+Na Equação~\ref{eq:comatrix}, $C_{\Delta x, \Delta y}(i,j)$ é o número de vezes
 que o par de pixels com intensidades $i$ e $j$ ocorre em dois pixels
 separados pelas distâncias (horizontal e vertical) na imagem $I$.
 
@@ -327,7 +327,7 @@ gaussiana (para o domínio espacial) e uma função harmônica complexa
 a aplicação do filtro a uma pequena região da imagem (localização
 espacial), enquanto a função harmônica complexa permite capturar
 características em uma determinada orientação. Na
-figura~\ref{fig:gabor-filters} são ilustrados variações dos
+Figura~\ref{fig:gabor-filters} são ilustrados variações dos
 filtros de Gabor com diferentes parâmetros e a convolução resultante.
 
 \begin{figure}[!h]
@@ -367,7 +367,7 @@ são concatenadas num único vetor de características resultante com 240
 Métricas de similaridade neste trabalho são calculadas com o propósito
 de comparar a similaridade entre os vetores de características dos
 superpixels. Para as técnicas de extração de características descritas
-na seção~\ref{sec:extracao-caracteristicas}, cada técnica se comportou
+na Seção~\ref{sec:extracao-caracteristicas}, cada técnica se comportou
 melhor com uma métrica de similaridade diferente.
 
 Uma função de similaridade entre dois vetores de características
@@ -382,7 +382,7 @@ euclidiana e distância de manhattan.
 A distância euclidiana é o módulo da reta que conecta dois pontos no
 espaço. A distância de manhattan é a soma da diferença absoluta entre
 dois pontos para cada dimensão. Na
-figura~\ref{fig:manhattan-vs-euclidean} é ilustrada a disposição de
+Figura~\ref{fig:manhattan-vs-euclidean} é ilustrada a disposição de
 dois pontos $ x $ e $ y $ no espaço euclidiano com os módulos de
 segmento de reta usados para compor a distância de cada métrica.
 
@@ -412,7 +412,7 @@ md(\vec{x}, \vec{y}) = |y_1-x_1| + |y_2-x_2| + \cdots + |y_n-x_n|
 \subsection{Similaridade euclidiana exponencial}\label{sec:teorica-similaridade-euclidiana}
 
 Para a técnica de extração de característica de matrizes de co-ocorrência,
-detalhada na seção~\ref{sec:teorica-matriz-co-ocorrencia}, a métrica de
+detalhada na Seção~\ref{sec:teorica-matriz-co-ocorrencia}, a métrica de
 similaridade que obteve os melhores resultados foi a distância
 euclidiana pelo inverso da exponencial. A equação é definida como:
 
@@ -434,7 +434,7 @@ similaridade segue a seguir:
   md\_sim(\vec{x}, \vec{y}) = \dfrac{1}{1 + \ln(1 + md(\vec{x}, \vec{y}))}
 \end{equation}
 
-Na equação~\ref{eq:manhattan-similarity}, os valores $1$ adicionados
+Na Equação~\ref{eq:manhattan-similarity}, os valores $1$ adicionados
 ao denominador foram necessários para evitar uma possível divisão por
 zero e logarítmo de zero, ambas operações que são indefinidas na
 matemática.
@@ -466,7 +466,7 @@ modificação é realizada para incluir a similaridade de imagem entre
 dois superpixels, dessa maneira é criado um fator de aumento da
 probabilidade das partículas visitarem os nós mais promissores
 (texturas mais similares). Como discutido na
-seção~\ref{sec:teorica-aprendizado-semi-supervisionado}, esse cenário
+Seção~\ref{sec:teorica-aprendizado-semi-supervisionado}, esse cenário
 de aprendizado é semi-supervisionado transdutivo: poucos rótulos estão
 disponíveis e nenhuma função de inferência é estimada. A inferência
 acontece diretamente entre os pontos rotulados e os não rotulados.
@@ -497,7 +497,7 @@ acontece diretamente entre os pontos rotulados e os não rotulados.
 \FloatBarrier{}
 
 
-Na figura~\ref{fig:lcu-execution}, é possível ver a execução do
+Na Figura~\ref{fig:lcu-execution}, é possível ver a execução do
 algoritmo numa rede complexa densa aleatória, no início há alguns
 poucos vértices anotados em azul e vermelho. No final da execução os
 rótulos são propagados semanticamente baseado na disputa entre as
@@ -505,7 +505,7 @@ partículas para dominar arestas, e por fim, marcar os vértices
 dominados por aquela classe.
 
 Em mais detalhes, durante uma única iteração do sistema na
-figura~\ref{fig:lcu-iteration}, pode-se visualizar o passeio das
+Figura~\ref{fig:lcu-iteration}, pode-se visualizar o passeio das
 partículas entre as fontes de partículas (vértices rotulados) verde e
 vermelho. Algumas não sobreviveram ao processo, outras se mantiveram
 no sistema. Na última imagem, uma contagem do número de partículas por
@@ -617,7 +617,7 @@ partículas nos vértices fontes no tempo $t$, e é definida como:
   \end{aligned}
 \end{equation}
 
-Na equação~\ref{eq:lcu-generation}, $\mathcal{G}^c = \{v_i |v_i \in \mathcal{L}, y_i = c\}$
+Na Equação~\ref{eq:lcu-generation}, $\mathcal{G}^c = \{v_i |v_i \in \mathcal{L}, y_i = c\}$
 é o conjunto de fontes de partículas que pertencem à classe $c$ e $\mathcal{L}$
 é o conjunto dos vértices rotulados.
 
@@ -681,7 +681,7 @@ a método de extração de características, quantidade de superpixels,
 função de similaridade, entre outros.
 
 Ao considerar as características do algoritmo LCU explicada na
-seção~\ref{sec:teorica-lcu}, esse algoritmo também pode ser usado para
+Seção~\ref{sec:teorica-lcu}, esse algoritmo também pode ser usado para
 aprendizado semi-supervisionado multi-classe.
 
 O ponto central desse método de segmentação é realizar uma
@@ -730,7 +730,7 @@ geral do método.
 \FloatBarrier{}
 
 A seguir, uma ilustração da execução do algoritmo em algumas etapas. Na
-figura~\ref{fig:egsis-init}, são observadas duas etapas sendo
+Figura~\ref{fig:egsis-init}, são observadas duas etapas sendo
 realizadas: na imagem (\subref{fig:egsis-superpixels}) a segmentação
 por superpixels, na imagem (\subref{fig:egsis-complex-networks}) a rede
 complexa gerada através dos superpixels.
@@ -761,7 +761,7 @@ complexa gerada através dos superpixels.
 
 
 
-Na figura~\ref{fig:egsis-lcu}, há alguns superpixels
+Na Figura~\ref{fig:egsis-lcu}, há alguns superpixels
 anotados em azul e vermelho, e uma segmentação em duas classes. Na outra
 imagem, é ilustrado o resultado após a continuação da
 execução. Perceba que boa parte da imagem foi segmentada corretamente, mas houve
@@ -794,7 +794,7 @@ alguns erros visíveis.
 Por fim, obtém-se a seguinte máscara de segmentação ao atribuir os
 rótulos dos vértices para os superpixels iniciais, assim sendo
 possível reconstruir uma máscara de segmentação como ilustrado na
-figura~\ref{fig:egsis-mask}.
+Figura~\ref{fig:egsis-mask}.
 
 \begin{figure}[h!]
         \captionsetup{width=12cm}
