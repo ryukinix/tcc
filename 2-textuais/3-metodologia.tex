@@ -1,13 +1,28 @@
 \chapter{METODOLOGIA}\label{cap:metodologia}
 
 Para avaliação deste trabalho, foi considerada a base de dados
-GrabCut~\cite{rother2004grabcut}, que contém 50 imagens com segmentação
-binária e anotações parciais para execução de segmentações assistidas,
-como a proposta de segmentação interativa.
+GrabCut~\cite{rother2004grabcut}, que contém 50 imagens com
+segmentação binária e anotações parciais para execução de segmentações
+assistidas, assim como segmentação interativa. Nessa
+coleção de imagens, há variados tipos de objetos, como pessoas,
+carros, plantas, animais, entre outros tipos de imagem. Na Figura~\ref{fig:imagens-avaliadas} é
+apresentado uma amostra de 16 imagens que serão usadas para realizar
+uma avaliação qualitativa do método EGSIS.\@
+
+\begin{figure}[h!]
+        \captionsetup{width=16cm}
+		\Caption{\label{fig:imagens-avaliadas}
+          Amostra de 16 imagens do \textit{dataset} GrabCut.
+        }
+		\centering
+		\UFCfig{}{\fbox{\includegraphics[width=16cm]{figuras/imagens-avaliadas}}}
+        {\Fonte{Elaborado pelo autor baseado em~\citeonline{rother2004grabcut}}}
+\end{figure}
+\FloatBarrier{}
 
 As anotações parciais que serão consideradas neste trabalho são
 chamadas de \textit{Lasso} e simulam um usuário realizando uma
-marcação de regiões da imagem de fundo e primeiro plano para
+marcação de regiões do plano de fundo e primeiro plano para
 segmentação. A anotação possui um esquema de anotação para treinamento
 em escala de cinza e será descrita em sequência.
 
@@ -18,7 +33,8 @@ em escala de cinza e será descrita em sequência.
           a segmentação real (\textit{ground truth}).
         }
 		\centering
-		\UFCfig{}{\fbox{\includegraphics[width=12cm]{figuras/grabcut-dataset}}}{\Fonte{\fonteautor}}
+		\UFCfig{}{\fbox{\includegraphics[width=12cm]{figuras/grabcut-dataset}}}
+        {\Fonte{Elaborado pelo autor baseado em~\citeonline{rother2004grabcut}}}
 \end{figure}
 \FloatBarrier{}
 
@@ -135,11 +151,11 @@ geral, um IoU maior indica uma melhor precisão do modelo de
 segmentação. Para ilustração, tem-se a seguinte Figura~\ref{fig:iou}:
 
 \begin{figure}[h!]
-        \captionsetup{width=12cm}
+        \captionsetup{width=10cm}
 		\Caption{\label{fig:iou}
           Ilustração das métricas IoU e F1 score.
         }
 		\centering
-		\UFCfig{}{\fbox{\includegraphics[width=12cm]{figuras/metrics}}}{\Fonte{\cite{maxwell2021metrics}}}
+		\UFCfig{}{\fbox{\includegraphics[width=10cm]{figuras/metrics}}}{\Fonte{\cite{maxwell2021metrics}}}
 \end{figure}
 \FloatBarrier{}
