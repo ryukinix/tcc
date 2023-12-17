@@ -40,7 +40,7 @@ experimentos ao variar o número de superpixels e o método de extração
 de características. Em negrito os melhores resultados.}
   \begin{tabular}{lccccc}
     \toprule
-    \textbf{Método}                  & \textbf{Recall} & \textbf{Precision} & \textbf{F1}     & \textbf{IoU}    & \textbf{Tempo(s)} \\
+    \textbf{Método}                  & \textbf{Recall} & \textbf{Precision} & \textbf{F1}     & \textbf{IoU}    & \textbf{Tempo (s)} \\
     \midrule \midrule
     $\gls{EGSIS}(s=50, f=gabor)$     & 0,7882          & 0,9225             & 0,8414          & 0,7412          & 9,22             \\
     $\gls{EGSIS}(s=100, f=gabor)$    & 0,8592          & 0,9505             & 0,8992          & 0,8232          & 14,78            \\
@@ -71,7 +71,7 @@ superpixels, o tempo de execução é significativamente menor ao usar
 matriz de co-ocorrências invés de filtros de gabor.
 
 Todos os experimentos deste trabalho foram executados em um notebook
-pessoal modelo \textit{Thinkpad E480}, com processador \textit{Intel i5-8250U @
+pessoal modelo \textit{Thinkpad E480}, com processador \textit{Intel i5{-}8250U @
 3.400GHz}, 16GB de memória \textit{RAM} e sistema operacional \textit{Ubuntu 22.04.3
 LTS}.
 
@@ -162,11 +162,11 @@ algoritmos de segmentação interativa baseado em grafos.
 
 
 \begin{table}[!h]
-    \centering
-    \Caption{\label{tab:resultados-estado-da-arte} Resultados
-      comparativos entre o método EGSIS e métodos estado-da-arte para
-      segmentação interativa baseado em grafos. Em negrito os melhores
-      resultados, em vermelho os piores.}
+  \centering
+  \Caption{\label{tab:resultados-estado-da-arte} Resultados
+    comparativos entre o método EGSIS e métodos estado-da-arte para
+    segmentação interativa baseado em grafos. Em negrito os melhores
+    resultados, em vermelho os piores.}
   \begin{tabular}{lcccc}
     \toprule
     \textbf{Método}                  & \textbf{Recall} & \textbf{Precision} & \textbf{F1}     & \textbf{IoU}    \\
@@ -186,6 +186,23 @@ algoritmos de segmentação interativa baseado em grafos.
 \end{table}
 \FloatBarrier{}
 
+\begin{table}[!h]
+  \centering
+  \Caption{\label{tab:resultados-egsis-desvio-padrao} Resultados do modelo EGSIS com desvio padrão.}
+  \begin{tabular}{lcc}
+    \toprule
+    \textbf{Métrica}   & $\gls{EGSIS}(s=200, f=gabor)$ & $\gls{EGSIS}(s=200, f=comatrix)$ \\
+    \midrule \midrule
+    \textbf{Recall}    & 0,8799 $\pm$ 0,0907             & 0,8877 $\pm$ 0,0773                \\
+    \textbf{Precision} & 0,9620 $\pm$ 0,0314             & 0,9611 $\pm$ 0,0347                \\
+    \textbf{F1}        & 0,9167 $\pm$ 0,0581             & 0,9212 $\pm$ 0,0506                \\
+    \textbf{IoU}       & 0,8511 $\pm$ 0,0942             & 0,8578 $\pm$ 0,0838                \\
+    \bottomrule
+  \end{tabular}
+  \Fonte{Elaborado pelo autor.}
+\end{table}
+\FloatBarrier{}
+
 
 Na Tabela~\ref{tab:resultados-estado-da-arte}, é possível
 observar que o método $\gls{EGSIS}(s=200, f=gabor)$ atinge o maior
@@ -195,6 +212,14 @@ métrica de precisão foi o método DenseCut, com um valor de precisão de
 0,9418, que é próximo, mas ainda significativamente menor. É
 importante ressaltar que uma alta precisão implica uma baixa
 incidência de pixels falsos-positivos.
+
+Na Tabela~\ref{tab:resultados-egsis-desvio-padrao}, é possível
+visualizar os resultados da média e do desvio padrão de cada métrica
+de avaliação. Ao fazer uma análise incluindo o desvio padrão, não se
+pode concluir estatisticamente qual melhor método de extração de
+características, seja a matriz de co-ocorrências ou os filtros de
+Gabor. Em todas as métricas há uma intersecção dos valores médios
+quando se considera o desvio padrão.
 
 Em nenhuma das métricas apresentadas na comparação o EGSIS se
 classifica como o pior método. No entanto, observa-se um valor menor
@@ -225,5 +250,4 @@ superpixels, de tal maneira que haja um aumento da probabilidade
 de sobrevivência das partículas entre superpixels de mesma
 classe. Além disso, seria útil explorar novas técnicas de extração de
 características que gerem valores de similaridade mais
-discriminantes. Essas ideias serão discutidas com mais detalhes na
-próxima seção deste trabalho.
+discriminantes.
