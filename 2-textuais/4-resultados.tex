@@ -251,3 +251,51 @@ de sobrevivência das partículas entre superpixels de mesma
 classe. Além disso, seria útil explorar novas técnicas de extração de
 características que gerem valores de similaridade mais
 discriminantes.
+
+\section{Ferramenta de anotação integrada com método EGSIS}\label{sec:ferramenta-anotacao}
+
+Para a exploração e avaliação dos resultados a nível individual de
+imagem, desenvolveu-se uma ferramenta de anotação parcial de imagens
+para testar o método EGSIS.\@ Esta ferramenta é utilizada no cenário de
+segmentação interativa e seu uso é descrito nesta seção.
+
+
+\begin{figure}[h!]
+        \captionsetup{width=16cm}
+		\Caption{\label{fig:annotator-label-annotation}
+          Ferramenta para anotação parcial de imagem, com pontos
+circulares e classes distintas por cor.
+        }
+		\centering
+		\UFCfig{}{\fbox{\includegraphics[width=16cm]{figuras/annotator-label-annotation}}}{\Fonte{\fonteautorscikit}}
+\end{figure}
+\FloatBarrier{}
+
+
+A Figura~\ref{fig:annotator-label-annotation} ilustra a ferramenta
+desenvolvida. Durante a inicialização do anotador, é possível declarar
+o nome das classes a serem anotadas e selecionar a cor das anotações
+{---} neste caso, verde para o plano de fundo e azul para a retina. A
+cada clique do mouse, um ponto circular com raio variável pode ser
+anotado, cujo tamanho pode ser definido pela ferramenta através de um
+botão deslizante. Por fim, obtém-se uma instância do anotador que
+contém as anotações e que pode ser usada para gerar uma matriz de
+rótulos por pixel.
+
+\begin{figure}[h!]
+        \captionsetup{width=16cm}
+		\Caption{\label{fig:annotator-egsis-execution}
+          Execução do método EGSIS com a matriz de rótulos gerada pelo anotador.
+        }
+		\centering
+		\UFCfig{}{\fbox{\includegraphics[width=16cm]{figuras/annotator-egsis-execution}}}{\Fonte{\fonteautorscikit}}
+\end{figure}
+\FloatBarrier{}
+
+Na Figura~\ref{fig:annotator-egsis-execution}, a execução do algoritmo
+EGSIS é ilustrada utilizando os dados de anotação como matriz de
+rótulos $y$, que contém as anotações parciais. Ao final da execução, a
+máscara de segmentação colorida é exibida sobreposta à imagem
+original. Nessa situação, uma segmentação perfeita foi alcançada após
+corrigir os erros do modelo na ferramenta de anotação com novos
+pontos.
