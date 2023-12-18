@@ -1,24 +1,40 @@
 \chapter{METODOLOGIA}\label{cap:metodologia}
 
 Para avaliação deste trabalho, foi considerada a base de dados
-GrabCut~\cite{rother2004grabcut}, que contém 50 imagens com segmentação
-binária e anotações parciais para execução de segmentações assistidas,
-como a proposta de segmentação interativa.
+GrabCut~\cite{rother2004grabcut}, que contém 50 imagens com
+segmentação binária e anotações parciais para execução de segmentações
+assistidas, assim como segmentação interativa. Nessa
+coleção de imagens, há variados tipos de objetos, como pessoas,
+carros, plantas, animais, entre outros tipos de imagem. Na Figura~\ref{fig:imagens-avaliadas} é
+apresentado uma amostra de 16 imagens que serão usadas para realizar
+uma avaliação qualitativa do método EGSIS.\@
+
+\begin{figure}[h!]
+        \captionsetup{width=16cm}
+		\Caption{\label{fig:imagens-avaliadas}
+          Amostra de 16 imagens do \textit{dataset} GrabCut.
+        }
+		\centering
+		\UFCfig{}{\fbox{\includegraphics[width=16cm]{figuras/imagens-avaliadas}}}
+        {\Fonte{Elaborado pelo autor baseado em~\citeonline{rother2004grabcut}}}
+\end{figure}
+\FloatBarrier{}
 
 As anotações parciais que serão consideradas neste trabalho são
 chamadas de \textit{Lasso} e simulam um usuário realizando uma
-marcação de regiões da imagem de fundo e primeiro plano para
+marcação de regiões do plano de fundo e primeiro plano para
 segmentação. A anotação possui um esquema de anotação para treinamento
 em escala de cinza e será descrita em sequência.
 
 \begin{figure}[h!]
         \captionsetup{width=12cm}
 		\Caption{\label{fig:grabcut-dataset}
-          Exemplo de imagem dataset GrabCut com anotação parcial e
-          a segmentação real (ground truth).
+          Exemplo de imagem \textit{dataset} GrabCut com anotação parcial e
+          a segmentação real (\textit{ground truth}).
         }
 		\centering
-		\UFCfig{}{\fbox{\includegraphics[width=12cm]{figuras/grabcut-dataset}}}{\Fonte{\fonteautor}}
+		\UFCfig{}{\fbox{\includegraphics[width=12cm]{figuras/grabcut-dataset}}}
+        {\Fonte{Elaborado pelo autor baseado em~\citeonline{rother2004grabcut}}}
 \end{figure}
 \FloatBarrier{}
 
@@ -48,7 +64,7 @@ fundo e 255 para o primeiro plano.
 
 \footnotetext{\gls{EGSIS} é um algoritmo transdutivo,
 não existe treinamento, esses dados são apenas anotações parciais
-que serão usadas para execução da inferência e obter a segmentação da
+que serão usadas na execução da inferência para obter a segmentação da
 imagem.}
 
 O método de avaliação consiste em executar o algoritmo desenvolvido
@@ -99,7 +115,7 @@ será o \textit{recall}.
 \subsection{F1 Score}\label{sec:f1}
 
 A métrica F1 Score, em segmentação de imagens também conhecida como
-Dice Coefficient, é uma soma harmônica entre \textit{precision} e
+\textit{Dice Coefficient}, é uma soma harmônica entre \textit{precision} e
 \textit{recall}. Nessa situação, tem-se a definição:
 
 
@@ -114,11 +130,11 @@ penaliza a que tiver pior avaliação.
 
 IoU~\cite{rezatofighi2019generalized}, que significa
 \textit{Intersection over Union}, é uma métrica popularmente usada
-para medir a precisão de um objeto de segmentação em tarefas de visão
+para medir a precisão da segmentação de um objeto em tarefas de visão
 computacional, como detecção de objetos e segmentação semântica.
 
 A métrica IoU calcula a proporção da área de interseção entre a região
-estimada e a região real (ground truth) pela área da união dessas duas
+estimada e a região real (\textit{ground truth}) pela área da união dessas duas
 regiões. A fórmula para calcular o IoU é:
 
 \begin{equation}\label{eq:iou}
@@ -132,14 +148,14 @@ reais. O valor de IoU varia de 0 a 1, com o valor 1 indicando uma
 correspondência perfeita entre as regiões delimitadoras previstas e
 reais, e o valor 0 indicando que não há sobreposição (pior valor). Em
 geral, um IoU maior indica uma melhor precisão do modelo de
-segmentação. Para ilustração, tem-se a seguinte figura~\ref{fig:iou}:
+segmentação. Para ilustração, tem-se a seguinte Figura~\ref{fig:iou}:
 
 \begin{figure}[h!]
-        \captionsetup{width=12cm}
+        \captionsetup{width=10cm}
 		\Caption{\label{fig:iou}
           Ilustração das métricas IoU e F1 score.
         }
 		\centering
-		\UFCfig{}{\fbox{\includegraphics[width=12cm]{figuras/metrics}}}{\Fonte{\cite{maxwell2021metrics}}}
+		\UFCfig{}{\fbox{\includegraphics[width=10cm]{figuras/metrics}}}{\Fonte{\citeonline{maxwell2021metrics}}}
 \end{figure}
 \FloatBarrier{}
