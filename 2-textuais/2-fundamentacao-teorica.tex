@@ -113,12 +113,12 @@ obter a resposta que você precisa, mas não a mais geral. Por fim,
 Vapnik deixa uma sugestão relevante:
 
 
-\begin{displayquote}
+\begin{quote}
 
-  Do not estimate a function if you need to estimate values at given
-  points. (Try to perform transduction, not induction.)~\cite{vapnik2006semi}
+  \blockquote{Do not estimate a function if you need to estimate values at given
+  points. \textit{(Try to perform transduction, not induction.)}}~\cite[p.~472]{vapnik2006semi}
 
-\end{displayquote}
+\end{quote}
 
 Em tradução-livre: \blockquote{Não estime uma função se você precisa estimar
  valores em dados pontos. (Tente executar transdução, não
@@ -183,8 +183,7 @@ mais simples e pode ser visto como uma variação do algoritmo de
 clusterização k-means expandindo o espaço euclidiano ao incluir também
 o espaço de cores. Ele divide uma imagem em segmentos menores,
 chamados superpixels, que compartilham características semelhantes,
-como cor e textura. Na Figura~\ref{fig:slic}, uma execução do SLIC é
-possível de ser visualizada.
+como cor e textura.
 
 O algoritmo \gls{SLIC} possuí três hiperparâmetros: \textit{segments}, sigma e \textit{compactness}.
 
@@ -241,6 +240,7 @@ dessa maneira:
    }
 \end{algorithm}
 
+Na Figura~\ref{fig:slic}, uma execução do SLIC é possível de ser visualizada.
 \begin{figure}[h!]
         \captionsetup{width=12cm}
 		\Caption{\label{fig:slic}
@@ -311,7 +311,7 @@ $I$, para um deslocamento $\Delta x, \Delta y$, como:
 
 Na Equação~\ref{eq:comatrix}, $C_{\Delta x, \Delta y}(i,j)$ é o número de vezes
 que o par de pixels com intensidades $i$ e $j$ ocorre em dois pixels
-separados por determinadas distâncias e orientação na imagem $I$.
+separados por determinadas distância e orientação na imagem $I$.
 
 A matriz de co-ocorrência é tipicamente normalizada dividindo cada
 elemento pelo número total de pares de pixels na imagem, resultando em
