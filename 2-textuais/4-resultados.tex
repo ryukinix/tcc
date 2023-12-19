@@ -57,18 +57,18 @@ de características. Em negrito os melhores resultados.}
 
 Ao analisar a Tabela~\ref{tab:variacao-superpixels}, é possível
 perceber que o aumento de superpixels impacta positivamente na
-qualidade da segmentação independente do método de extração de
+qualidade da segmentação, independente do método de extração de
 características. A respeito do método de extração de características,
 os resultados de ambos os métodos são próximos. Por outro lado, com
 exceção da métrica de precisão, os melhores resultados vieram do
 modelo com 200 superpixels e extração de características via matriz de
-co-ocorrências. O aumento de superpixels também contribuí para o
+co-ocorrências. O aumento de superpixels também contribuiu para o
 aumento no tempo de execução do modelo. Não foi possível observar
 melhora significativa nas métricas de avaliação ao usar mais de 200
-superpixels, também notável observar que a melhora mais significativa
+superpixels. Também é importante salientar que a melhora mais significativa
 ocorre ao aumentar de 50 para 100 superpixels. Para poucos
 superpixels, o tempo de execução é significativamente menor ao usar
-matriz de co-ocorrências invés de filtros de gabor.
+matriz de co-ocorrências em vez de filtros de Gabor.
 
 Todos os experimentos deste trabalho foram executados em um notebook
 pessoal modelo \textit{Thinkpad E480}, com processador \textit{Intel i5{-}8250U @
@@ -99,19 +99,20 @@ métodos de segmentação interativa foram usados.
 \end{figure}
 \FloatBarrier{}
 
-Na Figura~\ref{fig:grabcut-comparacao}, há em cada linha duas
-imagens a serem segmentadas. Entre as máscaras de segmentação em escala
-de cinza, há as segmentações dos métodos de segmentação
-interativa. O nome desses 7 métodos, em ordem, são: GrabCut,
-LazySnapping, OneCut, Saliency Cut, Iterated Graph Cuts\footnotemark{}, DenseCut e
-Deep GrabCut.
+Na Figura~\ref{fig:grabcut-comparacao}, há em cada linha duas imagens
+a serem segmentadas. As máscaras de segmentação binária, em que
+a cor preta representa o plano de fundo e a cor branca o objeto de
+interesse, são os resultados das segmentações dos métodos de
+segmentação interativa. O nome desses 7 métodos, em ordem, são:
+GrabCut, LazySnapping, OneCut, Saliency Cut, Iterated Graph
+Cuts\footnotemark{}, DenseCut e Deep GrabCut.
 
 
 \footnotetext{Não há um nome formal pra esse método~\cite{an2013iterated}, por ora ele será chamado assim.}
 
 Nesse aspecto, para comparação com o modelo proposto \gls{EGSIS}, para
 as mesmas imagens do dataset GrabCut, são obtidas as seguintes máscaras
-de segmentação na Figura~\ref{fig:egsis-qualitativa}.
+de segmentação representadas na Figura~\ref{fig:egsis-qualitativa}.
 
 \begin{figure}[h!]
         \captionsetup{width=11.5cm}
@@ -128,9 +129,10 @@ próxima coluna mostra a segmentação real.
 
 
 Como pode ser visto, os resultados do \gls{EGSIS} são de qualidade
-equiparável aos métodos de referência em~\citeonline{wang2023review}, embora em
-algumas imagens haja mais erros e outras obtenham maior êxito. Para
-quantificar esse resultado, na próxima Seção~\ref{sec:comparacao-estado-da-arte} é realizada uma avaliação
+equiparável aos métodos de referência em~\citeonline{wang2023review},
+embora em algumas imagens haja mais erros e outras obtenham maior
+êxito. Para quantificar esse resultado, na próxima
+Seção~\ref{sec:comparacao-estado-da-arte} é realizada uma avaliação
 quantitativa comparando esses métodos e o método proposto \gls{EGSIS}.
 
 
@@ -188,7 +190,7 @@ algoritmos de segmentação interativa baseado em grafos.
 
 \begin{table}[!h]
   \centering
-  \Caption{\label{tab:resultados-egsis-desvio-padrao} Resultados do modelo EGSIS com desvio padrão.}
+  \Caption{\label{tab:resultados-egsis-desvio-padrao} Resultados do modelo EGSIS com desvio-padrão.}
   \begin{tabular}{lcc}
     \toprule
     \textbf{Métrica}   & $\gls{EGSIS}(s=200, f=gabor)$ & $\gls{EGSIS}(s=200, f=comatrix)$ \\
@@ -214,12 +216,12 @@ importante ressaltar que uma alta precisão implica uma baixa
 incidência de pixels falsos-positivos.
 
 Na Tabela~\ref{tab:resultados-egsis-desvio-padrao}, é possível
-visualizar os resultados da média e do desvio padrão de cada métrica
-de avaliação. Ao fazer uma análise incluindo o desvio padrão, não se
+visualizar os resultados da média e do desvio-padrão de cada métrica
+de avaliação. Ao fazer uma análise incluindo o desvio-padrão, não se
 pode concluir estatisticamente qual melhor método de extração de
 características, seja a matriz de co-ocorrências ou os filtros de
 Gabor. Em todas as métricas há uma intersecção dos valores médios
-quando se considera o desvio padrão.
+quando se considera o desvio-padrão.
 
 Em nenhuma das métricas apresentadas na comparação o EGSIS se
 classifica como o pior método. No entanto, observa-se um valor menor
@@ -234,15 +236,15 @@ notar que o conjunto de dados GrabCut possui um desequilíbrio na
 quantidade de pixels entre as classes, sendo o plano de fundo a classe
 dominante. No algoritmo \gls{LCU}, um dos fatores importantes para
 classificar um vértice que representa um superpixel é a extração de
-características que através de uma função de similaridade calcula o
-peso das arestas da rede complexa. No entanto, esse é apenas um dos
-fatores do sistema dinâmico, pois também há a geração de partículas e
-a transição entre os vértices. Geralmente, o objeto é cercado pelo
-plano de fundo. Isso pode levar a uma situação onde a rede complexa
-maior, localizada fora do objeto, gera partículas da classe do plano
-de fundo em quantidade suficiente para dominar os vértices na região
-do objeto. Esse comportamento implicaria um aumento na incidência de
-falsos-negativos.
+características, que por meio de uma função de similaridade é usada
+para o cálculo do peso das arestas da rede complexa. No entanto, esse
+é apenas um dos fatores do sistema dinâmico, pois também há a geração
+de partículas e a transição entre os vértices. Geralmente, o objeto é
+cercado pelo plano de fundo. Isso pode levar a uma situação na qual a
+rede complexa maior, localizada fora do objeto, gera partículas da
+classe do plano de fundo em quantidade suficiente para dominar os
+vértices na região do objeto. Esse comportamento implicaria um aumento
+na incidência de falsos-negativos.
 
 Se isso for confirmado, uma possível contramedida seria modificar o
 sistema dinâmico para dar maior peso às similaridades entre
@@ -272,7 +274,7 @@ circulares e classes distintas por cor.
 \FloatBarrier{}
 
 
-A Figura~\ref{fig:annotator-label-annotation} ilustra a ferramenta
+Na Figura~\ref{fig:annotator-label-annotation} é ilustrada a ferramenta
 desenvolvida. Durante a inicialização do anotador, é possível declarar
 o nome das classes a serem anotadas e selecionar a cor das anotações
 {---} neste caso, verde para o plano de fundo e azul para a retina. A
