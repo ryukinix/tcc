@@ -120,15 +120,15 @@ Vapnik deixa uma sugestão relevante:
 
 \end{quote}
 
-Em tradução-livre: \blockquote{Não estime uma função se você precisa estimar
- valores em dados pontos. (Tente executar transdução, não
-indução)}. Essa sugestão é uma evidência que reforça a motivação
-deste trabalho. Ao desenvolver um algoritmo transdutivo para
-segmentação de imagens de maneira assistida, não é estimada uma função
-geral como um passo intermediário, mas a segmentação é realizada
-diretamente baseada nas rotulações iniciais que o usuário forneceu. Na
-Figura~\ref{fig:transductive-vs-inductive} contém uma ilustração comparativa entre aprendizado
-indutivo e transdutivo.
+Em tradução-livre: \blockquote{Não estime uma função se você precisa
+estimar valores em dados pontos. (Tente executar transdução, não
+indução)}. Essa sugestão é uma evidência que reforça a motivação deste
+trabalho. Ao desenvolver um algoritmo transdutivo para segmentação de
+imagens de maneira assistida, não é estimada uma função geral como um
+passo intermediário, mas a segmentação é realizada diretamente baseada
+nas rotulações iniciais que o usuário forneceu. Na
+Figura~\ref{fig:transductive-vs-inductive} está contida uma ilustração
+comparativa entre aprendizado indutivo e transdutivo.
 
 \begin{figure}[h!]
         \captionsetup{width=14cm}
@@ -180,7 +180,7 @@ textura. Neste trabalho, é selecionado um dos mais simples: \gls{SLIC}.
 O algoritmo \gls{SLIC}~\cite{achanta2010slic, achanta2012slic} é um
 método para segmentação de imagens baseado em superpixel, é um dos
 mais simples e pode ser visto como uma variação do algoritmo de
-clusterização k-means expandindo o espaço euclidiano ao incluir também
+clusterização K-means expandindo o espaço euclidiano ao incluir também
 o espaço de cores. Ele divide uma imagem em segmentos menores,
 chamados superpixels, que compartilham características semelhantes,
 como cor e textura.
@@ -322,7 +322,7 @@ extraídas, como contraste, correlação, energia e homogeneidade. Estas
 características podem ser usadas para tarefas como classificação de
 textura, segmentação de imagem, entre outras. Após a aplicação do
 método em cada canal RGB da imagem, são extraídas cinco estatísticas: média,
-mediana, variância, desvio padrão e 25-quantis. Então as
+mediana, variância, desvio-padrão e 25-quantis. Então as
 características são concatenadas em um vetor de características de 15 dimensões.
 
 \subsection{Filtros de Gabor}\label{sec:filtros-gabor}
@@ -523,21 +523,26 @@ partículas para dominar arestas, e, por fim, são marcados os vértices
 dominados por aquela classe.
 
 Em mais detalhes, durante uma única iteração do sistema na
-Figura~\ref{fig:lcu-iteration}, pode-se visualizar o passeio das
-partículas entre as fontes de partículas (vértices rotulados) verde e
-vermelho. Algumas não sobreviveram ao processo, outras se mantiveram
-no sistema. Na última imagem, uma contagem do número de partículas por
-classe que passaram pelas arestas pode ser vista.
+Figura~\ref{fig:lcu-iteration}, os vértices $v_3$ e $v_5$ são
+representados como fontes geradoras de partículas vermelhas e verdes,
+respectivamente. O passeio dessas partículas entre os vértices é
+ilustrado por uma seta, que quando interrompida significa que a
+partícula morreu antes de alcançar o próximo vértice. Algumas
+partículas não sobreviveram ao processo, outras se mantiveram no
+sistema. Na última imagem, é possível ver uma contagem do número de
+partículas por classe que passaram pelas arestas.
 
 
 \begin{figure}[h!]
-        \captionsetup{width=8cm}
-		\Caption{\label{fig:lcu-iteration}
-          Iteração do sistema LCU em um grafo planar.
-        }
-		\centering
-		\UFCfig{}{\fbox{\includegraphics[width=8cm]{figuras/lcu-iteration}}}{\Fonte{\citeonline{VerriNetworkUnfoldingMap2018}}}
+  \captionsetup{width=8.5cm}
+  \Caption{\label{fig:lcu-iteration}
+    Iteração do sistema LCU em um grafo planar.
+  }
+  \centering
+  \UFCfig{}{\fbox{\includegraphics[width=8.5cm]{figuras/lcu-iteration}}}
+  {\Fonte{\citeonline{VerriNetworkUnfoldingMap2018}}}
 \end{figure}
+\FloatBarrier{}
 
 
 \subsection{Modelagem matemática LCU com grafo ponderado}\label{sec:lcu-math}
