@@ -6,7 +6,7 @@ segmentação binária e anotações parciais para execução de segmentações
 assistidas, assim como segmentação interativa. Nessa
 coleção de imagens, há variados tipos de objetos, como pessoas,
 carros, plantas, animais, entre outros tipos de imagem. Na Figura~\ref{fig:imagens-avaliadas} é
-apresentado uma amostra de 16 imagens que serão usadas para realizar
+apresentada uma amostra de 16 imagens que serão usadas para realizar
 uma avaliação qualitativa do método EGSIS.\@
 
 \begin{figure}[h!]
@@ -16,7 +16,8 @@ uma avaliação qualitativa do método EGSIS.\@
         }
 		\centering
 		\UFCfig{}{\fbox{\includegraphics[width=16cm]{figuras/imagens-avaliadas}}}
-        {\Fonte{Elaborado pelo autor baseado em~\citeonline{rother2004grabcut}}}
+        {\Fonte{Elaborado pelo autor a partir de imagens do
+            \textit{dataset} GrabCut~\cite{rother2004grabcut}.}}
 \end{figure}
 \FloatBarrier{}
 
@@ -79,10 +80,10 @@ Para avaliação deste trabalho, foram selecionadas as seguintes métricas
 que são comumente utilizadas para avaliação de segmentação de imagens:
 
 \begin{enumerate}
-\item \textit{Precision}
-\item \textit{Recall}
-\item \textit{F1 Score (Dice Coefficient)}
-\item IoU
+\item \textit{Precision};
+\item \textit{Recall};
+\item \textit{F1 Score (Dice Coefficient)};
+\item IoU.
 \end{enumerate}
 
 
@@ -94,9 +95,10 @@ Para avaliação da precisão da segmentação, tem-se a seguinte definição:
   Precision = \dfrac{TP}{TP + FP},
 \end{equation}
 \noindent
-em que \textit{TP} são os pixels classificados corretamente e \textit{FP}
-os falsos-positivos. Essa métrica penaliza a presença de falsos
-positivos. Quanto menos falsos-positivos, maior será a precisão.
+em que \textit{TP} são os pixels classificados corretamente e
+\textit{FP} os falsos-positivos. Essa métrica penaliza a presença de
+falsos-positivos. Quanto menos falsos-positivos, maior será a
+precisão.
 
 
 \subsection{Recall}\label{sec:recall}
@@ -104,7 +106,7 @@ positivos. Quanto menos falsos-positivos, maior será a precisão.
 Para avaliação do \textit{Recall} (também conhecido como Sensibilidade), tem-se a seguinte definição:
 
 \begin{equation}\label{eq:recall}
-  Recall = \dfrac{TP}{TP + FN}
+  Recall = \dfrac{TP}{TP + FN}.
 \end{equation}
 
 Nessa equação, similar à precisão, é introduzido \textit{FN} no denominador,
@@ -120,7 +122,7 @@ A métrica F1 Score, em segmentação de imagens também conhecida como
 
 
 \begin{equation}\label{eq:recall}
-  F1 = \dfrac{2 \cdot Precision \cdot Recall}{Precision + Recall}
+  F1 = \dfrac{2 \cdot Precision \cdot Recall}{Precision + Recall}.
 \end{equation}
 
 F1 score é uma métrica balanceada que, entre \textit{precision} e \textit{recall},
@@ -138,7 +140,7 @@ estimada e a região real (\textit{ground truth}) pela área da união dessas du
 regiões. A fórmula para calcular o IoU é:
 
 \begin{equation}\label{eq:iou}
-  IoU = \dfrac{\left| A \cap B \right|}{\left| A \cup B \right|}
+  IoU = \dfrac{\left| A \cap B \right|}{\left| A \cup B \right|}.
 \end{equation}
 
 

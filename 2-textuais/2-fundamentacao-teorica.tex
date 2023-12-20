@@ -14,13 +14,14 @@ porque envolve a entrada do usuário para ajudar a orientar ou refinar
 o processo de segmentação.
 
 \begin{figure}[h!]
-        \captionsetup{width=12cm}
-		\Caption{\label{fig:interactive-segmentation}
-          O usuário marca anotações do fundo e do objeto a ser
-          segmentado, então a segmentação interativa é realizada.
-        }
-		\centering
-		\UFCfig{}{\fbox{\includegraphics[width=12cm]{figuras/interactive-segmentation-2008}}}{\Fonte{\citeonline{duchenne2008segmentation}}}
+  \captionsetup{width=12cm}
+  \Caption{\label{fig:interactive-segmentation}
+    O usuário marca anotações do fundo e do objeto a ser
+    segmentado, então a segmentação interativa é realizada.
+  }
+  \centering
+  \UFCfig{}{\fbox{\includegraphics[width=12cm]{figuras/interactive-segmentation-2008}}}
+  {\Fonte{\citeonline{duchenne2008segmentation}}}
 \end{figure}
 \FloatBarrier{}
 
@@ -35,7 +36,7 @@ objeto de interesse seja isolado em sua própria região.
 
 Este tipo de segmentação de imagem é útil em uma variedade de
 aplicações, incluindo processamento de imagens médicas, visão
-computacional, reconhecimento de padrões e muitos outros campos onde é
+computacional, reconhecimento de padrões e muitos outros campos nos quais é
 útil dividir uma imagem em regiões distintas com base em
 critérios definidos pelo usuário.
 
@@ -59,7 +60,7 @@ Formalmente, pode-se definir o aprendizado semi-supervisionado da seguinte manei
 \begin{quote}
   Dado um conjunto de dados de treinamento
   $ \mathbf{X} = \{\vec{x_1}, \vec{x_2}, \ldots, \vec{x_n}\} $, tal que os
-  vetores de características tenham dimensão $d$ $ \vec{x_n} \in \mathbb{R}^d $,
+  vetores de características tenham dimensão $d$, isto é, $ \vec{x_n} \in \mathbb{R}^d $,
   onde apenas um subconjunto  $ \vec{Y} = \{y_1, y_2, \ldots , y_m\} $ em que $ (m < n) $ tem rótulos
   correspondentes, o objetivo do aprendizado semi-supervisionado é usar
   tanto o conjunto de dados rotulado quanto o não rotulado para aprender
@@ -72,7 +73,7 @@ dados não rotulados podem fornecer informações adicionais que podem
 ser usadas para melhorar a precisão do modelo de aprendizado de
 máquina. Isso é feito através de várias técnicas, como a propagação de
 rótulos, na qual os rótulos são propagados dos dados rotulados para os
-dados não rotulados, ou a aprendizagem auto-supervisionada, onde o
+dados não rotulados, ou a aprendizagem auto-supervisionada, na qual o
 modelo é treinado para prever partes dos dados a partir de outras
 partes.
 
@@ -106,33 +107,33 @@ No texto de~\citeonline{vapnik2006semi}, o criador do famoso algoritmo SVM
 estabelece uma profunda formalização dos problemas de aprendizado
 semi-supervisionado e inferência transdutiva. No final do texto, ele
 declara algumas reflexões sobre a solução de problemas em aprendizagem
-de máquina. Em uma delas, ele diz que ao resolver um problema, não
+de máquina. Em uma delas, ele diz que, ao resolver um problema, não
 tente resolver o problema geral como um passo intermediário, tente
 obter a resposta que você precisa, mas não a mais geral. Por fim,
 Vapnik deixa uma sugestão relevante:
 
 
-\begin{displayquote}
+\begin{quote}
 
-  Do not estimate a function if you need to estimate values at given
-  points. (Try to perform transduction, not induction.)
+  \blockquote{Do not estimate a function if you need to estimate values at given
+  points. \textit{(Try to perform transduction, not induction.)}}~\cite[p.~472]{vapnik2006semi}
 
-\end{displayquote}
+\end{quote}
 
-Em tradução-livre: \blockquote{Não estime uma função se você precisa estimar
-os valores em dados pontos. (Tente executar transdução, não
-indução)}. Essa sugestão é uma evidência que reforça a motivação
-deste trabalho. Ao desenvolver um algoritmo transdutivo pra
-segmentação de imagens de maneira assistida, não é estimada uma função
-geral como um passo intermediário, mas a segmentação é realizada
-diretamente baseada nas rotulações iniciais que o usuário forneceu. Na
-Figura~\ref{fig:transductive-vs-inductive} contém uma ilustração comparativa entre aprendizado
-indutivo e transdutivo.
+Em tradução-livre: \blockquote{Não estime uma função se você precisa
+estimar valores em dados pontos. (Tente executar transdução, não
+indução)}. Essa sugestão é uma evidência que reforça a motivação deste
+trabalho. Ao desenvolver um algoritmo transdutivo para segmentação de
+imagens de maneira assistida, não é estimada uma função geral como um
+passo intermediário, mas a segmentação é realizada diretamente baseada
+nas rotulações iniciais que o usuário forneceu. Na
+Figura~\ref{fig:transductive-vs-inductive} está contida uma ilustração
+comparativa entre aprendizado indutivo e transdutivo.
 
 \begin{figure}[h!]
         \captionsetup{width=14cm}
 		\Caption{\label{fig:transductive-vs-inductive}
-          Em tons de azul é representado a concentração de dados
+          Em tons de azul é representada a concentração de dados
 rotulados, em vermelho a função de inferência. No aprendizado
 transdutivo não há estimação de uma função de inferência.
         }
@@ -176,12 +177,33 @@ textura. Neste trabalho, é selecionado um dos mais simples: \gls{SLIC}.
 \subsection{SLIC}\label{sec:teorica-superpixel-slic}
 
 
-O algoritmo \gls{SLIC}~\cite{achanta2010slic, achanta2012slic} é um método para segmentação de imagens baseado
-em superpixel, é um dos mais simples e pode ser visto como uma
-variação do algoritmo de clusterização k-means expandindo o espaço
-euclidiano ao incluir também o espaço de cores. Ele divide uma imagem
-em segmentos menores, chamados superpixels, que compartilham
-características semelhantes, como cor e textura.
+O algoritmo \gls{SLIC}~\cite{achanta2010slic, achanta2012slic} é um
+método para segmentação de imagens baseado em superpixel, é um dos
+mais simples e pode ser visto como uma variação do algoritmo de
+clusterização K-means expandindo o espaço euclidiano ao incluir também
+o espaço de cores. Ele divide uma imagem em segmentos menores,
+chamados superpixels, que compartilham características semelhantes,
+como cor e textura.
+
+O algoritmo \gls{SLIC} possuí três hiperparâmetros: \textit{segments}, sigma e \textit{compactness}.
+
+\begin{enumerate}
+\item \textbf{Segments}: Número de superpixels que será usado para
+  segmentar a imagem.
+\item \textbf{Sigma}: Este parâmetro é usado para suavizar a imagem antes da
+segmentação. Um valor maior de sigma resultará em uma imagem mais
+suave, o que pode ajudar a reduzir o ruído e os detalhes finos. No
+entanto, um valor muito alto pode resultar em perda de detalhes
+importantes.
+\item \textbf{Compactness} Este parâmetro controla o equilíbrio entre a coerência
+de cor e a proximidade espacial na formação de superpixels. Um valor
+maior de compactness fará com que os superpixels sejam mais
+quadrados, enquanto um valor menor fará com que os superpixels
+sigam mais de perto os limites da imagem. Portanto, a compactness pode
+ser ajustada para obter superpixels que são mais representativos da
+estrutura da imagem.
+\end{enumerate}
+
 
 Uma explicação passo-a-passo de como o SLIC funciona pode ser entendida
 dessa maneira:
@@ -212,15 +234,13 @@ dessa maneira:
         até que o algoritmo alcance a condição de convergência, ou seja, até
         que os centros de superpixels parem de mudar significativamente;
 
-      \item O resultado final é uma segmentação da imagem em superpixels, onde
-        cada superpixel é um grupo de pixels com características semelhantes.
+      \item O resultado final é uma segmentação da imagem em
+        superpixels, na qual cada superpixel é um grupo de pixels com características semelhantes.
     \end{enumerate}
    }
 \end{algorithm}
 
-
-Uma execução do SLIC é possível de ser visualizada a seguir:
-
+Na Figura~\ref{fig:slic}, uma execução do SLIC é possível de ser visualizada.
 \begin{figure}[h!]
         \captionsetup{width=12cm}
 		\Caption{\label{fig:slic}
@@ -229,25 +249,6 @@ Uma execução do SLIC é possível de ser visualizada a seguir:
 		\centering
 		\UFCfig{}{\fbox{\includegraphics[width=12cm]{figuras/slic}}}{\Fonte{\fonteautorscikit}}
 \end{figure}
-
-O algoritmo \gls{SLIC} possuí três hiperparâmetros: \textit{segments}, sigma e \textit{compactness}.
-
-\begin{enumerate}
-\item \textbf{Segments}: Número de superpixels que será usado para
-  segmentar a imagem.
-\item \textbf{Sigma}: Este parâmetro é usado para suavizar a imagem antes da
-segmentação. Um valor maior de sigma resultará em uma imagem mais
-suave, o que pode ajudar a reduzir o ruído e os detalhes finos. No
-entanto, um valor muito alto pode resultar em perda de detalhes
-importantes.
-\item \textbf{Compactness} Este parâmetro controla o equilíbrio entre a coerência
-de cor e a proximidade espacial na formação de superpixels. Um valor
-maior de compactness fará com que os superpixels sejam mais
-quadrados, enquanto um valor menor fará com que os superpixels
-sigam mais de perto os limites da imagem. Portanto, a compactness pode
-ser ajustada para obter superpixels que são mais representativos da
-estrutura da imagem.
-\end{enumerate}
 
 
 \section{Geração de redes complexas}\label{sec:teorica-redes-complexas}
@@ -276,15 +277,16 @@ Essa etapa de geração da rede complexa é crucial para a execução da
 dinâmica coletiva explorada na Seção~\ref{sec:teorica-lcu}, que é um dos
 pontos centrais deste trabalho. Na Figura~\ref{fig:complex-networks},
 um exemplo de geração de rede complexa é apresentado conectado com a
-ilustração~\ref{fig:slic}, ao executar o algoritmo SLIC.\@
+Figura~\ref{fig:slic}, ao executar o algoritmo SLIC.\@
 
-\begin{figure}[t]
-        \captionsetup{width=14cm}
+
+\begin{figure}[h!]
+        \captionsetup{width=12cm}
 		\Caption{\label{fig:complex-networks}
           Geração de rede complexa baseado nos superpixels.
         }
 		\centering
-		\UFCfig{}{\fbox{\includegraphics[width=14cm]{figuras/complex-networks}}}{\Fonte{\fonteautorscikit}}
+		\UFCfig{}{\fbox{\includegraphics[width=12cm]{figuras/complex-networks}}}{\Fonte{\fonteautorscikit}}
 \end{figure}
 \FloatBarrier{}
 
@@ -303,13 +305,13 @@ $I$, para um deslocamento $\Delta x, \Delta y$, como:
 \begin{equation}\label{eq:comatrix}
   C_{\Delta x, \Delta y}(i,j) = \sum_{x=1}^n\sum_{y=1}^m
   \begin{cases} 1, & \text{if }I(x,y)=i\text{ e }I(x+\Delta x, y+\Delta y)=j
-               \\ 0, & \text{caso contrário}
+               \\ 0, & \text{caso contrário.}
   \end{cases}
 \end{equation}
 
 Na Equação~\ref{eq:comatrix}, $C_{\Delta x, \Delta y}(i,j)$ é o número de vezes
 que o par de pixels com intensidades $i$ e $j$ ocorre em dois pixels
-separados pelas distâncias (horizontal e vertical) na imagem $I$.
+separados por determinadas distância e orientação na imagem $I$.
 
 A matriz de co-ocorrência é tipicamente normalizada dividindo cada
 elemento pelo número total de pares de pixels na imagem, resultando em
@@ -318,10 +320,10 @@ uma matriz de probabilidade de co-ocorrência.
 A partir desta matriz, várias características texturais podem ser
 extraídas, como contraste, correlação, energia e homogeneidade. Estas
 características podem ser usadas para tarefas como classificação de
-textura, segmentação de imagem, entre outros. Após a aplicação do
+textura, segmentação de imagem, entre outras. Após a aplicação do
 método em cada canal RGB da imagem, são extraídas cinco estatísticas: média,
-mediana, variância, desvio padrão e 25-quantis. Então as
-características são concatenadas um vetor de características de 15 dimensões.
+mediana, variância, desvio-padrão e 25-quantis. Então as
+características são concatenadas em um vetor de características de 15 dimensões.
 
 \subsection{Filtros de Gabor}\label{sec:filtros-gabor}
 
@@ -360,7 +362,7 @@ A operação de convolução entre uma imagem qualquer $ x $ e um filtro de
 Gabor $ k $, pode ser dada pela seguinte equação:
 
 \begin{equation}
-  (y * k)(i, j) = \sum_{m} \sum_{n} x(i-m, j-n) k(m, n)
+  (y * k)(i, j) = \sum_{m} \sum_{n} x(i-m, j-n) k(m, n).
 \end{equation}
 
 A extração de características usando filtros de Gabor geralmente
@@ -372,7 +374,7 @@ uma representação da presença de tais características na imagem.
 Neste trabalho, são gerados 16 filtros de Gabor que foram avaliados
 experimentalmente com variados parâmetros. Após a aplicação do filtro
 em cada canal RGB da imagem, são extraídos cinco estatísticas: média,
-mediana, variância, desvio padrão e 25-quantis. Com isso, todas as
+mediana, variância, desvio-padrão e 25-quantis. Com isso, todas as
 cinco estatísticas dos 16 filtros aplicados em cada um dos três canais
 são concatenadas num único vetor de características resultante com 240
 ($16 \times 5 \times 3$) dimensões.
@@ -416,13 +418,13 @@ Para as equações das distâncias, tem-se a seguinte equação para a
 distância euclidiana:
 
 \begin{equation}\label{eq:euclidian-distance}
-ed(\vec{x}, \vec{y}) = \sqrt{{(y_1-x_1)}^2 + {(y_2-x_2)}^2 + \cdots + {(y_n-x_n)}^2}
+ed(\vec{x}, \vec{y}) = \sqrt{{(y_1-x_1)}^2 + {(y_2-x_2)}^2 + \cdots + {(y_n-x_n)}^2}.
 \end{equation}
 
 Para a distância de manhattan, tem-se a seguinte equação:
 
 \begin{equation}\label{eq:manhattan-distance}
-md(\vec{x}, \vec{y}) = |y_1-x_1| + |y_2-x_2| + \cdots + |y_n-x_n|
+md(\vec{x}, \vec{y}) = |y_1-x_1| + |y_2-x_2| + \cdots + |y_n-x_n|.
 \end{equation}
 
 \subsection{Similaridade euclidiana exponencial}\label{sec:teorica-similaridade-euclidiana}
@@ -433,21 +435,21 @@ similaridade que obteve os melhores resultados foi a distância
 euclidiana pelo inverso da exponencial. A equação é definida como:
 
 \begin{equation}\label{eq:euclidian-similarity}
-  ed\_sim(\vec{x}, \vec{y}) = \dfrac{1}{e^{ed(\vec{x}, \vec{y})}}
+  ed\_sim(\vec{x}, \vec{y}) = \dfrac{1}{e^{ed(\vec{x}, \vec{y})}}.
 \end{equation}
 
 \subsection{Similaridade de Manhattan logarítmica}\label{sec:teorica-similaridade-manhattan}
 
 Para a técnica envolvendo filtros de Gabor, a distância entre os
-vetores de características tiveram valores tão altos que ao usar a
-similaridade euclidiana (exponencial ou não), maior parte dos valores
-chegavam a zero. Por esse motivo, o uso da conversão para o domínio
-logarítmico foi usado para suavizar o crescimento exagerado dos
+vetores de características tiveram valores tão altos que, ao usar a
+similaridade euclidiana (exponencial ou não), a maior parte dos valores
+chegavam a zero. Por esse motivo, a conversão para o domínio
+logarítmico foi usada para suavizar o crescimento exagerado dos
 valores, obtendo bons resultados. A definição para essa equação de
-similaridade segue a seguir:
+similaridade é:
 
 \begin{equation}\label{eq:manhattan-similarity}
-  md\_sim(\vec{x}, \vec{y}) = \dfrac{1}{1 + \ln(1 + md(\vec{x}, \vec{y}))}
+  md\_sim(\vec{x}, \vec{y}) = \dfrac{1}{1 + \ln(1 + md(\vec{x}, \vec{y}))}.
 \end{equation}
 
 Na Equação~\ref{eq:manhattan-similarity}, os valores $1$ adicionados
@@ -455,10 +457,10 @@ ao denominador foram necessários para evitar uma possível divisão por
 zero e logarítmo de zero, ambas operações que são indefinidas na
 matemática.
 
-
+\newpage
 \section{LCU}\label{sec:teorica-lcu}
 
-O algoritmo \gls{LCU}, foi desenvolvido por um
+O algoritmo \gls{LCU}, que foi desenvolvido por um
 brasileiro~\cite{VerriNetworkUnfoldingMap2018}, é uma dinâmica
 coletiva baseada em propagação de rótulos numa rede complexa. Essa
 dinâmica coletiva é modelada como um sistema dinâmico com geração de
@@ -476,7 +478,7 @@ vértice será marcado com o novo rótulo baseado no tipo de partícula
 que mais conseguiu dominar arestas desse vértice.
 
 Nesse caso particular, a implementação proposta neste trabalho é
-ligeiramente diferente da proposta originalmente, pois a rede complexa
+ligeiramente diferente da proposta originalmente, pois na rede complexa
 no cenário que o autor propõe as arestas não possuem peso. Uma
 modificação é realizada para incluir a similaridade de imagem entre
 dois superpixels, dessa maneira é criado um fator de aumento da
@@ -490,21 +492,21 @@ acontece diretamente entre os pontos rotulados e os não rotulados.
 
 \begin{figure}[!h]
 \centering
-    \captionsetup{width=14cm}
+    \captionsetup{width=14.8cm}
     \Caption{\label{fig:lcu-execution}
       Rede complexa para execução da dinâmica LCU.\@ Anotação
-      parcial em~(\subref{fig:lcu-partial}) e resultado final em~(\subref{fig:lcu-done})
+      parcial em~(\subref{fig:lcu-partial}) e resultado final em~(\subref{fig:lcu-done}).
     }
 
     \begin{subfigure}[b]{0.45\textwidth}
     \centering
-    \UFCfig{}{\fbox{\includegraphics[width=7cm]{figuras/lcu-partial}}}
+    \UFCfig{}{\fbox{\includegraphics[width=6.7cm]{figuras/lcu-partial}}}
     \caption{\label{fig:lcu-partial}}
     \end{subfigure}
 \quad
     \begin{subfigure}[b]{0.45\textwidth}
     \centering
-    \UFCfig{}{\fbox{\includegraphics[width=7cm]{figuras/lcu-done}}}
+    \UFCfig{}{\fbox{\includegraphics[width=6.7cm]{figuras/lcu-done}}}
     \caption{\label{fig:lcu-done}}
     \end{subfigure}
     {\Fonte{\fonteautor}}
@@ -517,38 +519,43 @@ Na Figura~\ref{fig:lcu-execution}, é possível ver a execução do
 algoritmo numa rede complexa densa aleatória, no início há alguns
 poucos vértices anotados em azul e vermelho. No final da execução os
 rótulos são propagados semanticamente baseado na disputa entre as
-partículas para dominar arestas, e por fim, marcar os vértices
+partículas para dominar arestas, e, por fim, são marcados os vértices
 dominados por aquela classe.
 
 Em mais detalhes, durante uma única iteração do sistema na
-Figura~\ref{fig:lcu-iteration}, pode-se visualizar o passeio das
-partículas entre as fontes de partículas (vértices rotulados) verde e
-vermelho. Algumas não sobreviveram ao processo, outras se mantiveram
-no sistema. Na última imagem, uma contagem do número de partículas por
-classe que passaram pelas arestas pode ser vista.
+Figura~\ref{fig:lcu-iteration}, os vértices $v_3$ e $v_5$ são
+representados como fontes geradoras de partículas vermelhas e verdes,
+respectivamente. O passeio dessas partículas entre os vértices é
+ilustrado por uma seta, que quando interrompida significa que a
+partícula morreu antes de alcançar o próximo vértice. Algumas
+partículas não sobreviveram ao processo, outras se mantiveram no
+sistema. Na última imagem, é possível ver uma contagem do número de
+partículas por classe que passaram pelas arestas.
 
 
 \begin{figure}[h!]
-        \captionsetup{width=8cm}
-		\Caption{\label{fig:lcu-iteration}
-          Iteração do sistema LCU em um grafo planar.
-        }
-		\centering
-		\UFCfig{}{\fbox{\includegraphics[width=8cm]{figuras/lcu-iteration}}}{\Fonte{\citeonline{VerriNetworkUnfoldingMap2018}}}
+  \captionsetup{width=8.5cm}
+  \Caption{\label{fig:lcu-iteration}
+    Iteração do sistema LCU em um grafo planar.
+  }
+  \centering
+  \UFCfig{}{\fbox{\includegraphics[width=8.5cm]{figuras/lcu-iteration}}}
+  {\Fonte{\citeonline{VerriNetworkUnfoldingMap2018}}}
 \end{figure}
+\FloatBarrier{}
 
 
 \subsection{Modelagem matemática LCU com grafo ponderado}\label{sec:lcu-math}
 
 Considera-se uma rede complexa expressada por um simples grafo
-ponderado não-direcionado $G = (\mathcal{V}, \mathcal{E})$, onde $\mathcal{V}$ é o conjunto de
+ponderado não-direcionado $G = (\mathcal{V}, \mathcal{E})$, em que $\mathcal{V}$ é o conjunto de
 vértices e $\mathcal{E} \subset \mathcal{V} \times \mathcal{V}$ é o conjunto de arestas. A rede possui
 $\left|\mathcal{V}\right| = l + u$ vértices que podem ser representações de
 dados rotulados ($ l $) ou não rotulados ($ u $). Os vértices anotados
 podem ter um rótulo $y_i = \{1, \ldots, C\}$, em que $C$ é o número total de
 classes, além disso possuem um vetor de características $\vec{x_i}$ da
 representação daquele dado. A rede é representada por uma matriz de
-adjacência $A = (a_{ij})$, onde $a_{ij} =a_{ji} =
+adjacência $A = (a_{ij})$, em que $a_{ij} =a_{ji} =
 similarity(\vec{x_i}, \vec{x_j})$, na qual as arestas possuem um peso
 que se refere à similaridade entre os vetores de características
 representados pelos vértices. Nessa situação, supõe-se que $l << u$,
@@ -586,7 +593,7 @@ por:
   \phi:\left\{\begin{array}{l}
     \mathbf{n}^c(t+1)= P^c(X(t)) \times \mathbf{n}^c(t) +\mathbf{g}^c(X(t)) \\
     N^c(t+1)=\operatorname{diag} \mathbf{n}^c(t) \times P^c(X(t)) \\
-    \Delta^c(t+1)=\Delta^c(t)+N^c(t+1),
+    \Delta^c(t+1)=\Delta^c(t)+N^c(t+1).
   \end{array}\right.
 \end{equation}
 
@@ -601,8 +608,8 @@ elementos dessa matriz são definidos como:
     j}^c(X(t))\right) & \text { do contrário, }\end{cases}
 \end{equation}
 \noindent
-em que ${\deg v_i}$ o grau do vértice (número de arestas
-conectadas) e variável $\sigma_{i j}^c$ define-se como:
+em que ${\deg v_i}$ representa o grau do vértice (número de arestas
+conectadas) e a variável $\sigma_{i j}^c$ é definida como:
 
 \begin{equation}\label{eq:lcu-sigma}
 \begin{aligned}
@@ -643,13 +650,13 @@ dividir a rede complexa em sub-grafos, primeiramente agrupando as
 arestas por maior dominação de classe:
 
 \begin{equation}\label{eq:lcu-edges-by-class}
-  \mathcal{E}^c(t):=\left\{(i, j) \mid \underset{q}{\arg \max }\left(\delta_{i j}^q(t)+\delta_{j i}^q(t)\right)=c\right\}
+  \mathcal{E}^c(t):=\left\{(i, j) \mid \underset{q}{\arg \max }\left(\delta_{i j}^q(t)+\delta_{j i}^q(t)\right)=c\right\}.
 \end{equation}
 
 E, então, define-se o grafo por classe $c$ como:
 
 \begin{equation}\label{eq:lcu-subnetworks}
-  G^c(t):=\left(\mathcal{V}, \mathcal{E}^c(t)\right)
+  G^c(t):=\left(\mathcal{V}, \mathcal{E}^c(t)\right).
 \end{equation}
 
 Por fim, as redes $ G^c(\tau) $ são usadas para classificação dos
@@ -664,7 +671,7 @@ y_j = \underset{c \in \{1, \ldots, C\}}{\arg \max }\left| \mathcal{E}(\mathcal{N
 \noindent
 em que ${\mathcal{N}_{c,j}}$ são as arestas da vizinhança do vértice $j$ que
 foram dominadas por partículas da classe $c$. Na
-figura~\ref{fig:lcu-classification}, é ilustrada a dinâmica coletiva
+Figura~\ref{fig:lcu-classification}, é ilustrada a dinâmica coletiva
 aplicada em uma rede complexa de formato similar a duas bananas. A
 ilustração está dividida em quatro etapas: (a) inicialização com 6
 vértices rotulados, 3 para cada classe, com vértices pretos não
@@ -683,6 +690,7 @@ dominação.
 		\UFCfig{}{\fbox{\includegraphics[width=16cm]{figuras/lcu-classification}}}{\Fonte{\citeonline{VerriNetworkUnfoldingMap2018}}}
 \end{figure}
 
+\newpage
 \section{EGSIS}\label{sec:teorica-egsis}
 
 O algoritmo \gls{EGSIS} é a técnica de segmentação de imagens
@@ -696,7 +704,7 @@ técnica possui etapas flexíveis para refinamento e otimização, quanto
 a método de extração de características, quantidade de superpixels,
 função de similaridade, entre outros.
 
-Ao considerar as características do algoritmo LCU explicada na
+Ao considerar as características do algoritmo LCU, explicadas na
 Seção~\ref{sec:teorica-lcu}, esse algoritmo também pode ser usado para
 aprendizado semi-supervisionado multi-classes.
 
@@ -706,7 +714,7 @@ compatível com a dinâmica coletiva \gls{LCU}. Para isso, uma
 pré-segmentação é realizada usando superpixels através do algoritmo
 SLIC.\@ Os rótulos iniciais da imagem são propagados aos superpixels
 baseado numa votação: a classe que tiver maior números de pixels
-rotulados, atribui-se aquela classe ao superpixel.
+rotulados é atribuída ao superpixel.
 
 Ao obter os superpixels e os rótulos iniciais, é construída uma rede
 complexa onde os vértices representam os superpixels e as arestas a
@@ -813,10 +821,10 @@ possível reconstruir uma máscara de segmentação como ilustrado na
 Figura~\ref{fig:egsis-mask}.
 
 \begin{figure}[h!]
-        \captionsetup{width=12cm}
+        \captionsetup{width=14cm}
 		\Caption{\label{fig:egsis-mask}
           Máscara de segmentação final e a imagem original.\@
         }
 		\centering
-		\UFCfig{}{\fbox{\includegraphics[width=12cm]{figuras/egsis-segmentation-mask}}}{\Fonte{\fonteautorscikit}}
+		\UFCfig{}{\fbox{\includegraphics[width=14cm]{figuras/egsis-segmentation-mask}}}{\Fonte{\fonteautorscikit}}
 \end{figure}

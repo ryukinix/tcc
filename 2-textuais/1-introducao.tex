@@ -12,8 +12,8 @@ tecnológica e econômica que é vivida no século XXI.\@
 A segmentação de uma imagem pode ser feita manualmente por um anotador
 humano marcando as linhas delineadoras de um objeto. Por outro lado,
 são conhecidos variados algoritmos para segmentação de imagens baseados
-em aprendizagem de máquina, que através de exemplos de segmentação
-fornecidos para treinamento é possível inferir a segmentação de novas imagens.
+em aprendizagem de máquina, que, através de exemplos de segmentação
+fornecidos para treinamento podem inferir a segmentação de novas imagens.
 
 Na Figura~\ref{fig:image-segmentation-types} é apresentado um quadro
 comparativo de operações em uma imagem com balões, incluindo os tipos
@@ -25,28 +25,29 @@ objetos como o mesmo rótulo, na segmentação por instância, cada balão
 \begin{figure}[h!]
         \captionsetup{width=16cm}
 		\Caption{\label{fig:image-segmentation-types}
-Comparação de tipos de segmentação de imagem: por semântica e instância
+Comparação de tipos de segmentação de imagem: por semântica e instância.
 }
 		\centering
 		\UFCfig{}{\fbox{\includegraphics[width=16cm]{figuras/image-segmentation-types}}}{\Fonte{\citeonline{MediumInstanceSegmentation2019}}}
 \end{figure}
 
 
-Entre os tipos de aprendizagem de máquina~\cite{sah2020machine}, para segmentação de imagens
-semântica é selecionada neste trabalho especificamente a aprendizagem
-semi-supervisionada transdutiva\footnote{mais informações na
+Entre os tipos de aprendizagem de máquina~\cite{sah2020machine}, para
+segmentação de imagens semântica é selecionada neste trabalho
+especificamente a aprendizagem semi-supervisionada
+transdutiva\footnote{mais informações na
 Seção~\ref{sec:teorica-aprendizado-semi-supervisionado}}. A
 aprendizagem semi-supervisionada é uma categoria que realiza o
 aprendizado com poucas rotulações e a maior parte dos dados não são
-rotulados. Outras categorias de aprendizado de máquina como
-supervisionada possui no treinamento uma base totalmente rotulada
-enquanto a aprendizagem não supervisionada não possui rótulo algum
-(exemplo: K-means). Ao considerar a dificuldade de conseguir dados
-rotulados por humanos em ambientes de uso por especialistas, como imagens
-médicas e ferramentas de edição de imagem, a abordagem
-semi-supervisionada se demonstra interessante por precisar de poucos
-dados rotulados, mas ainda existir uma anotação com viés do
-especialista interessado (médico, editor).
+rotulados. Essa categoria se baseia na aprendizagem supervisionada,
+que possui no treinamento uma base totalmente rotulada, e na
+aprendizagem não supervisionada, que não possui rótulo algum (exemplo:
+K-means). Ao considerar a dificuldade de conseguir dados rotulados por
+humanos em ambientes de uso por especialistas, como imagens médicas e
+ferramentas de edição de imagem, a abordagem semi-supervisionada se
+demonstra interessante por precisar de poucos dados rotulados, mas
+ainda existir uma anotação com viés do especialista interessado
+(médico, editor).
 
 
 Os três principais algoritmos clássicos de segmentação de imagem podem
@@ -70,7 +71,7 @@ Considerando tal situação-problema, este trabalho propõe a construção
 de uma técnica de segmentação de imagem semi-supervisionada voltada
 para segmentação interativa utilizando redes complexas e dinâmicas
 coletivas de tal maneira que possa se equiparar com as melhores técnicas
-atuais de segmentação interativa baseado em grafos.
+atuais de segmentação interativa baseadas em grafos.
 
 \section{Trabalhos relacionados}\label{cap:trabalhos-relacionados}
 
@@ -228,8 +229,8 @@ Figura~\ref{fig:grabcut-papers}:
 \begin{figure}[!h]
         \captionsetup{width=12cm}
 		\Caption{\label{fig:grabcut-papers}
-          Quantidade de publicações relevantes envolvendo grabcut de
-          2004 a 2022}
+          Quantidade de publicações relevantes envolvendo \mbox{GrabCut} de
+          2004 a 2022.}
 		\centering
 		\UFCfig{}{
 			\fbox{\includegraphics[width=12cm]{figuras/grabcut-papers}}
