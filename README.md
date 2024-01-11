@@ -1,3 +1,5 @@
+[![arXiv](https://img.shields.io/badge/arXiv-xxxx.yyyyy-b31b1b.svg?style=flat)](https://arxiv.org/abs/xxxx.yyyyy)
+
 # EGSIS
 
 - **E**xploratory
@@ -26,7 +28,7 @@ desse material.
   de Dinâmicas Coletivas em Redes Complexas},
   author       = {Manoel Vilela Machado Neto},
   howpublished = {Universidade Federal do Ceará (UFC)},
-  address      = {repositorio.ufc.br},
+  address      = {repositorio.ufc.br, arxiv.org/abs/xxxx.yyyyy},
   year         = 2023,
   note         = {orientado pelo Dr. Jarbas Joaci de Mesquita Sá Junior}
 }
