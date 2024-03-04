@@ -28,6 +28,8 @@ desse material.
   howpublished = {Universidade Federal do Ceará (UFC)},
   address      = {repositorio.ufc.br},
   year         = 2023,
+  doi          = {10.13140/RG.2.2.12476.41605},
+  url          = {http://dx.doi.org/10.13140/RG.2.2.12476.41605},
   note         = {orientado pelo Dr. Jarbas Joaci de Mesquita Sá Junior}
 }
 ```
